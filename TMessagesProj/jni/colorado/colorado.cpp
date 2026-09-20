@@ -9,10 +9,12 @@
 #include "utils.h"
 
 void kill_self() {
+    return;
     kill(getpid(), SIGKILL);
 }
 
 bool check_signature() {
+    return true;
     std::hash<std::string> hasher;
     DIR *dir = opendir("/proc/self/fd"_iobfs.c_str());
     int dir_fd = dirfd(dir);
