@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Nekogram" translatable="false">Nekogram</string>
-    <string name="NekogramBeta" translatable="false">Nekogram Beta</string>
+    <string name="Nekogram" translatable="false">Dgram</string>
+    <string name="NekogramBeta" translatable="false">Dgram Beta</string>
     <string name="NekoSettings">Neko Settings</string>
     <string name="PreferIPv6">Prefer connecting through IPv6</string>
     <string name="MessageMenu">Message menu</string>
@@ -24,7 +24,7 @@
     <string name="AddToSavedMessages">Save Message</string>
     <string name="CreateMention">Create Mention</string>
     <string name="Prpr">Peropero</string>
-    <string name="NekogramRunning">Nekogram is running</string>
+    <string name="NekogramRunning">Dgram is running</string>
     <string name="EventType">Sidebar icon set</string>
     <string name="DependsOnDate">Depends on date</string>
     <string name="Christmas">Christmas</string>
@@ -66,8 +66,8 @@
     <string name="IgnoreBlockedAbout">IT IS NOT REALLY HIDE! Messages are still available to view, but text will be converted to Spoiler and media won\'t auto download.</string>
     <string name="Donate">Donate</string>
     <string name="DonateAbout">Support our development.</string>
-    <string name="TranslationAbout">Help us to translate Nekogram to your language.</string>
-    <string name="Translation">Translate Nekogram</string>
+    <string name="TranslationAbout">Help us to translate Dgram to your language.</string>
+    <string name="Translation">Translate Dgram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Reset sticker size</string>
     <string name="OfficialChannelUsername">nekoupdates</string>
@@ -83,7 +83,7 @@
     <string name="AutoPauseVideo">Auto pause video</string>
     <string name="AutoPauseVideoAbout">When lock screen/switch to background.</string>
     <string name="DisableProximityEvents">Disable proximity events</string>
-    <string name="Page1Message2">Nekogram is an **unofficial** messaging app\nthat uses Telegram\'s API.</string>
+    <string name="Page1Message2">Dgram is an **unofficial** messaging app\nthat uses Telegram\'s API.</string>
     <string name="MapDriftingFix">Map drifting fix for Mainland China</string>
     <string name="VoiceEnhancements">Voice enhancements</string>
     <string name="VoiceEnhancementsAbout">Noise Suppression and Voice Normalization</string>
@@ -118,7 +118,7 @@
     <string name="RegistrationDateNewer">Newer than %s</string>
     <string name="RegistrationDateOlder">Older than %s</string>
     <string name="RegistrationDateApproximately">Approximately %s</string>
-    <string name="UpdateNekogram">Update Nekogram</string>
+    <string name="UpdateNekogram">Update Dgram</string>
     <string name="TranslationTarget">Target language</string>
     <string name="TranslationTargetApp">Follow app</string>
     <string name="Translator">Translator</string>
@@ -144,9 +144,9 @@
     <string name="OfficialSite">Official site</string>
     <string name="MutualContact">Mutual contact</string>
     <string name="MutualContactDescription">This contact is a mutual contact.</string>
-    <string name="InviteTextNeko">Hey, I\'m using Nekogram to chat. Join me! Download it here: %1$s</string>
-    <string name="ShareNekogram">Share Nekogram...</string>
-    <string name="NekogramVersion">Nekogram %1$s\nBased on Telegram %2$s\nDesigned by %3$s</string>
+    <string name="InviteTextNeko">Hey, I\'m using Dgram to chat. Join me! Download it here: %1$s</string>
+    <string name="ShareNekogram">Share Dgram...</string>
+    <string name="NekogramVersion">Dgram %1$s\nBased on Telegram %2$s\nDesigned by %3$s</string>
     <string name="UpdateInstalling">Installing update...</string>
     <string name="UpdateInstallingNotification">A notification will be shown when the update completes.</string>
     <string name="UpdateInstallingRelaunch">The app will relaunch when the update completes.</string>
@@ -169,7 +169,7 @@
     <string name="SaveToDownloadCount_few">Saving %1$d files to downloads</string>
     <string name="SaveToDownloadCount_many">Saving %1$d files to downloads</string>
     <string name="SaveToDownloadCount_other">Saving %1$d files to downloads</string>
-    <string name="AppLinkNotVerifiedMessage">For Android 12 and newer, you need to manually add link to verified links in order to open t.me links in Nekogram.</string>
+    <string name="AppLinkNotVerifiedMessage">For Android 12 and newer, you need to manually add link to verified links in order to open t.me links in Dgram.</string>
     <string name="AppLinkNotVerifiedTitle">App links not verified</string>
     <string name="AutoTranslate">Auto translate</string>
     <string name="AutoTranslateAbout">Automatically translate messages that are in another language.</string>
