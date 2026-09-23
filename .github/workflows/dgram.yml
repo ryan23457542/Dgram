@@ -33,6 +33,13 @@ jobs:
           {"client_info":{"mobilesdk_app_id":"1:123456789012:android:1111111111111111","android_client_info":{"package_name":"com.dnd.dgram.beta"}},"api_key":[{"current_key":"dummy"}]}],
           "configuration_version":"1"}
           JSON
+      - name: Configure Signing
+        run: |
+          echo "storeFile=${{ github.workspace }}/keystore.jks" >> local.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> local.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> local.properties
+          echo "${{ secrets.KEYSTORE_JKS }}" | base64 --decode > keystore.jks
       - name: Build
         run: ./gradlew assembleDebug
       - uses: actions/upload-artifact@v7
