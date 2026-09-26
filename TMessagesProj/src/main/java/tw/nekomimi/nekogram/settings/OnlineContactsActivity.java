@@ -98,7 +98,7 @@ public class OnlineContactsActivity extends BaseFragment implements Notification
         sortedUsers.clear();
         for (TLRPC.TL_contact contact : ContactsController.getInstance(currentAccount).contacts) {
             TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(contact.user_id);
-            if (user != null && !UserObject.isDeleted(user) && !UserObject.isUserSelf(user)) {
+            if (user != null && !UserObject.isDeleted(user) && !UserObject.isUserSelf(user) && isOnline(user)) {
                 sortedUsers.add(user);
             }
         }
