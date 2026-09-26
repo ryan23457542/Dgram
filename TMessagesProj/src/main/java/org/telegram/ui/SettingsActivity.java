@@ -692,6 +692,15 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
+        items.add(SettingCell.Factory.of(60, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.filled_profile_settings, "Dgram Theme", null));
+        items.add(SettingCell.Factory.of(61, IconBackgroundColors.GREEN.top, IconBackgroundColors.GREEN.bottom, R.drawable.filled_profile_settings, "Dgram Settings", null));
+        items.add(SettingCell.Factory.of(62, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.filled_profile_settings, "Number Finder", null));
+        items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.filled_profile_settings, "Special Contacts", null));
+        items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.filled_profile_settings, "Online Contacts", null));
+        items.add(SettingCell.Factory.of(65, IconBackgroundColors.PURPLE.top, IconBackgroundColors.PURPLE.bottom, R.drawable.filled_profile_settings, "Contact Changes", null));
+        items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.filled_profile_settings, "Support Group", null));
+        items.add(UItem.asShadow(null));
+
         items.add(SettingCell.Factory.of(1, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
         items.add(SettingCell.Factory.of(2, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.settings_chat, getString(R.string.SettingsChat), getString(R.string.SettingsChatInfo)));
         items.add(SettingCell.Factory.of(3, IconBackgroundColors.GREEN.top, IconBackgroundColors.GREEN.bottom, R.drawable.settings_privacy, getString(R.string.SettingsPrivacySecurity), getString(R.string.SettingsPrivacySecurityInfo)));
@@ -704,7 +713,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         items.add(UItem.asShadow(null));
 
-        items.add(SettingCell.Factory.of(50, 0xFFD1E4FF, 0xFF9EC5FF, R.drawable.filled_profile_settings, getString(R.string.NekoSettings)));
 
         items.add(UItem.asShadow(null));
 
@@ -888,9 +896,33 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 }
                 break;
             }
-            case 50: {
-                presentSettingFragment(new NekoSettingsActivity());
-                break;
+            case 60: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.DgramThemeActivity());
+            	break;
+            }
+            case 61: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.DgramSettingsActivity());
+            	break;
+            }
+            case 62: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.NumberFinderActivity());
+            	break;
+            }
+            case 63: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.SpecialContactsActivity());
+            	break;
+            }
+            case 64: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.OnlineContactsActivity());
+            	break;
+            }
+            case 65: {
+            	presentFragment(new tw.nekomimi.nekogram.settings.ContactChangesActivity());
+            	break;
+            }
+            case 66: {
+            	org.telegram.messenger.browser.Browser.openUrl(getParentActivity(), "https://t.me/tessssssssssh");
+            	break;
             }
         }
     }
