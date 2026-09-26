@@ -901,7 +901,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             	break;
             }
             case 61: {
-            	presentFragment(new tw.nekomimi.nekogram.settings.DgramSettingsActivity());
+            	presentFragment(new tw.nekomimi.nekogram.settings.NekoSettingsActivity());
             	break;
             }
             case 62: {
