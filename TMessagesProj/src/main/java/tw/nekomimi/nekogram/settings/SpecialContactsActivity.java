@@ -25,6 +25,7 @@ import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.ContactsActivity;
+import org.telegram.ui.Components.ItemOptions;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 
@@ -172,16 +173,23 @@ public class SpecialContactsActivity extends BaseFragment {
                 int contactIndex = getContactIndexForPosition(position);
                 if (contactIndex >= 0) {
                     long userId = contactIds.get(contactIndex);
-                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
-                    builder.setTitle("Remove Contact");
-                    builder.setMessage("Remove this contact from Special Contacts?");
-                    builder.setPositiveButton("Remove", (dialog, which) -> {
-                        removeContact(userId);
-                        updateRows();
-                        listAdapter.notifyDataSetChanged();
-                    });
-                    builder.setNegativeButton("Cancel", null);
-                    builder.show();
+                    ItemOptions.makeOptions(this, view)
+                            .add(R.drawable.msg_settings, "Settings", () -> {
+                                presentFragment(new SpecialContactSettingsActivity(userId));
+                            })
+                            .add(R.drawable.msg_delete, "Delete", () -> {
+                                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+                                builder.setTitle("Remove Contact");
+                                builder.setMessage("Remove this contact from Special Contacts?");
+                                builder.setPositiveButton("Remove", (dialog, which) -> {
+                                    removeContact(userId);
+                                    updateRows();
+                                    listAdapter.notifyDataSetChanged();
+                                });
+                                builder.setNegativeButton("Cancel", null);
+                                builder.show();
+                            })
+                            .show();
                     return true;
                 }
             }
@@ -203,27 +211,10 @@ public class SpecialContactsActivity extends BaseFragment {
     private void openContactPicker() {
         ContactsActivity contactsActivity = new ContactsActivity(null);
         contactsActivity.setDelegate((user, param, activity) -> {
-            addContact(user.id);
-            updateRows();
-            if (listAdapter != null) {
-                listAdapter.notifyDataSetChanged();
-            }
             activity.finishFragment();
-            presentFragment(new SpecialContactSettingsActivity(user.id));
+            presentFragment(new SpecialContactSettingsActivity(user.id, true));
         });
-        android.os.Bundle args = new android.os.Bundle();
-        args.putBoolean("returnAsResult", true);
-        presentFragment(new ContactsActivity(args) {{
-            setDelegate((user, param, activity) -> {
-                addContact(user.id);
-                updateRows();
-                if (listAdapter != null) {
-                    listAdapter.notifyDataSetChanged();
-                }
-                activity.finishFragment();
-                presentFragment(new SpecialContactSettingsActivity(user.id));
-            });
-        }});
+        presentFragment(contactsActivity);
     }
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {

@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class SpecialContactSettingsActivity extends BaseFragment {
 
     private long userId;
+    private boolean isNewContact;
     private RecyclerListView listView;
     private ListAdapter listAdapter;
 
@@ -59,9 +60,16 @@ public class SpecialContactSettingsActivity extends BaseFragment {
     };
 
     public SpecialContactSettingsActivity(long userId) {
+        this(userId, false);
+    }
+
+    public SpecialContactSettingsActivity(long userId, boolean isNewContact) {
         super();
         this.userId = userId;
+        this.isNewContact = isNewContact;
     }
+
+    private static final int MENU_CONFIRM = 1;
 
     private SharedPreferences prefs() {
         return ApplicationLoader.applicationContext.getSharedPreferences("dgram_special_contacts", Context.MODE_PRIVATE);
@@ -93,6 +101,48 @@ public class SpecialContactSettingsActivity extends BaseFragment {
         prefs().edit().putString("settings_" + userId, obj.toString()).apply();
     }
 
+    private void commitAddContact() {
+        SharedPreferences p = prefs();
+        String saved = p.getString("contacts", "[]");
+        try {
+            org.json.JSONArray arr = new org.json.JSONArray(saved);
+            boolean exists = false;
+            for (int i = 0; i < arr.length(); i++) {
+                if (arr.getLong(i) == userId) {
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists) {
+                arr.put(userId);
+                p.edit().putString("contacts", arr.toString()).apply();
+            }
+        } catch (JSONException ignored) {
+        }
+    }
+
+    @Override
+    public boolean onBackPressed(boolean invoked) {
+        handleBackPress();
+        return false;
+    }
+
+    private void handleBackPress() {
+        if (!isNewContact) {
+            finishFragment();
+            return;
+        }
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+        builder.setTitle("Add Special Contact?");
+        builder.setMessage("Do you want to add this contact to your special contact list?");
+        builder.setPositiveButton("Add", (dialog, which) -> {
+            commitAddContact();
+            finishFragment();
+        });
+        builder.setNegativeButton("Discard", (dialog, which) -> finishFragment());
+        builder.show();
+    }
+
     private void updateRows() {
         items.clear();
         items.add(TYPE_USER_HEADER);
@@ -121,10 +171,16 @@ public class SpecialContactSettingsActivity extends BaseFragment {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
+                    handleBackPress();
+                } else if (id == MENU_CONFIRM) {
+                    commitAddContact();
                     finishFragment();
                 }
             }
         });
+        if (isNewContact) {
+            actionBar.createMenu().addItem(MENU_CONFIRM, R.drawable.ic_ab_done);
+        }
 
         FrameLayout frameLayout = new FrameLayout(context);
         fragmentView = frameLayout;
