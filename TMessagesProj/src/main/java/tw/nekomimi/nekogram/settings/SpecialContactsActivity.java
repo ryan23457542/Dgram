@@ -162,7 +162,7 @@ public class SpecialContactsActivity extends BaseFragment {
             } else if (type == TYPE_CONTACT) {
                 int contactIndex = getContactIndexForPosition(position);
                 if (contactIndex >= 0) {
-                    presentFragment(new SpecialContactSettingsActivity(contactIds.get(contactIndex)));
+                    presentFragment(new SpecialContactActionsActivity(contactIds.get(contactIndex)));
                 }
             }
         });
@@ -287,7 +287,8 @@ public class SpecialContactsActivity extends BaseFragment {
                         long userId = contactIds.get(contactIndex);
                         TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(userId);
                         String name = user != null ? ContactsController.formatName(user.first_name, user.last_name) : "Unknown";
-                        String status = user != null ? LocaleController.formatUserStatus(currentAccount, user) : "";
+                        String lastAction = SpecialContactsMonitor.lastActionText(userId);
+                    String status = lastAction != null ? lastAction : "No new action";
                         ((UserCell) holder.itemView).setData(user, name, status, 0, contactIndex != contactIds.size() - 1);
                     }
                     break;

@@ -195,6 +195,7 @@ public class ApplicationLoader extends Application {
     }
 
     public static void postInitApplication() {
+        tw.nekomimi.nekogram.settings.SpecialContactsMonitor.init();
         if (applicationInited || applicationContext == null) {
             return;
         }
