@@ -63,6 +63,7 @@ public class SpecialContactsMonitor implements NotificationCenter.NotificationCe
                 NotificationCenter nc = NotificationCenter.getInstance(a);
                 nc.addObserver(instance, NotificationCenter.updateInterfaces);
                 nc.addObserver(instance, NotificationCenter.didReceiveNewMessages);
+                nc.addObserver(instance, NotificationCenter.messagesRead);
             }
         });
     }
@@ -120,6 +121,20 @@ public class SpecialContactsMonitor implements NotificationCenter.NotificationCe
                 }
                 for (long userId : ids) {
                     checkUser(account, userId);
+                }
+            } else if (id == NotificationCenter.messagesRead) {
+                if (args.length < 2 || !(args[1] instanceof org.telegram.messenger.support.LongSparseIntArray)) {
+                    return;
+                }
+                org.telegram.messenger.support.LongSparseIntArray outbox = (org.telegram.messenger.support.LongSparseIntArray) args[1];
+                for (int i = 0; i < outbox.size(); i++) {
+                    long dialogId = outbox.keyAt(i);
+                    if (ids.contains(dialogId)) {
+                        TLRPC.User user = MessagesController.getInstance(account).getUser(dialogId);
+                        if (user != null) {
+                            notifyAction(account, user, "readingMessage", "read your message");
+                        }
+                    }
                 }
             } else if (id == NotificationCenter.didReceiveNewMessages) {
                 if (args.length < 2 || !(args[0] instanceof Long) || !(args[1] instanceof ArrayList)) {
