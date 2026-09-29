@@ -24,6 +24,7 @@ import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Cells.UserCell;
+import org.telegram.ui.Cells.ManageChatUserCell;
 import org.telegram.ui.ContactsActivity;
 import org.telegram.ui.Components.ItemOptions;
 import org.telegram.ui.Components.LayoutHelper;
@@ -31,7 +32,7 @@ import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 
-public class SpecialContactsActivity extends BaseFragment {
+public class SpecialContactsActivity extends BaseFragment implements ManageChatUserCell.ManageChatUserCellDelegate {
 
     private RecyclerListView listView;
     private ListAdapter listAdapter;
@@ -217,6 +218,33 @@ public class SpecialContactsActivity extends BaseFragment {
         presentFragment(contactsActivity);
     }
 
+        @Override
+    public boolean onOptionsButtonCheck(ManageChatUserCell cell, boolean click) {
+        if (!click) return true;
+        Object obj = cell.getCurrentObject();
+        if (!(obj instanceof TLRPC.User)) return true;
+
+        long userId = ((TLRPC.User) obj).id;
+        ItemOptions.makeOptions(this, cell)
+                .add(R.drawable.msg_settings, "Settings", () -> {
+                    presentFragment(new SpecialContactSettingsActivity(userId));
+                })
+                .add(R.drawable.msg_delete, "Delete", () -> {
+                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+                    builder.setTitle("Remove Contact");
+                    builder.setMessage("Remove this contact from Special Contacts?");
+                    builder.setPositiveButton("Remove", (dialog, which) -> {
+                        removeContact(userId);
+                        updateRows();
+                        listAdapter.notifyDataSetChanged();
+                    });
+                    builder.setNegativeButton("Cancel", null);
+                    builder.show();
+                })
+                .show();
+        return true;
+    }
+
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
 
         private final Context context;
@@ -249,7 +277,9 @@ public class SpecialContactsActivity extends BaseFragment {
                     view = new TextInfoPrivacyCell(context);
                     break;
                 case TYPE_CONTACT:
-                    view = new UserCell(context, 8, 0, false);
+                    ManageChatUserCell manageCell = new ManageChatUserCell(context, 8, 0, true);
+            manageCell.setDelegate(SpecialContactsActivity.this);
+            view = manageCell;
                     break;
                 default:
                     view = new TextSettingsCell(context);
@@ -289,7 +319,7 @@ public class SpecialContactsActivity extends BaseFragment {
                         String name = user != null ? ContactsController.formatName(user.first_name, user.last_name) : "Unknown";
                         String lastAction = SpecialContactsMonitor.lastActionText(userId);
                     String status = lastAction != null ? lastAction : "No new action";
-                        ((UserCell) holder.itemView).setData(user, name, status, 0, contactIndex != contactIds.size() - 1);
+                        ((ManageChatUserCell) holder.itemView).setData(user, name, status, contactIndex != contactIds.size() - 1);
                     }
                     break;
                 }
