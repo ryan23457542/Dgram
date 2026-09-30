@@ -164,8 +164,21 @@ android {
         localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
     }
 
+    signingConfigs {
+        debug {
+            def ksFile = project.rootProject.file('keystore.jks')
+            if (ksFile.exists() && localProperties.containsKey('storePassword')) {
+                storeFile ksFile
+                storePassword localProperties.getProperty('storePassword')
+                keyAlias localProperties.getProperty('keyAlias')
+                keyPassword localProperties.getProperty('keyPassword')
+            }
+        }
+    }
+
     buildTypes {
         debug {
+            signingConfig signingConfigs.debug
             buildConfigField("long", "VERSION_CODE", "${APP_VERSION_CODE}")
             buildConfigField("String","VERSION_NAME","\"${APP_VERSION_NAME}\"")
             buildConfigField("long", "BUILD_VERSION", "${TG_APP_VERSION_CODE}")
