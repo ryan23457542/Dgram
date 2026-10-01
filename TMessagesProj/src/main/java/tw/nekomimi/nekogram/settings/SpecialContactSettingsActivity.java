@@ -1,13 +1,15 @@
 package tw.nekomimi.nekogram.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
@@ -26,6 +29,7 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.TextCheckCell;
+import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.Components.LayoutHelper;
@@ -33,7 +37,12 @@ import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 
+import static org.telegram.messenger.AndroidUtilities.dp;
+
 public class SpecialContactSettingsActivity extends BaseFragment {
+
+    private static final int MENU_CONFIRM = 1;
+    private static final int SOUND_PICKER_REQUEST = 7201;
 
     private long userId;
     private boolean isNewContact;
@@ -44,6 +53,8 @@ public class SpecialContactSettingsActivity extends BaseFragment {
     private final int TYPE_HEADER = 1;
     private final int TYPE_CHECK = 2;
     private final int TYPE_TEXT = 3;
+    private final int TYPE_INFO = 4;
+    private final int TYPE_LIGHT = 5;
 
     private final ArrayList<Integer> items = new ArrayList<>();
 
@@ -51,12 +62,22 @@ public class SpecialContactSettingsActivity extends BaseFragment {
             "goingOnline", "goingOffline", "readingMessage", "sendingMessage",
             "changingProfilePicture", "changingUsername"
     };
+
     private static final String[] CHECK_LABELS = {
             "Going Online", "Going Offline", "Reading Message", "Sending Message",
             "Changing Profile Picture", "Changing Username"
     };
+
     private static final boolean[] CHECK_DEFAULTS = {
             true, false, true, false, true, true
+    };
+
+    private static final String[] VIBRATE_LABELS = {"Default", "Short", "Disabled", "Long"};
+    private static final String[] PRIORITY_LABELS = {"Default", "High", "Max", "Min"};
+
+    private static final int[] LIGHT_COLORS = {
+            0xFF4D9DE0, 0xFFE15554, 0xFF3BB273, 0xFFE1BC29,
+            0xFF7768AE, 0xFFE07A5F, 0xFFFFFFFF, 0xFF9E9E9E
     };
 
     public SpecialContactSettingsActivity(long userId) {
@@ -68,8 +89,6 @@ public class SpecialContactSettingsActivity extends BaseFragment {
         this.userId = userId;
         this.isNewContact = isNewContact;
     }
-
-    private static final int MENU_CONFIRM = 1;
 
     private SharedPreferences prefs() {
         return ApplicationLoader.applicationContext.getSharedPreferences("dgram_special_contacts", Context.MODE_PRIVATE);
@@ -92,6 +111,10 @@ public class SpecialContactSettingsActivity extends BaseFragment {
         }
         try {
             obj.put("actionsNotification", true);
+            obj.put("sound", "Default");
+            obj.put("vibrate", 0);
+            obj.put("priority", 0);
+            obj.put("lightColor", LIGHT_COLORS[0]);
         } catch (JSONException ignored) {
         }
         return obj;
@@ -123,11 +146,11 @@ public class SpecialContactSettingsActivity extends BaseFragment {
 
     @Override
     public boolean onBackPressed(boolean invoked) {
-        handleBackPress();
+        handleBackPressed();
         return false;
     }
 
-    private void handleBackPress() {
+    private void handleBackPressed() {
         if (!isNewContact) {
             finishFragment();
             return;
@@ -155,6 +178,10 @@ public class SpecialContactSettingsActivity extends BaseFragment {
         items.add(TYPE_TEXT); // Sound
         items.add(TYPE_TEXT); // Vibrate
         items.add(TYPE_TEXT); // Priority
+        items.add(TYPE_INFO); // priority info
+        items.add(TYPE_HEADER); // Light
+        items.add(TYPE_LIGHT); // Color
+        items.add(TYPE_INFO); // light info
     }
 
     @Override
@@ -171,7 +198,7 @@ public class SpecialContactSettingsActivity extends BaseFragment {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    handleBackPress();
+                    handleBackPressed();
                 } else if (id == MENU_CONFIRM) {
                     commitAddContact();
                     finishFragment();
@@ -213,21 +240,182 @@ public class SpecialContactSettingsActivity extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(newVal);
                 }
+            } else if (type == TYPE_TEXT) {
+                int textPos = getTextRowIndex(position);
+                if (textPos == 0) {
+                    openSoundPicker();
+                } else if (textPos == 1) {
+                    openVibratePicker();
+                } else if (textPos == 2) {
+                    openPriorityPicker();
+                }
+            } else if (type == TYPE_LIGHT) {
+                openColorPicker();
             }
         });
-        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
+        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         return fragmentView;
     }
 
+    private void openSoundPicker() {
+        if (getParentActivity() == null) {
+            return;
+        }
+        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
+        getParentActivity().startActivityForResult(intent, SOUND_PICKER_REQUEST);
+    }
+
+    @Override
+    public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SOUND_PICKER_REQUEST && data != null) {
+            Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+            JSONObject settings = loadSettings();
+            try {
+                settings.put("sound", uri != null ? uri.toString() : "NoSound");
+            } catch (JSONException ignored) {
+            }
+            saveSettings(settings);
+            if (listAdapter != null) {
+                listAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+    private void openVibratePicker() {
+        if (getParentActivity() == null) {
+            return;
+        }
+        JSONObject settings = loadSettings();
+        int current = settings.optInt("vibrate", 0);
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+        builder.setTitle("Vibrate");
+        builder.setSingleChoiceItems(VIBRATE_LABELS, current, (dialog, which) -> {
+            JSONObject s = loadSettings();
+            try {
+                s.put("vibrate", which);
+            } catch (JSONException ignored) {
+            }
+            saveSettings(s);
+            if (listAdapter != null) {
+                listAdapter.notifyDataSetChanged();
+            }
+            dialog.dismiss();
+        });
+        builder.show();
+    }
+
+    private void openPriorityPicker() {
+        if (getParentActivity() == null) {
+            return;
+        }
+        JSONObject settings = loadSettings();
+        int current = settings.optInt("priority", 0);
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+        builder.setTitle("Priority");
+        builder.setSingleChoiceItems(PRIORITY_LABELS, current, (dialog, which) -> {
+            JSONObject s = loadSettings();
+            try {
+                s.put("priority", which);
+            } catch (JSONException ignored) {
+            }
+            saveSettings(s);
+            if (listAdapter != null) {
+                listAdapter.notifyDataSetChanged();
+            }
+            dialog.dismiss();
+        });
+        builder.show();
+    }
+
+    private void openColorPicker() {
+        if (getParentActivity() == null) {
+            return;
+        }
+        Context context = getParentActivity();
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.HORIZONTAL);
+        layout.setPadding(dp(16), dp(16), dp(16), dp(8));
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+        builder.setTitle("Light Color");
+        android.app.AlertDialog dialog = builder.setView(layout).create();
+
+        for (int color : LIGHT_COLORS) {
+            FrameLayout swatch = new FrameLayout(context);
+            android.graphics.drawable.GradientDrawable circle = new android.graphics.drawable.GradientDrawable();
+            circle.setShape(android.graphics.drawable.GradientDrawable.OVAL);
+            circle.setColor(color);
+            circle.setStroke(dp(1), 0x33000000);
+            swatch.setBackground(circle);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp(36), dp(36));
+            lp.setMargins(dp(6), 0, dp(6), 0);
+            swatch.setOnClickListener(v -> {
+                JSONObject s = loadSettings();
+                try {
+                    s.put("lightColor", color);
+                } catch (JSONException ignored) {
+                }
+                saveSettings(s);
+                if (listAdapter != null) {
+                    listAdapter.notifyDataSetChanged();
+                }
+                dialog.dismiss();
+            });
+            layout.addView(swatch, lp);
+        }
+
+        dialog.show();
+    }
+
     private int getCheckIndexForPosition(int position) {
-        // positions: 0=header user, 1=header actions, 2..7 = checks, then general header etc
         int checkStart = 2;
         int idx = position - checkStart;
         if (idx >= 0 && idx < CHECK_KEYS.length) {
             return idx;
         }
         return -1;
+    }
+
+    private int getTextRowIndex(int position) {
+        int count = -1;
+        for (int i = 0; i <= position; i++) {
+            if (items.get(i) == TYPE_TEXT) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int getHeaderIndex(int position) {
+        int count = -1;
+        for (int i = 0; i <= position; i++) {
+            if (items.get(i) == TYPE_HEADER) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private String formatSound(JSONObject settings) {
+        String sound = settings.optString("sound", "Default");
+        if (sound.equals("Default") || sound.isEmpty()) {
+            return "Default";
+        }
+        if (sound.equals("NoSound")) {
+            return "None";
+        }
+        try {
+            android.media.Ringtone ringtone = RingtoneManager.getRingtone(ApplicationLoader.applicationContext, Uri.parse(sound));
+            if (ringtone != null) {
+                return ringtone.getTitle(ApplicationLoader.applicationContext);
+            }
+        } catch (Exception ignored) {
+        }
+        return "Custom";
     }
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
@@ -241,7 +429,7 @@ public class SpecialContactSettingsActivity extends BaseFragment {
         @Override
         public boolean isEnabled(RecyclerView.ViewHolder holder) {
             int type = items.get(holder.getAdapterPosition());
-            return type == TYPE_CHECK || type == TYPE_TEXT;
+            return type == TYPE_CHECK || type == TYPE_TEXT || type == TYPE_LIGHT;
         }
 
         @Override
@@ -262,11 +450,19 @@ public class SpecialContactSettingsActivity extends BaseFragment {
                 case TYPE_CHECK:
                     view = new TextCheckCell(context);
                     break;
+                case TYPE_INFO:
+                    view = new TextInfoPrivacyCell(context);
+                    break;
+                case TYPE_LIGHT:
+                    view = new TextSettingsCell(context);
+                    break;
                 default:
                     view = new TextSettingsCell(context);
                     break;
             }
-            view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+            view.setLayoutParams(new RecyclerView.LayoutParams(
+                    RecyclerView.LayoutParams.MATCH_PARENT,
+                    RecyclerView.LayoutParams.WRAP_CONTENT));
             return new RecyclerListView.Holder(view);
         }
 
@@ -283,14 +479,9 @@ public class SpecialContactSettingsActivity extends BaseFragment {
                     break;
                 }
                 case TYPE_HEADER: {
-                    int headerIndex = 0;
-                    int seen = 0;
-                    for (int i = 0; i <= position; i++) {
-                        if (items.get(i) == TYPE_HEADER) {
-                            seen++;
-                        }
-                    }
-                    ((HeaderCell) holder.itemView).setText(seen == 1 ? "Actions" : "General");
+                    String[] headerLabels = {"Actions", "General", "Light"};
+                    int idx = getHeaderIndex(position);
+                    ((HeaderCell) holder.itemView).setText(idx >= 0 && idx < headerLabels.length ? headerLabels[idx] : "");
                     break;
                 }
                 case TYPE_CHECK: {
@@ -306,24 +497,37 @@ public class SpecialContactSettingsActivity extends BaseFragment {
                 }
                 case TYPE_TEXT: {
                     int textPos = getTextRowIndex(position);
-                    String[] labels = {"Sound", "Vibrate", "Priority"};
-                    String[] values = {"Default", "Default", "Same as in Settings"};
-                    if (textPos >= 0 && textPos < labels.length) {
-                        ((TextSettingsCell) holder.itemView).setTextAndValue(labels[textPos], values[textPos], true);
+                    if (textPos == 0) {
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Sound", formatSound(settings), true);
+                    } else if (textPos == 1) {
+                        int v = settings.optInt("vibrate", 0);
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Vibrate", VIBRATE_LABELS[v], true);
+                    } else if (textPos == 2) {
+                        int p = settings.optInt("priority", 0);
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Priority", PRIORITY_LABELS[p], true);
+                    }
+                    break;
+                }
+                case TYPE_LIGHT: {
+                    ((TextSettingsCell) holder.itemView).setTextAndValue("Color", "", false);
+                    break;
+                }
+                case TYPE_INFO: {
+                    int infoIdx = 0;
+                    for (int i = 0; i <= position; i++) {
+                        if (items.get(i) == TYPE_INFO) {
+                            infoIdx++;
+                        }
+                    }
+                    TextInfoPrivacyCell cell = (TextInfoPrivacyCell) holder.itemView;
+                    if (infoIdx == 1) {
+                        cell.setText("Higher priority notifications will work even in Do Not Disturb mode.");
+                    } else {
+                        cell.setText("Blinking light used to indicate new messages on some devices.");
                     }
                     break;
                 }
             }
-        }
-
-        private int getTextRowIndex(int position) {
-            int count = -1;
-            for (int i = 0; i <= position; i++) {
-                if (items.get(i) == TYPE_TEXT) {
-                    count++;
-                }
-            }
-            return count;
         }
 
         @Override

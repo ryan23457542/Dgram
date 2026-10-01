@@ -2,9 +2,12 @@ package tw.nekomimi.nekogram.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ContactsController;
+import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
@@ -23,14 +29,20 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
+import org.telegram.ui.Components.AvatarDrawable;
+import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 
+import static org.telegram.messenger.AndroidUtilities.dp;
+
 public class ContactChangesActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+
+    private static final int MENU_CLEAR = 1;
 
     private RecyclerListView listView;
     private ListAdapter listAdapter;
@@ -48,7 +60,7 @@ public class ContactChangesActivity extends BaseFragment implements Notification
     }
 
     private SharedPreferences prefs() {
-        return ApplicationLoader.applicationContext.getSharedPreferences("dgram_contact_changes", Context.MODE_PRIVATE);
+        return ApplicationLoader.applicationContext.getSharedPreferences("nk_contact_changes", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -70,15 +82,18 @@ public class ContactChangesActivity extends BaseFragment implements Notification
     @Override
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setTitle("Contact Changes");
+        actionBar.setTitle("Contacts Changes");
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
+                } else if (id == MENU_CLEAR) {
+                    confirmClearLog();
                 }
             }
         });
+        actionBar.createMenu().addItem(MENU_CLEAR, R.drawable.msg_delete);
 
         FrameLayout frameLayout = new FrameLayout(context);
         fragmentView = frameLayout;
@@ -94,13 +109,32 @@ public class ContactChangesActivity extends BaseFragment implements Notification
         emptyView.setText("No changes recorded yet.\nDgram will log name and photo changes of your contacts while the app is open.");
         emptyView.setTextSize(15);
         emptyView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
-        emptyView.setGravity(android.view.Gravity.CENTER);
+        emptyView.setGravity(Gravity.CENTER);
         emptyView.setPadding(60, 0, 60, 0);
-        frameLayout.addView(emptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, android.view.Gravity.CENTER));
+        frameLayout.addView(emptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
         updateEmptyView();
 
         return fragmentView;
+    }
+
+    private void confirmClearLog() {
+        if (getParentActivity() == null || logEntries.isEmpty()) {
+            return;
+        }
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getParentActivity());
+        builder.setTitle("Clear Log");
+        builder.setMessage("Clear all recorded contact changes?");
+        builder.setPositiveButton("Clear", (dialog, which) -> {
+            logEntries.clear();
+            saveLog();
+            if (listAdapter != null) {
+                listAdapter.notifyDataSetChanged();
+            }
+            updateEmptyView();
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
     }
 
     private void updateEmptyView() {
@@ -204,6 +238,7 @@ public class ContactChangesActivity extends BaseFragment implements Notification
                 }
                 changed = true;
             }
+
             if (prevPhotoId != photoId) {
                 addLogEntry(user.id, currentName, "photo", null, null);
                 try {
@@ -245,26 +280,105 @@ public class ContactChangesActivity extends BaseFragment implements Notification
 
     private String formatEntryText(LogEntry entry) {
         if ("photo".equals(entry.type)) {
-            return entry.name + " changed their profile photo";
+            return "changed his/her Profile Photo.";
         } else {
-            return entry.name + " changed name from \"" + entry.oldValue + "\" to \"" + entry.newValue + "\"";
+            return "changed his/her name from \"" + entry.oldValue + "\" to \"" + entry.newValue + "\".";
         }
     }
 
-    private String formatTime(long time) {
-        long diff = System.currentTimeMillis() - time;
-        long minutes = diff / 60000;
-        if (minutes < 1) {
-            return "just now";
-        } else if (minutes < 60) {
-            return minutes + "m ago";
+    private static String formatDate(long time) {
+        Calendar now = Calendar.getInstance();
+        Calendar then = Calendar.getInstance();
+        then.setTimeInMillis(time);
+
+        boolean sameDay = now.get(Calendar.YEAR) == then.get(Calendar.YEAR) && now.get(Calendar.DAY_OF_YEAR) == then.get(Calendar.DAY_OF_YEAR);
+        java.util.Locale locale = java.util.Locale.getDefault();
+        if (sameDay) {
+            return new java.text.SimpleDateFormat("HH:mm", locale).format(new java.util.Date(time));
         }
-        long hours = minutes / 60;
-        if (hours < 24) {
-            return hours + "h ago";
+
+        long diffDays = (now.getTimeInMillis() - then.getTimeInMillis()) / 86400000L;
+        if (diffDays < 7) {
+            return new java.text.SimpleDateFormat("EEE", locale).format(new java.util.Date(time));
         }
-        long days = hours / 24;
-        return days + "d ago";
+
+        boolean sameYear = now.get(Calendar.YEAR) == then.get(Calendar.YEAR);
+        if (sameYear) {
+            return new java.text.SimpleDateFormat("MMM d", locale).format(new java.util.Date(time));
+        }
+        return new java.text.SimpleDateFormat("MMM d, yyyy", locale).format(new java.util.Date(time));
+    }
+
+    private static class ChangeCell extends FrameLayout {
+
+        private final BackupImageView avatarImageView;
+        private final TextView nameTextView;
+        private final TextView descriptionTextView;
+        private final TextView dateTextView;
+        private final AvatarDrawable avatarDrawable = new AvatarDrawable();
+
+        ChangeCell(Context context) {
+            super(context);
+            setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+
+            avatarImageView = new BackupImageView(context);
+            avatarImageView.setRoundRadius(dp(10));
+            addView(avatarImageView, LayoutHelper.createFrame(46, 46, Gravity.LEFT | Gravity.TOP, 13, 10, 0, 0));
+
+            nameTextView = new TextView(context);
+            nameTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
+            nameTextView.setTypeface(Typeface.DEFAULT_BOLD);
+            nameTextView.setTextSize(16);
+            nameTextView.setSingleLine(true);
+            nameTextView.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 75, 11, 60, 0));
+
+            dateTextView = new TextView(context);
+            dateTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
+            dateTextView.setTextSize(13);
+            addView(dateTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.TOP, 0, 13, 13, 0));
+
+            descriptionTextView = new TextView(context);
+            descriptionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
+            descriptionTextView.setTextSize(14);
+            descriptionTextView.setMaxLines(2);
+            descriptionTextView.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            addView(descriptionTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 75, 34, 13, 0));
+        }
+
+        void bind(LogEntry entry, boolean divider) {
+            TLRPC.User user = MessagesController.getInstance(UserConfigHolder.currentAccount).getUser(entry.userId);
+            avatarDrawable.setInfo(UserConfigHolder.currentAccount, user);
+            avatarImageView.setForUserOrChat(user, avatarDrawable);
+            nameTextView.setText(entry.name);
+            descriptionTextView.setText(formatEntryTextStatic(entry));
+            dateTextView.setText(formatDate(entry.time));
+            setWillNotDraw(!divider);
+        }
+
+        private static String formatEntryTextStatic(LogEntry entry) {
+            if ("photo".equals(entry.type)) {
+                return "changed his/her Profile Photo.";
+            } else {
+                return "changed his/her name from \"" + entry.oldValue + "\" to \"" + entry.newValue + "\".";
+            }
+        }
+
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(dp(66), MeasureSpec.EXACTLY));
+        }
+
+        @Override
+        protected void onDraw(android.graphics.Canvas canvas) {
+            if (!willNotDraw()) {
+                canvas.drawLine(dp(75), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, Theme.dividerPaint);
+            }
+        }
+    }
+
+    private static class UserConfigHolder {
+        static int currentAccount;
     }
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
@@ -273,6 +387,7 @@ public class ContactChangesActivity extends BaseFragment implements Notification
 
         ListAdapter(Context context) {
             this.context = context;
+            UserConfigHolder.currentAccount = currentAccount;
         }
 
         @Override
@@ -287,16 +402,14 @@ public class ContactChangesActivity extends BaseFragment implements Notification
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            TextInfoPrivacyCell cell = new TextInfoPrivacyCell(context);
+            ChangeCell cell = new ChangeCell(context);
             return new RecyclerListView.Holder(cell);
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             LogEntry entry = logEntries.get(position);
-            TextInfoPrivacyCell cell = (TextInfoPrivacyCell) holder.itemView;
-            cell.setText(formatEntryText(entry) + "  \u2022  " + formatTime(entry.time));
-            cell.setBackgroundDrawable(Theme.getThemedDrawable(context, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+            ((ChangeCell) holder.itemView).bind(entry, position != logEntries.size() - 1);
         }
     }
 }
