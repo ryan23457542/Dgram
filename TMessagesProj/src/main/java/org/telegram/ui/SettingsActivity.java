@@ -693,12 +693,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
 
         items.add(SettingCell.Factory.of(60, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.dgram_theme, "Dgram Theme", null));
-        items.add(SettingCell.Factory.of(61, IconBackgroundColors.GREEN.top, IconBackgroundColors.GREEN.bottom, R.drawable.settings_gram_24, "Dgram Settings", null));
+        items.add(SettingCell.Factory.of(61, IconBackgroundColors.GREEN.top, IconBackgroundColors.GREEN.bottom, R.drawable.msg_settings, "Dgram Settings", null));
         items.add(SettingCell.Factory.of(62, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.dgram_user_finder, "Number Finder", null));
         items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.dgram_special_contacts, "Special Contacts", null));
         items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.dgram_online_contacts, "Online Contacts", null));
         items.add(SettingCell.Factory.of(65, IconBackgroundColors.PURPLE.top, IconBackgroundColors.PURPLE.bottom, R.drawable.filled_profile_settings, "Contact Changes", null));
-        items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.filled_profile_settings, "Support Group", null));
+        items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.outline_groups_24, "Support Group", null));
         items.add(UItem.asShadow(null));
 
         items.add(SettingCell.Factory.of(1, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
