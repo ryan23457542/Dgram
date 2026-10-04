@@ -210,9 +210,11 @@ public class SpecialContactsActivity extends BaseFragment implements ManageChatU
     }
 
     private void openContactPicker() {
-        ContactsActivity contactsActivity = new ContactsActivity(null);
+        android.os.Bundle args = new android.os.Bundle();
+        args.putBoolean("returnAsResult", true);
+        args.putBoolean("destroyAfterSelect", true);
+        ContactsActivity contactsActivity = new ContactsActivity(args);
         contactsActivity.setDelegate((user, param, activity) -> {
-            activity.finishFragment();
             presentFragment(new SpecialContactSettingsActivity(user.id, true));
         });
         presentFragment(contactsActivity);
