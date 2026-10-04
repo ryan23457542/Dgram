@@ -169,6 +169,7 @@ public class OnlineContactsActivity extends BaseFragment implements Notification
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             UserCell cell = new UserCell(mContext, 8, 0, false);
+            cell.setLayoutParams(GroupCardHelper.freshLayoutParams());
             return new RecyclerListView.Holder(cell);
         }
 
@@ -176,7 +177,9 @@ public class OnlineContactsActivity extends BaseFragment implements Notification
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             TLRPC.User user = onlineUsers.get(position);
             UserCell cell = (UserCell) holder.itemView;
-            cell.setData(user, null, org.telegram.messenger.LocaleController.getString("Online", R.string.Online), (position == onlineUsers.size() - 1 ? 0 : 1));
+            int pos = GroupCardHelper.positionInGroup(position, onlineUsers.size());
+            GroupCardHelper.applyCard(cell, pos);
+            cell.setData(user, null, org.telegram.messenger.LocaleController.getString("Online", R.string.Online), GroupCardHelper.needsDivider(pos) ? 1 : 0);
         }
     }
 }

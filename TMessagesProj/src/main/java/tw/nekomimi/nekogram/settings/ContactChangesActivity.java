@@ -319,7 +319,6 @@ public class ContactChangesActivity extends BaseFragment implements Notification
 
         ChangeCell(Context context) {
             super(context);
-            setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
 
             avatarImageView = new BackupImageView(context);
             avatarImageView.setRoundRadius(dp(10));
@@ -346,14 +345,15 @@ public class ContactChangesActivity extends BaseFragment implements Notification
             addView(descriptionTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 75, 34, 13, 0));
         }
 
-        void bind(LogEntry entry, boolean divider) {
+        void bind(LogEntry entry, int groupPos) {
             TLRPC.User user = MessagesController.getInstance(UserConfigHolder.currentAccount).getUser(entry.userId);
             avatarDrawable.setInfo(UserConfigHolder.currentAccount, user);
             avatarImageView.setForUserOrChat(user, avatarDrawable);
             nameTextView.setText(entry.name);
             descriptionTextView.setText(formatEntryTextStatic(entry));
             dateTextView.setText(formatDate(entry.time));
-            setWillNotDraw(!divider);
+            GroupCardHelper.applyCard(this, groupPos);
+            setWillNotDraw(!GroupCardHelper.needsDivider(groupPos));
         }
 
         private static String formatEntryTextStatic(LogEntry entry) {
@@ -403,13 +403,15 @@ public class ContactChangesActivity extends BaseFragment implements Notification
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             ChangeCell cell = new ChangeCell(context);
+            cell.setLayoutParams(GroupCardHelper.freshLayoutParams());
             return new RecyclerListView.Holder(cell);
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             LogEntry entry = logEntries.get(position);
-            ((ChangeCell) holder.itemView).bind(entry, position != logEntries.size() - 1);
+            int pos = GroupCardHelper.positionInGroup(position, logEntries.size());
+            ((ChangeCell) holder.itemView).bind(entry, pos);
         }
     }
 }

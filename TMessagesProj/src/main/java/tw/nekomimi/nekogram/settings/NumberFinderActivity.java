@@ -53,12 +53,13 @@ public class NumberFinderActivity extends BaseFragment {
 
         LinearLayout rootLayout = new LinearLayout(context);
         rootLayout.setOrientation(LinearLayout.VERTICAL);
-        rootLayout.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+        rootLayout.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
         fragmentView = rootLayout;
 
-        // Input row
+        // Input row (shown as a rounded white card, like the rest of the app's custom screens)
         LinearLayout inputRow = new LinearLayout(context);
         inputRow.setOrientation(LinearLayout.HORIZONTAL);
+        inputRow.setBackground(GroupCardHelper.cardBackground(context, GroupCardHelper.POS_SINGLE));
         inputRow.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
 
         phoneInput = new EditText(context);
@@ -86,11 +87,9 @@ public class NumberFinderActivity extends BaseFragment {
         searchButton.setOnClickListener(v -> doSearch());
         inputRow.addView(searchButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
 
-        rootLayout.addView(inputRow, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-
-        View divider = new View(context);
-        divider.setBackgroundColor(Theme.getColor(Theme.key_divider));
-        rootLayout.addView(divider, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
+        LinearLayout.LayoutParams inputRowParams = LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT);
+        inputRowParams.setMargins(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), 0);
+        rootLayout.addView(inputRow, inputRowParams);
 
         // Result container (hidden until search)
         resultContainer = new LinearLayout(context);

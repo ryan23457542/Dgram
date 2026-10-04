@@ -486,29 +486,37 @@ public class SpecialContactSettingsActivity extends BaseFragment {
                 }
                 case TYPE_CHECK: {
                     int checkIndex = getCheckIndexForPosition(position);
+                    int pos = checkIndex >= 0 ? GroupCardHelper.positionInGroup(checkIndex, CHECK_KEYS.length) : GroupCardHelper.POS_TOP;
+                    GroupCardHelper.applyCard(holder.itemView, pos);
+                    boolean divider = GroupCardHelper.needsDivider(pos);
                     if (checkIndex >= 0) {
                         boolean val = settings.optBoolean(CHECK_KEYS[checkIndex], CHECK_DEFAULTS[checkIndex]);
-                        ((TextCheckCell) holder.itemView).setTextAndCheck(CHECK_LABELS[checkIndex], val, true);
+                        ((TextCheckCell) holder.itemView).setTextAndCheck(CHECK_LABELS[checkIndex], val, divider);
                     } else {
                         boolean val = settings.optBoolean("actionsNotification", true);
-                        ((TextCheckCell) holder.itemView).setTextAndCheck("Actions Notification", val, true);
+                        ((TextCheckCell) holder.itemView).setTextAndCheck("Actions Notification", val, divider);
                     }
                     break;
                 }
                 case TYPE_TEXT: {
                     int textPos = getTextRowIndex(position);
+                    // General card = [Actions Notification, Sound, Vibrate, Priority] (size 4); text rows are indices 1-3
+                    int pos = GroupCardHelper.positionInGroup(textPos + 1, 4);
+                    GroupCardHelper.applyCard(holder.itemView, pos);
+                    boolean divider = GroupCardHelper.needsDivider(pos);
                     if (textPos == 0) {
-                        ((TextSettingsCell) holder.itemView).setTextAndValue("Sound", formatSound(settings), true);
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Sound", formatSound(settings), divider);
                     } else if (textPos == 1) {
                         int v = settings.optInt("vibrate", 0);
-                        ((TextSettingsCell) holder.itemView).setTextAndValue("Vibrate", VIBRATE_LABELS[v], true);
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Vibrate", VIBRATE_LABELS[v], divider);
                     } else if (textPos == 2) {
                         int p = settings.optInt("priority", 0);
-                        ((TextSettingsCell) holder.itemView).setTextAndValue("Priority", PRIORITY_LABELS[p], true);
+                        ((TextSettingsCell) holder.itemView).setTextAndValue("Priority", PRIORITY_LABELS[p], divider);
                     }
                     break;
                 }
                 case TYPE_LIGHT: {
+                    GroupCardHelper.applyCard(holder.itemView, GroupCardHelper.POS_SINGLE);
                     ((TextSettingsCell) holder.itemView).setTextAndValue("Color", "", false);
                     break;
                 }

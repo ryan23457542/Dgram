@@ -295,24 +295,33 @@ public class SpecialContactsActivity extends BaseFragment implements ManageChatU
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             int type = items.get(position);
             switch (type) {
-                case TYPE_ENABLE:
-                    ((TextCheckCell) holder.itemView).setTextAndCheck("Enable Special Contacts", isFeatureEnabled(), true);
+                case TYPE_ENABLE: {
+                    int pos = GroupCardHelper.POS_SINGLE;
+                    GroupCardHelper.applyCard(holder.itemView, pos);
+                    ((TextCheckCell) holder.itemView).setTextAndCheck("Enable Special Contacts", isFeatureEnabled(), GroupCardHelper.needsDivider(pos));
                     break;
+                }
                 case TYPE_ENABLE_INFO:
                     ((TextInfoPrivacyCell) holder.itemView).setText("This feature helps by notifying you when your selected contacts do some specific actions. Like reading messages, changing profile details or going online.");
-                    ((TextInfoPrivacyCell) holder.itemView).setBackgroundDrawable(Theme.getThemedDrawable(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
+                    ((TextInfoPrivacyCell) holder.itemView).setBackgroundDrawable(null);
                     break;
-                case TYPE_BACKGROUND:
+                case TYPE_BACKGROUND: {
+                    int pos = GroupCardHelper.POS_SINGLE;
+                    GroupCardHelper.applyCard(holder.itemView, pos);
                     ((TextCheckCell) holder.itemView).setTextAndCheck("Enable for Background", isBackgroundEnabled(), false);
                     break;
+                }
                 case TYPE_BACKGROUND_INFO:
                     ((TextInfoPrivacyCell) holder.itemView).setText("Use Special Contacts while app is closed.\nKeep in mind that this might increase your phone battery usage.");
-                    ((TextInfoPrivacyCell) holder.itemView).setBackgroundDrawable(Theme.getThemedDrawable(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
+                    ((TextInfoPrivacyCell) holder.itemView).setBackgroundDrawable(null);
                     break;
-                case TYPE_ADD_BUTTON:
+                case TYPE_ADD_BUTTON: {
+                    int pos = contactIds.isEmpty() ? GroupCardHelper.POS_SINGLE : GroupCardHelper.POS_TOP;
+                    GroupCardHelper.applyCard(holder.itemView, pos);
                     ((TextSettingsCell) holder.itemView).setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
-                    ((TextSettingsCell) holder.itemView).setText("Add New Contact", contactIds.size() > 0);
+                    ((TextSettingsCell) holder.itemView).setText("Add New Contact", GroupCardHelper.needsDivider(pos));
                     break;
+                }
                 case TYPE_CONTACT: {
                     int contactIndex = getContactIndexForPosition(position);
                     if (contactIndex >= 0) {
@@ -320,8 +329,11 @@ public class SpecialContactsActivity extends BaseFragment implements ManageChatU
                         TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(userId);
                         String name = user != null ? ContactsController.formatName(user.first_name, user.last_name) : "Unknown";
                         String lastAction = SpecialContactsMonitor.lastActionText(userId);
-                    String status = lastAction != null ? lastAction : "No new action";
-                        ((ManageChatUserCell) holder.itemView).setData(user, name, status, contactIndex != contactIds.size() - 1);
+                        String status = lastAction != null ? lastAction : "No new action";
+                        boolean isLast = contactIndex == contactIds.size() - 1;
+                        int pos = isLast ? GroupCardHelper.POS_BOTTOM : GroupCardHelper.POS_MIDDLE;
+                        GroupCardHelper.applyCard(holder.itemView, pos);
+                        ((ManageChatUserCell) holder.itemView).setData(user, name, status, GroupCardHelper.needsDivider(pos));
                     }
                     break;
                 }

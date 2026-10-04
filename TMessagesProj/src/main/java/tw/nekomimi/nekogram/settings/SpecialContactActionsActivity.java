@@ -123,6 +123,7 @@ public class SpecialContactActionsActivity extends BaseFragment {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             TextInfoPrivacyCell cell = new TextInfoPrivacyCell(context);
+            cell.setLayoutParams(GroupCardHelper.freshLayoutParams());
             return new RecyclerListView.Holder(cell);
         }
 
@@ -131,7 +132,8 @@ public class SpecialContactActionsActivity extends BaseFragment {
             SpecialContactsMonitor.Action a = actions.get(position);
             TextInfoPrivacyCell cell = (TextInfoPrivacyCell) holder.itemView;
             cell.setText(a.text + " \u2022 " + SpecialContactsMonitor.formatAgo(a.time));
-            cell.setBackgroundDrawable(Theme.getThemedDrawable(context, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+            int pos = GroupCardHelper.positionInGroup(position, actions.size());
+            GroupCardHelper.applyCard(cell, pos);
         }
     }
 }
