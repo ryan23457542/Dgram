@@ -23,7 +23,7 @@ public class GroupCardHelper {
     public static final int POS_MIDDLE = 2;
     public static final int POS_BOTTOM = 3;
 
-    private static final float RADIUS_DP = 14f;
+    private static final float RADIUS_DP = 16f;
     private static final int SIDE_MARGIN_DP = 16;
     private static final int SECTION_SPACING_DP = 16;
 
@@ -61,11 +61,14 @@ public class GroupCardHelper {
                 radii = new float[]{r, r, r, r, r, r, r, r};
                 break;
         }
+        // No stroke/border here: each row in a multi-row card is a separate drawable, and a
+        // border on every row would draw a visible line along edges shared with the next row
+        // (on top of the row's own divider), breaking the "one seamless card" look. Separation
+        // from the page comes from the white-on-grey contrast alone, like iOS grouped tables.
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadii(radii);
         drawable.setColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-        drawable.setStroke(AndroidUtilities.dp(1), Theme.getColor(Theme.key_divider));
         return drawable;
     }
 
