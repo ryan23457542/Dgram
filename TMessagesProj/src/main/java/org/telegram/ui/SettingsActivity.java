@@ -699,7 +699,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         items.add(SettingCell.Factory.of(62, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.dgram_user_finder, "Number Finder", null));
         items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.dgram_special_contacts, "Special Contacts", null));
         items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.dgram_online_contacts, "Online Contacts", null));
-        items.add(SettingCell.Factory.of(65, IconBackgroundColors.PURPLE.top, IconBackgroundColors.PURPLE.bottom, R.drawable.filled_profile_settings, "Contact Changes", null));
+        items.add(SettingCell.Factory.of(65, IconBackgroundColors.BLUE_DEEP.top, IconBackgroundColors.BLUE_DEEP.bottom, R.drawable.dgram_contact_changes, "Contact Changes", null));
         items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.outline_groups_24, "Support Group", null));
         items.add(UItem.asShadow(null));
 
