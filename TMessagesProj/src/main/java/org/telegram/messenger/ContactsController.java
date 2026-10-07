@@ -377,7 +377,7 @@ public class ContactsController extends BaseController {
     }
 
     public String getInviteText(int contacts) {
-        return LocaleController.formatString(R.string.InviteTextKuro, "https://github.com/ryan23457542/Dgram");
+        return LocaleController.formatString(R.string.InviteTextKuro, "https://github.com/ryan23457542/testttt");
     }
 
     public void checkAppAccount() {
