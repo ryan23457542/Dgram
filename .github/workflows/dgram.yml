@@ -27,10 +27,10 @@ jobs:
           echo "helperBotId=0" >> local.properties
           echo "helperBotUsername=none" >> local.properties
           cat > TMessagesProj_App/google-services.json << 'JSON'
-          {"project_info":{"project_number":"123456789012","project_id":"dgram-dummy"},
+          {"project_info":{"project_number":"123456789012","project_id":"kurogram-dummy"},
           "client":[
-          {"client_info":{"mobilesdk_app_id":"1:123456789012:android:0000000000000000","android_client_info":{"package_name":"com.dnd.dgram"}},"api_key":[{"current_key":"dummy"}]},
-          {"client_info":{"mobilesdk_app_id":"1:123456789012:android:1111111111111111","android_client_info":{"package_name":"com.dnd.dgram.beta"}},"api_key":[{"current_key":"dummy"}]}],
+          {"client_info":{"mobilesdk_app_id":"1:123456789012:android:0000000000000000","android_client_info":{"package_name":"org.kurogram.messenger"}},"api_key":[{"current_key":"dummy"}]},
+          {"client_info":{"mobilesdk_app_id":"1:123456789012:android:1111111111111111","android_client_info":{"package_name":"org.kurogram.messenger.beta"}},"api_key":[{"current_key":"dummy"}]}],
           "configuration_version":"1"}
           JSON
       - name: Configure Signing
