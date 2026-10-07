@@ -30,10 +30,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.translator.Translator;
 
-public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
+public class KuroLanguagesSelectActivity extends BaseKuroSettingsActivity {
 
     public static final int TYPE_RESTRICTED = 0;
     public static final int TYPE_TARGET = 1;
@@ -53,16 +53,16 @@ public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
 
     private final int currentType;
 
-    private final ArrayList<NekoLanguagesSelectActivity.LocaleInfo> allLanguages = new ArrayList<>();
-    private final ArrayList<NekoLanguagesSelectActivity.LocaleInfo> sortedLanguages = new ArrayList<>();
-    private final ArrayList<NekoLanguagesSelectActivity.LocaleInfo> searchResult = new ArrayList<>();
+    private final ArrayList<KuroLanguagesSelectActivity.LocaleInfo> allLanguages = new ArrayList<>();
+    private final ArrayList<KuroLanguagesSelectActivity.LocaleInfo> sortedLanguages = new ArrayList<>();
+    private final ArrayList<KuroLanguagesSelectActivity.LocaleInfo> searchResult = new ArrayList<>();
     private boolean searchWas;
     private Runnable searchRunnable;
     private String lastSearchString;
 
     private ArrayList<String> restrictedLanguages;
 
-    public NekoLanguagesSelectActivity(int type) {
+    public KuroLanguagesSelectActivity(int type) {
         this.currentType = type;
 
         if (currentType == TYPE_RESTRICTED) {
@@ -127,7 +127,7 @@ public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
             return;
         }
         Utilities.searchQueue.postRunnable(searchRunnable = () -> {
-            var results = new ArrayList<NekoLanguagesSelectActivity.LocaleInfo>();
+            var results = new ArrayList<KuroLanguagesSelectActivity.LocaleInfo>();
             var lowerQuery = text.toLowerCase();
             for (var language : allLanguages) {
                 if (language.name.toString().toLowerCase().startsWith(lowerQuery) ||
@@ -189,9 +189,9 @@ public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
                     return -1;
                 } else if (o2.langCode.equals("app")) {
                     return 1;
-                } else if (NekoConfig.translationTarget.equals(o1.langCode)) {
+                } else if (KuroConfig.translationTarget.equals(o1.langCode)) {
                     return -1;
-                } else if (NekoConfig.translationTarget.equals(o2.langCode)) {
+                } else if (KuroConfig.translationTarget.equals(o2.langCode)) {
                     return 1;
                 }
             } else if (currentType == TYPE_RESTRICTED) {
@@ -229,7 +229,7 @@ public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
                 item.text = locale.name;
                 item.subtext = locale.nameLocalized;
             }
-            item.checked = currentType == TYPE_RESTRICTED ? restrictedLanguages.contains(locale.langCode) : NekoConfig.translationTarget.equals(locale.langCode);
+            item.checked = currentType == TYPE_RESTRICTED ? restrictedLanguages.contains(locale.langCode) : KuroConfig.translationTarget.equals(locale.langCode);
             items.add(item);
         }
         items.add(UItem.asShadow(null));
@@ -260,7 +260,7 @@ public class NekoLanguagesSelectActivity extends BaseNekoSettingsActivity {
                 cell.setChecked(!remove);
                 getMessagesController().getTranslateController().checkRestrictedLanguagesUpdate();
             } else {
-                NekoConfig.setTranslationTarget(localeInfo.langCode);
+                KuroConfig.setTranslationTarget(localeInfo.langCode);
                 finishFragment();
             }
         }

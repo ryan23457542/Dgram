@@ -22,7 +22,7 @@ import app.nekogram.translator.YandexTranslator;
 import app.nekogram.translator.YouDaoTranslator;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.CronetHelper;
 import tw.nekomimi.nekogram.translator.deepl.DeepLOAuth;
 import tw.nekomimi.nekogram.translator.html.HTMLKeeper;
@@ -80,7 +80,7 @@ public class TextWithEntitiesTranslator implements Translator.ITranslator {
         if (translator instanceof DeepLTranslator) {
             DeepLOAuth.configureAccessToken();
         }
-        if (NekoConfig.keepFormatting) {
+        if (KuroConfig.keepFormatting) {
             var html = HTMLKeeper.entitiesToHtml(query.text, query.entities, false);
             var result = translator.translate(html, null, tl);
             var textAndEntitiesTranslated = HTMLKeeper.htmlToEntities(result.getTranslation(), query.entities, false);

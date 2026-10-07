@@ -34,7 +34,7 @@ import org.telegram.tgnet.TLRPC;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class MediaStreamingProvider extends ContentProvider {
 
@@ -170,7 +170,7 @@ public class MediaStreamingProvider extends ContentProvider {
     }
 
     public static boolean openForStreaming(Activity activity, int currentAccount, TLRPC.Document document, Object parent) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || NekoConfig.forceHttpStreaming) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || KuroConfig.forceHttpStreaming) {
             return MediaStreamingServer.openForStreaming(activity, currentAccount, document, parent);
         }
         var uri = getStreamingUri(currentAccount, document, parent);

@@ -27,12 +27,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import tw.nekomimi.nekogram.Extra;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.AnalyticsHelper;
 import tw.nekomimi.nekogram.helpers.SettingsHelper;
 import tw.nekomimi.nekogram.helpers.remote.UpdateHelper;
 
-public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
+public class KuroExperimentalSettingsActivity extends BaseKuroSettingsActivity {
 
     private final int downloadSpeedBoostRow = rowId++;
     private final int localCustomEmojiRow = rowId++;
@@ -55,23 +55,23 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
     protected void fillItems(ArrayList<UItem> items, UniversalAdapter adapter) {
         items.add(UItem.asHeader(LocaleController.getString(R.string.Experiment)));
         if (!MessagesController.getInstance(currentAccount).getfileExperimentalParams) {
-            items.add(TextSettingsCellFactory.of(downloadSpeedBoostRow, LocaleController.getString(R.string.DownloadSpeedBoost), switch (NekoConfig.downloadSpeedBoost) {
-                case NekoConfig.BOOST_NONE ->
+            items.add(TextSettingsCellFactory.of(downloadSpeedBoostRow, LocaleController.getString(R.string.DownloadSpeedBoost), switch (KuroConfig.downloadSpeedBoost) {
+                case KuroConfig.BOOST_NONE ->
                         LocaleController.getString(R.string.DownloadSpeedBoostNone);
-                case NekoConfig.BOOST_EXTREME ->
+                case KuroConfig.BOOST_EXTREME ->
                         LocaleController.getString(R.string.DownloadSpeedBoostExtreme);
                 default -> LocaleController.getString(R.string.DownloadSpeedBoostAverage);
             }).slug("downloadSpeedBoost"));
         }
-        items.add(UItem.asCheck(localCustomEmojiRow, LocaleController.getString(R.string.LocalCustomEmoji)).slug("localCustomEmoji").setChecked(NekoConfig.localCustomEmoji));
-        items.add(UItem.asCheck(keepFormattingRow, LocaleController.getString(R.string.TranslationKeepFormatting)).slug("keepFormatting").setChecked(NekoConfig.keepFormatting));
-        items.add(UItem.asCheck(autoInlineBotRow, LocaleController.getString(R.string.AutoInlineBot), LocaleController.getString(R.string.AutoInlineBotDesc)).slug("autoInlineBot").setChecked(NekoConfig.autoInlineBot));
-        items.add(UItem.asCheck(forceFontWeightFallbackRow, LocaleController.getString(R.string.ForceFontWeightFallback)).slug("forceFontWeightFallback").setChecked(NekoConfig.forceFontWeightFallback));
-        items.add(UItem.asCheck(mapDriftingFixRow, LocaleController.getString(R.string.MapDriftingFix)).slug("mapDriftingFix").setChecked(NekoConfig.mapDriftingFix));
+        items.add(UItem.asCheck(localCustomEmojiRow, LocaleController.getString(R.string.LocalCustomEmoji)).slug("localCustomEmoji").setChecked(KuroConfig.localCustomEmoji));
+        items.add(UItem.asCheck(keepFormattingRow, LocaleController.getString(R.string.TranslationKeepFormatting)).slug("keepFormatting").setChecked(KuroConfig.keepFormatting));
+        items.add(UItem.asCheck(autoInlineBotRow, LocaleController.getString(R.string.AutoInlineBot), LocaleController.getString(R.string.AutoInlineBotDesc)).slug("autoInlineBot").setChecked(KuroConfig.autoInlineBot));
+        items.add(UItem.asCheck(forceFontWeightFallbackRow, LocaleController.getString(R.string.ForceFontWeightFallback)).slug("forceFontWeightFallback").setChecked(KuroConfig.forceFontWeightFallback));
+        items.add(UItem.asCheck(mapDriftingFixRow, LocaleController.getString(R.string.MapDriftingFix)).slug("mapDriftingFix").setChecked(KuroConfig.mapDriftingFix));
         if (Extra.isDirectApp()) {
-            items.add(UItem.asCheck(contentRestrictionRow, LocaleController.getString(R.string.IgnoreContentRestriction)).slug("contentRestriction").setChecked(NekoConfig.ignoreContentRestriction));
+            items.add(UItem.asCheck(contentRestrictionRow, LocaleController.getString(R.string.IgnoreContentRestriction)).slug("contentRestriction").setChecked(KuroConfig.ignoreContentRestriction));
         }
-        items.add(UItem.asCheck(showRPCErrorRow, LocaleController.getString(R.string.ShowRPCError), LocaleController.formatString(R.string.ShowRPCErrorException, "FILE_REFERENCE_EXPIRED")).slug("showRPCError").setChecked(NekoConfig.showRPCError));
+        items.add(UItem.asCheck(showRPCErrorRow, LocaleController.getString(R.string.ShowRPCError), LocaleController.formatString(R.string.ShowRPCErrorException, "FILE_REFERENCE_EXPIRED")).slug("showRPCError").setChecked(KuroConfig.showRPCError));
         items.add(UItem.asShadow(null));
 
         if (getParentActivity() instanceof LaunchActivity) {
@@ -126,7 +126,7 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
                     if (peer.channel_id != 0) {
                         TLRPC.Chat chat = getMessagesController().getChat(peer.channel_id);
                         if (!chat.broadcast) {
-                            getMessageHelper().deleteUserHistoryWithSearch(NekoExperimentalSettingsActivity.this, TLdialog.id);
+                            getMessageHelper().deleteUserHistoryWithSearch(KuroExperimentalSettingsActivity.this, TLdialog.id);
                         }
                     }
                     if (peer.user_id != 0) {
@@ -182,26 +182,26 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
             });
             showDialog(dialog);
         } else if (id == mapDriftingFixRow) {
-            NekoConfig.toggleMapDriftingFix();
+            KuroConfig.toggleMapDriftingFix();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.mapDriftingFix);
+                ((TextCheckCell) view).setChecked(KuroConfig.mapDriftingFix);
             }
         } else if (id == showRPCErrorRow) {
-            NekoConfig.toggleShowRPCError();
+            KuroConfig.toggleShowRPCError();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.showRPCError);
+                ((TextCheckCell) view).setChecked(KuroConfig.showRPCError);
             }
         } else if (id == downloadSpeedBoostRow) {
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<Integer> types = new ArrayList<>();
             arrayList.add(LocaleController.getString(R.string.DownloadSpeedBoostNone));
-            types.add(NekoConfig.BOOST_NONE);
+            types.add(KuroConfig.BOOST_NONE);
             arrayList.add(LocaleController.getString(R.string.DownloadSpeedBoostAverage));
-            types.add(NekoConfig.BOOST_AVERAGE);
+            types.add(KuroConfig.BOOST_AVERAGE);
             arrayList.add(LocaleController.getString(R.string.DownloadSpeedBoostExtreme));
-            types.add(NekoConfig.BOOST_EXTREME);
-            showPopup(arrayList, types.indexOf(NekoConfig.downloadSpeedBoost), item, view, i -> {
-                NekoConfig.setDownloadSpeedBoost(types.get(i));
+            types.add(KuroConfig.BOOST_EXTREME);
+            showPopup(arrayList, types.indexOf(KuroConfig.downloadSpeedBoost), item, view, i -> {
+                KuroConfig.setDownloadSpeedBoost(types.get(i));
                 listView.adapter.notifyItemChanged(position, PARTIAL);
             });
         } else if (id == sendBugReportRow) {
@@ -231,9 +231,9 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
             showDialog(dialog);
             dialog.redPositive();
         } else if (id == contentRestrictionRow) {
-            NekoConfig.toggleIgnoreContentRestriction();
+            KuroConfig.toggleIgnoreContentRestriction();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.ignoreContentRestriction);
+                ((TextCheckCell) view).setChecked(KuroConfig.ignoreContentRestriction);
             }
         } else if (id == copyReportIdRow) {
             if (AnalyticsHelper.analyticsDisabled || !AnalyticsHelper.sendBugReport) {
@@ -241,20 +241,20 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
             }
             SettingsHelper.copyReportId();
         } else if (id == autoInlineBotRow) {
-            NekoConfig.toggleAutoInlineBot();
+            KuroConfig.toggleAutoInlineBot();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.autoInlineBot);
+                ((TextCheckCell) view).setChecked(KuroConfig.autoInlineBot);
             }
         } else if (id == forceFontWeightFallbackRow) {
-            NekoConfig.toggleForceFontWeightFallback();
+            KuroConfig.toggleForceFontWeightFallback();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.forceFontWeightFallback);
+                ((TextCheckCell) view).setChecked(KuroConfig.forceFontWeightFallback);
             }
             showRestartBulletin();
         } else if (id == keepFormattingRow) {
-            NekoConfig.toggleKeepFormatting();
+            KuroConfig.toggleKeepFormatting();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.keepFormatting);
+                ((TextCheckCell) view).setChecked(KuroConfig.keepFormatting);
             }
         } else if (id == checkUpdateRow) {
             if (getParentActivity() instanceof LaunchActivity launchActivity) {
@@ -269,9 +269,9 @@ public class NekoExperimentalSettingsActivity extends BaseNekoSettingsActivity {
                 listView.adapter.notifyItemChanged(position);
             }
         } else if (id == localCustomEmojiRow) {
-            NekoConfig.toggleLocalCustomEmoji();
+            KuroConfig.toggleLocalCustomEmoji();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.localCustomEmoji);
+                ((TextCheckCell) view).setChecked(KuroConfig.localCustomEmoji);
             }
         }
     }

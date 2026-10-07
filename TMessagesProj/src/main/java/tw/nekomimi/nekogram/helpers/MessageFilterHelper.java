@@ -6,7 +6,7 @@ import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class MessageFilterHelper {
 
@@ -36,7 +36,7 @@ public class MessageFilterHelper {
         if (message.messageOwner == null || message.storyItem != null) {
             return false;
         }
-        if (!NekoConfig.ignoreBlocked) {
+        if (!KuroConfig.ignoreBlocked) {
             return false;
         }
         if (isUserBlocked(message.currentAccount, message.getFromChatId())) {

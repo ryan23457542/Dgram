@@ -88,7 +88,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class StoriesController {
 
@@ -282,7 +282,7 @@ public class StoriesController {
     }
 
     public boolean hasStories() {
-        if (NekoConfig.hideStories) {
+        if (KuroConfig.hideStories) {
             return false;
         }
         return (dialogListStories != null && dialogListStories.size() > 0) || hasSelfStories();

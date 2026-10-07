@@ -245,7 +245,7 @@ import org.telegram.ui.Stories.StoryViewer;
 import org.telegram.ui.Stories.recorder.CaptionContainerView;
 import org.telegram.ui.Stories.recorder.DominantColors;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.accessibility.AccConfig;
 import tw.nekomimi.nekogram.helpers.MessageFilterHelper;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
@@ -4192,7 +4192,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkDateMotionEvent(MotionEvent event) {
-        if (!currentMessageObject.isImportedForward() && !NekoConfig.showTimeHint) {
+        if (!currentMessageObject.isImportedForward() && !KuroConfig.showTimeHint) {
             return false;
         }
         int x = (int) getEventX(event);
@@ -9695,9 +9695,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     float maxHeight;
                     int maxWidth;
                     if (AndroidUtilities.isTablet()) {
-                        maxHeight = maxWidth = (int) (AndroidUtilities.getMinTabletSide() * (0.4f + (NekoConfig.stickerSize - 14.0f) / 40));
+                        maxHeight = maxWidth = (int) (AndroidUtilities.getMinTabletSide() * (0.4f + (KuroConfig.stickerSize - 14.0f) / 40));
                     } else {
-                        maxHeight = maxWidth = (int) (Math.min(getParentWidth(), AndroidUtilities.displaySize.y) * (0.5f + (NekoConfig.stickerSize - 14.0f) / 30));
+                        maxHeight = maxWidth = (int) (Math.min(getParentWidth(), AndroidUtilities.displaySize.y) * (0.5f + (KuroConfig.stickerSize - 14.0f) / 30));
                     }
                     String filter;
                     if (messageObject.isAnimatedEmoji() || messageObject.isDice()) {
@@ -13567,7 +13567,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else if (drawInstantViewType == 20) {
                 str = getString(R.string.OpenGift);
             } else if (drawInstantViewType == 21) {
-                str = getString(R.string.UpdateNekogram);
+                str = getString(R.string.UpdateKurogram);
             } else if (drawInstantViewType == 23) {
                 str = getString(R.string.OpenStickerSet);
             } else if (drawInstantViewType == 24) {
@@ -15565,7 +15565,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             float rad = (float) Math.floor(SharedConfig.bubbleRadius / (currentMessageObject.isSponsored() ? 2f : 3f));
             linkLine
                 .offsetEmoji(0, drawPhotoImageBefore ? (1f - isSmallImage()) * (dp(18) + photoImage.getImageHeight() + (siteNameLayout != null ? siteNameLayout.getLineBottom(siteNameLayout.getLineCount() - 1) : 0)) : 0)
-                .drawBackground(canvas, AndroidUtilities.rectTmp, rad, rad, rad, alpha, false, NekoConfig.reducedColors);
+                .drawBackground(canvas, AndroidUtilities.rectTmp, rad, rad, rad, alpha, false, KuroConfig.reducedColors);
 
             int rippleColor = linkLine.getBackgroundColor();
             if (linkPreviewSelector == null) {
@@ -22861,7 +22861,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 // draw reply background
                 leftRad = bottomRad; // line redesign
                 replyLine.setLoading(loading);
-                replyLine.drawBackground(canvas, replySelectorRect, leftRad, rightRad, bottomRad, alpha, isReplyQuote, currentMessageObject.shouldDrawWithoutBackground() || NekoConfig.reducedColors);
+                replyLine.drawBackground(canvas, replySelectorRect, leftRad, rightRad, bottomRad, alpha, isReplyQuote, currentMessageObject.shouldDrawWithoutBackground() || KuroConfig.reducedColors);
 
                 if (replySelector == null) {
                     replySelector = Theme.createRadSelectorDrawable(replySelectorColor = rippleColor, 0, 0);
@@ -23919,7 +23919,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (!drawFromPinchToZoom && delegate != null && delegate.getPinchToZoomHelper() != null && delegate.getPinchToZoomHelper().isInOverlayModeFor(this) && shouldDrawTimeOnMedia()) {
             return;
         }
-        if (NekoConfig.hideTimeOnSticker && currentMessageObject.isAnyKindOfSticker() && !isDrawSelectionBackground()) {
+        if (KuroConfig.hideTimeOnSticker && currentMessageObject.isAnyKindOfSticker() && !isDrawSelectionBackground()) {
             return;
         }
         if (currentMessageObject != null && currentMessageObject.type == MessageObject.TYPE_JOINED_CHANNEL) {

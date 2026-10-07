@@ -261,7 +261,7 @@ import java.util.zip.ZipInputStream;
 import tw.nekomimi.nekogram.Extra;
 import tw.nekomimi.nekogram.FragmentPreviewWindow;
 import tw.nekomimi.nekogram.forward.ForwardContext;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.MonetHelper;
 import tw.nekomimi.nekogram.helpers.remote.UpdateHelper;
 
@@ -743,7 +743,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         BackupAgent.requestBackup();
 
         //RestrictedLanguagesSelectActivity.checkRestrictedLanguages(false);
-        if (Build.VERSION.SDK_INT >= 34 && NekoConfig.predictiveBackAnimation) {
+        if (Build.VERSION.SDK_INT >= 34 && KuroConfig.predictiveBackAnimation) {
             if (onBackAnimationCallback == null) {
                 onBackAnimationCallback =  new OnBackAnimationCallback() {
                     private AnimationNotificationsLocker locker = new AnimationNotificationsLocker();
@@ -8439,7 +8439,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         showVoiceChatTooltip(mute ? UndoView.ACTION_VOIP_SOUND_MUTED : UndoView.ACTION_VOIP_SOUND_UNMUTED);
                     }
                 }
-            } else if (NekoConfig.unmuteVideosWithVolumeButtons && !mainFragmentsStack.isEmpty() && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
+            } else if (KuroConfig.unmuteVideosWithVolumeButtons && !mainFragmentsStack.isEmpty() && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
                 BaseFragment fragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
                 if (fragment instanceof ChatActivity && !BaseFragment.hasSheets(fragment)) {
                     if (((ChatActivity) fragment).maybePlayVisibleVideo()) {

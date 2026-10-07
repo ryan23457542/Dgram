@@ -60,7 +60,7 @@ import java.util.regex.Matcher;
 
 import tw.nekomimi.nekogram.helpers.SettingsHelper;
 import tw.nekomimi.nekogram.helpers.UserHelper;
-import tw.nekomimi.nekogram.settings.NekoLanguagesSelectActivity;
+import tw.nekomimi.nekogram.settings.KuroLanguagesSelectActivity;
 
 public class LinkManager {
 
@@ -140,9 +140,9 @@ public class LinkManager {
             return handleNewBot(second, segments.size() >= 3 ? segments.get(2) : null, uri.getQueryParameter("name"));
         }
 
-        if ("nekosettings".equals(first)) {
+        if ("kurosettings".equals(first)) {
             SettingsHelper.processDeepLink(uri, this::presentFragment,
-                    () -> getBulletinFactory().createErrorBulletin(LocaleController.getString(R.string.UnknownNekoSettingsOption)).show(), progress);
+                    () -> getBulletinFactory().createErrorBulletin(LocaleController.getString(R.string.UnknownKuroSettingsOption)).show(), progress);
             return true;
         }
 
@@ -361,7 +361,7 @@ public class LinkManager {
         }
         if ("language".equalsIgnoreCase(first)) { // open_settings = 10;
             if ("do-not-translate".equalsIgnoreCase(second)) {
-                presentFragment(new NekoLanguagesSelectActivity(NekoLanguagesSelectActivity.TYPE_RESTRICTED));
+                presentFragment(new KuroLanguagesSelectActivity(KuroLanguagesSelectActivity.TYPE_RESTRICTED));
                 return true;
             }
             presentFragment(new LanguageSelectActivity());

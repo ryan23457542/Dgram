@@ -337,7 +337,7 @@ import tw.nekomimi.nekogram.forward.ForwardDrawable;
 import tw.nekomimi.nekogram.forward.ForwardItem;
 import tw.nekomimi.nekogram.forward.ForwardPopupWrapper;
 import tw.nekomimi.nekogram.MessageDetailsActivity;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.helpers.QrHelper;
 import tw.nekomimi.nekogram.helpers.EmojiHelper;
@@ -1940,11 +1940,11 @@ public class ChatActivity extends BaseFragment implements
             } else {
                 return false;
             }
-            var doubleTapAction = message.isOut() ? NekoConfig.doubleTapOutAction : NekoConfig.doubleTapInAction;
-            if (doubleTapAction == NekoConfig.DOUBLE_TAP_ACTION_NONE) {
+            var doubleTapAction = message.isOut() ? KuroConfig.doubleTapOutAction : KuroConfig.doubleTapInAction;
+            if (doubleTapAction == KuroConfig.DOUBLE_TAP_ACTION_NONE) {
                 return false;
             }
-            if (doubleTapAction == NekoConfig.DOUBLE_TAP_ACTION_REACTION) {
+            if (doubleTapAction == KuroConfig.DOUBLE_TAP_ACTION_REACTION) {
                 if (getDialogId() == getUserConfig().getClientUserId() && !getUserConfig().isPremium()) {
                     return false;
                 }
@@ -1999,21 +1999,21 @@ public class ChatActivity extends BaseFragment implements
                     allowChatActions = false;
                 }
                 switch (doubleTapAction) {
-                    case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
-                        if (NekoConfig.transType != NekoConfig.TRANS_TYPE_EXTERNAL || !noforwards) {
+                    case KuroConfig.DOUBLE_TAP_ACTION_TRANSLATE:
+                        if (KuroConfig.transType != KuroConfig.TRANS_TYPE_EXTERNAL || !noforwards) {
                             MessageObject messageObject = getMessageHelper().getMessageForTranslate(message, messageGroup);
                             if (messageObject != null) {
                                 return true;
                             }
                         }
                         break;
-                    case NekoConfig.DOUBLE_TAP_ACTION_REPLY:
+                    case KuroConfig.DOUBLE_TAP_ACTION_REPLY:
                         return message.getId() > 0 && allowChatActions;
-                    case NekoConfig.DOUBLE_TAP_ACTION_SAVE:
+                    case KuroConfig.DOUBLE_TAP_ACTION_SAVE:
                         return !message.isSponsored() && chatMode != MODE_SCHEDULED && (!message.needDrawBluredPreview() || message.hasExtendedMediaPreview()) && !message.isLiveLocation() && message.type != MessageObject.TYPE_PHONE_CALL && !noforwards && message.type != MessageObject.TYPE_GIFT_PREMIUM && !UserObject.isUserSelf(currentUser);
-                    case NekoConfig.DOUBLE_TAP_ACTION_REPEAT:
+                    case KuroConfig.DOUBLE_TAP_ACTION_REPEAT:
                         return allowChatActions && (!(isThreadChat() && !isTopic) && !noforwards || getMessageHelper().getMessageForRepeat(message, messageGroup) != null) && !message.isSponsored() && chatMode != MODE_SCHEDULED && (!message.needDrawBluredPreview() || message.hasExtendedMediaPreview()) && !message.isLiveLocation() && message.type != MessageObject.TYPE_PHONE_CALL && message.type != MessageObject.TYPE_GIFT_PREMIUM && !UserObject.isUserSelf(currentUser);
-                    case NekoConfig.DOUBLE_TAP_ACTION_EDIT:
+                    case KuroConfig.DOUBLE_TAP_ACTION_EDIT:
                         return allowEdit;
                 }
             }
@@ -2036,11 +2036,11 @@ public class ChatActivity extends BaseFragment implements
             } else {
                 return;
             }
-            var doubleTapAction = message.isOut() ? NekoConfig.doubleTapOutAction : NekoConfig.doubleTapInAction;
-            if (doubleTapAction == NekoConfig.DOUBLE_TAP_ACTION_NONE) {
+            var doubleTapAction = message.isOut() ? KuroConfig.doubleTapOutAction : KuroConfig.doubleTapInAction;
+            if (doubleTapAction == KuroConfig.DOUBLE_TAP_ACTION_NONE) {
                 return;
             }
-            if (doubleTapAction == NekoConfig.DOUBLE_TAP_ACTION_REACTION) {
+            if (doubleTapAction == KuroConfig.DOUBLE_TAP_ACTION_REACTION) {
                 if (message.isSecretMedia() || !message.canSetReaction() || message.isExpiredStory() || message.type == MessageObject.TYPE_JOINED_CHANNEL) {
                     return;
                 }
@@ -2079,23 +2079,23 @@ public class ChatActivity extends BaseFragment implements
                 selectedObject = message;
                 selectedObjectGroup = getValidGroupedMessage(message);
                 switch (doubleTapAction) {
-                    case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
+                    case KuroConfig.DOUBLE_TAP_ACTION_TRANSLATE:
                         var messageObject = getMessageHelper().getMessageForTranslate(selectedObject, selectedObjectGroup);
                         if (messageObject == null) {
                             return;
                         }
                         translateOrResetMessage(messageObject, view, null);
                         break;
-                    case NekoConfig.DOUBLE_TAP_ACTION_REPLY:
+                    case KuroConfig.DOUBLE_TAP_ACTION_REPLY:
                         processSelectedOption(OPTION_REPLY);
                         break;
-                    case NekoConfig.DOUBLE_TAP_ACTION_SAVE:
+                    case KuroConfig.DOUBLE_TAP_ACTION_SAVE:
                         processSelectedOption(OPTION_SAVE_MESSAGE);
                         break;
-                    case NekoConfig.DOUBLE_TAP_ACTION_REPEAT:
+                    case KuroConfig.DOUBLE_TAP_ACTION_REPEAT:
                         processSelectedOption(OPTION_REPEAT);
                         break;
-                    case NekoConfig.DOUBLE_TAP_ACTION_EDIT:
+                    case KuroConfig.DOUBLE_TAP_ACTION_EDIT:
                         processSelectedOption(OPTION_EDIT);
                         break;
                 }
@@ -6855,7 +6855,7 @@ public class ChatActivity extends BaseFragment implements
                 if (!foundTopView) {
                     scrolled = super.scrollVerticallyBy(dy, recycler, state);
                 }
-                final boolean allowPullingDownScroll = !NekoConfig.disableJumpToNextChannel && !isInPollAddOptionMode() && !hasSelectedMessages();
+                final boolean allowPullingDownScroll = !KuroConfig.disableJumpToNextChannel && !isInPollAddOptionMode() && !hasSelectedMessages();
                 if (allowPullingDownScroll && dy > 0 && scrolled == 0 && (ChatObject.isChannel(currentChat) && !currentChat.megagroup || isTopic && !UserObject.isBotForum(currentUser)) && chatMode != MODE_SAVED && chatMode != MODE_WELCOME_MESSAGES && chatMode != MODE_SCHEDULED && chatListView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING && !chatListView.isFastScrollAnimationRunning() && !chatListView.isMultiselect() && !isReport()) {
                     if (pullingDownOffset == 0 && pullingDownDrawable != null) {
                         if (nextChannels != null && !nextChannels.isEmpty()) {
@@ -6992,7 +6992,7 @@ public class ChatActivity extends BaseFragment implements
                         wasManualScroll = true;
                         scrollingChatListView = true;
                     } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                        if (NekoConfig.hideKeyboardOnChatScroll) {
+                        if (KuroConfig.hideKeyboardOnChatScroll) {
                             if (isKeyboardVisible()) {
                                 AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
                             } else if (chatActivityEnterView != null) {
@@ -9396,7 +9396,7 @@ public class ChatActivity extends BaseFragment implements
         if (cell == null || cell.timeLayout == null || cell.getMessageObject() == null ||
                 cell.getMessageObject().messageOwner == null ||
                 (chatMode != MODE_DEFAULT && chatMode != MODE_PINNED && chatMode != MODE_SAVED) ||
-                (NekoConfig.hideTimeOnSticker && cell.getMessageObject().isAnyKindOfSticker())
+                (KuroConfig.hideTimeOnSticker && cell.getMessageObject().isAnyKindOfSticker())
         ) {
             return;
         }
@@ -10609,7 +10609,7 @@ public class ChatActivity extends BaseFragment implements
             actionModeViews.add(actionMode.addItemWithWidth(copy, R.drawable.msg_copy, dp(48), LocaleController.getString(R.string.Copy)));
             if (!isSavedMessages && getDialogId() != UserObject.VERIFY) {
                 actionModeViews.add(actionMode.addItemWithWidth(forward, R.drawable.msg_forward, dp(48), LocaleController.getString(R.string.Forward)));
-                if (NekoConfig.showNoQuoteForward) actionModeViews.add(actionMode.addItemWithWidth(ForwardItem.ID_FORWARD_NOQUOTE, R.drawable.msg_forward, dp(48), LocaleController.getString(R.string.NoQuoteForward)));
+                if (KuroConfig.showNoQuoteForward) actionModeViews.add(actionMode.addItemWithWidth(ForwardItem.ID_FORWARD_NOQUOTE, R.drawable.msg_forward, dp(48), LocaleController.getString(R.string.NoQuoteForward)));
             }
             actionModeViews.add(actionMode.addItemWithWidth(share, R.drawable.msg_shareout, dp(48), LocaleController.getString(R.string.ShareFile)));
             actionModeViews.add(actionMode.addItemWithWidth(delete, R.drawable.msg_delete, dp(48), LocaleController.getString(R.string.Delete)));
@@ -12707,7 +12707,7 @@ public class ChatActivity extends BaseFragment implements
             }
             return;
         }
-        if (NekoConfig.quickForward) {
+        if (KuroConfig.quickForward) {
             openShareAlert(this, this, () -> {
                 for (int a = 1; a >= 0; a--) {
                     selectedMessagesCanCopyIds[a].clear();
@@ -32430,7 +32430,7 @@ public class ChatActivity extends BaseFragment implements
                             }
                         }, waitForQr, onQrDetectionDone);
                     }
-                    if (option == OPTION_FORWARD || (option == OPTION_FORWARD_NOQUOTE && !NekoConfig.showNoQuoteForward) || option == OPTION_FORWARD_NOCAPTION) {
+                    if (option == OPTION_FORWARD || (option == OPTION_FORWARD_NOQUOTE && !KuroConfig.showNoQuoteForward) || option == OPTION_FORWARD_NOCAPTION) {
                         var forwardPopupWrapper = new ForwardPopupWrapper(this, selectedObject, selectedObjectGroup, popupLayout.getSwipeBack(), this::processSelectedOption, getResourceProvider());
                         int swipeBackIndex = popupLayout.addViewToSwipeBack(forwardPopupWrapper.windowLayout);
                         cell.setIcon(new ForwardDrawable(option, false));
@@ -33818,7 +33818,7 @@ public class ChatActivity extends BaseFragment implements
         var transcription = messageObject.isVoiceTranscriptionOpen();
         var messageText = transcription ? messageObject.messageOwner.voiceTranscription : messageObject.messageOwner.message;
         var entities = transcription ? null : messageObject.messageOwner.entities;
-        if (NekoConfig.transType != NekoConfig.TRANS_TYPE_NEKO || messageObject.isSponsored()) {
+        if (KuroConfig.transType != KuroConfig.TRANS_TYPE_KURO || messageObject.isSponsored()) {
             if (messageObject.type == MessageObject.TYPE_ARTICLE) {
                 TranslateAlert2.showAlert(
                         getParentActivity(), this, currentAccount,
@@ -33952,7 +33952,7 @@ public class ChatActivity extends BaseFragment implements
                 ForwardItem.setLastForwardOption(option);
                 forwardingMessage = selectedObject;
                 forwardingMessageGroup = selectedObjectGroup;
-                if (NekoConfig.quickForward) {
+                if (KuroConfig.quickForward) {
                     openShareAlert(this, this, () -> {
                         forwardingMessage = null;
                         forwardingMessageGroup = null;
@@ -40294,7 +40294,7 @@ public class ChatActivity extends BaseFragment implements
                 return false;
             } else if (messageObject.isVoice() || messageObject.isRoundVideo()) {
                 boolean result = MediaController.getInstance().playMessage(messageObject, muted);
-                if (!NekoConfig.disableVoiceMessageAutoPlay) MediaController.getInstance().setVoiceMessagesPlaylist(result ? createVoiceMessagesPlaylist(messageObject, false) : null, false);
+                if (!KuroConfig.disableVoiceMessageAutoPlay) MediaController.getInstance().setVoiceMessagesPlaylist(result ? createVoiceMessagesPlaylist(messageObject, false) : null, false);
                 return result;
             } else if (messageObject.isMusic()) {
                 return MediaController.getInstance().setPlaylist(chatAdapter.getMessages(), messageObject, mergeDialogId, !chatAdapter.isFiltered, null);
@@ -46894,7 +46894,7 @@ public class ChatActivity extends BaseFragment implements
                 options.add(OPTION_DELETE);
                 icons.add(deleteIconRes);
             }
-            if (!selectedObject.isSponsored() && chatMode != MODE_QUICK_REPLIES && chatMode != MODE_SCHEDULED && NekoConfig.showMessageDetails) {
+            if (!selectedObject.isSponsored() && chatMode != MODE_QUICK_REPLIES && chatMode != MODE_SCHEDULED && KuroConfig.showMessageDetails) {
                 items.add(LocaleController.getString(R.string.MessageDetails));
                 options.add(OPTION_DETAILS);
                 icons.add(R.drawable.msg_info);
@@ -47017,7 +47017,7 @@ public class ChatActivity extends BaseFragment implements
                                     icons.add(R.drawable.msg_addbot);
                                 }
                             }
-                        } else if (NekoConfig.showOpenIn && selectedObject.isVideo() && !noforwardsOrPaidMedia && !selectedObject.hasRevealedExtendedMedia() && !selectedObject.needDrawBluredPreview()) {
+                        } else if (KuroConfig.showOpenIn && selectedObject.isVideo() && !noforwardsOrPaidMedia && !selectedObject.hasRevealedExtendedMedia() && !selectedObject.needDrawBluredPreview()) {
                             items.add(LocaleController.getString(R.string.OpenInExternalApp));
                             options.add(OPTION_OPEN_IN);
                             icons.add(R.drawable.msg_openin);
@@ -47038,7 +47038,7 @@ public class ChatActivity extends BaseFragment implements
                         icons.add(R.drawable.msg_gif);
                     }
                 } else if (type == 4) {
-                    if (NekoConfig.showDeleteDownloadedFile && !selectedObject.needDrawBluredPreview() && selectedObject.getDocument() != null) {
+                    if (KuroConfig.showDeleteDownloadedFile && !selectedObject.needDrawBluredPreview() && selectedObject.getDocument() != null) {
                         items.add(LocaleController.getString(R.string.DeleteDownloadedFile));
                         options.add(OPTION_CLEAR_FILE);
                         icons.add(R.drawable.msg_clear);
@@ -47052,7 +47052,7 @@ public class ChatActivity extends BaseFragment implements
                                 items.add(LocaleController.getString(R.string.ShareFile));
                                 options.add(OPTION_SHARE);
                                 icons.add(R.drawable.msg_shareout);
-                                if (NekoConfig.showOpenIn) {
+                                if (KuroConfig.showOpenIn) {
                                     items.add(LocaleController.getString(R.string.OpenInExternalApp));
                                     options.add(OPTION_OPEN_IN);
                                     icons.add(R.drawable.msg_openin);
@@ -47082,7 +47082,7 @@ public class ChatActivity extends BaseFragment implements
                                 items.add(LocaleController.getString(R.string.SaveToGallery));
                                 options.add(OPTION_SAVE_TO_GALLERY);
                                 icons.add(R.drawable.msg_gallery);
-                                if (NekoConfig.showCopyPhoto) {
+                                if (KuroConfig.showCopyPhoto) {
                                     items.add(LocaleController.getString(R.string.CopyPhoto));
                                     options.add(OPTION_COPY_PHOTO);
                                     icons.add(R.drawable.msg_copy);
@@ -47127,7 +47127,7 @@ public class ChatActivity extends BaseFragment implements
                         icons.add(R.drawable.msg_shareout);
                     }
                 } else if (type == 6) {
-                    if (NekoConfig.showDeleteDownloadedFile) {
+                    if (KuroConfig.showDeleteDownloadedFile) {
                         items.add(LocaleController.getString(R.string.DeleteDownloadedFile));
                         options.add(OPTION_CLEAR_FILE);
                         icons.add(R.drawable.msg_clear);
@@ -47142,7 +47142,7 @@ public class ChatActivity extends BaseFragment implements
                         items.add(LocaleController.getString(R.string.ShareFile));
                         options.add(OPTION_SHARE);
                         icons.add(R.drawable.msg_shareout);
-                        if (NekoConfig.showOpenIn && selectedObject.isVideo()) {
+                        if (KuroConfig.showOpenIn && selectedObject.isVideo()) {
                             items.add(LocaleController.getString(R.string.OpenInExternalApp));
                             options.add(OPTION_OPEN_IN);
                             icons.add(R.drawable.msg_openin);
@@ -47233,23 +47233,23 @@ public class ChatActivity extends BaseFragment implements
                     items.add(ForwardItem.getLastForwardOptionTitle(hasCaption, true));
                     options.add(ForwardItem.getLastForwardOption(hasCaption));
                     icons.add(R.drawable.msg_forward);
-                    if (NekoConfig.showNoQuoteForward) {
+                    if (KuroConfig.showNoQuoteForward) {
                         items.add(LocaleController.getString(R.string.NoQuoteForwardShort));
                         options.add(OPTION_FORWARD_NOQUOTE);
                         icons.add(R.drawable.msg_forward);
                     }
-                    if (NekoConfig.showSetReminder) {
+                    if (KuroConfig.showSetReminder) {
                         items.add(LocaleController.getString(R.string.SetReminder));
                         options.add(OPTION_SET_REMINDER);
                         icons.add(R.drawable.msg_calendar2);
                     }
-                    if (NekoConfig.showAddToSavedMessages && !UserObject.isUserSelf(currentUser)) {
+                    if (KuroConfig.showAddToSavedMessages && !UserObject.isUserSelf(currentUser)) {
                         items.add(LocaleController.getString(R.string.AddToSavedMessages));
                         options.add(OPTION_SAVE_MESSAGE);
                         icons.add(R.drawable.msg_saved);
                     }
                 }
-                if (NekoConfig.showRepeat) {
+                if (KuroConfig.showRepeat) {
                     if (!selectedObject.isSponsored() && chatMode != MODE_SCHEDULED && (!selectedObject.needDrawBluredPreview() || selectedObject.hasExtendedMediaPreview()) &&
                             !selectedObject.isLiveLocation() && selectedObject.type != MessageObject.TYPE_PHONE_CALL &&
                             selectedObject.type != MessageObject.TYPE_GIFT_PREMIUM && selectedObject.type != MessageObject.TYPE_GIFT_PREMIUM_CHANNEL && selectedObject.type != MessageObject.TYPE_SUGGEST_PHOTO && !selectedObject.isWallpaperAction()
@@ -47263,12 +47263,12 @@ public class ChatActivity extends BaseFragment implements
                     }
                 }
                 if (chatMode != MODE_SCHEDULED) {
-                    if (NekoConfig.showPrPr && allowChatActions && selectedObject.isFromUser() && !UserObject.isUserSelf(currentUser) && !ChatObject.isMonoForum(currentChat)) {
+                    if (KuroConfig.showPrPr && allowChatActions && selectedObject.isFromUser() && !UserObject.isUserSelf(currentUser) && !ChatObject.isMonoForum(currentChat)) {
                         items.add(LocaleController.getString(R.string.Prpr));
                         options.add(OPTION_PRPR);
                         icons.add(R.drawable.msg_prpr);
                     }
-                    if (NekoConfig.showQrCode && selectedObject.isPhoto()) {
+                    if (KuroConfig.showQrCode && selectedObject.isPhoto()) {
                         items.add(LocaleController.getString(R.string.QrCode));
                         options.add(OPTION_QR);
                         icons.add(R.drawable.msg_qrcode);
@@ -47288,7 +47288,7 @@ public class ChatActivity extends BaseFragment implements
                     options.add(OPTION_PIN);
                     icons.add(R.drawable.msg_pin);
                 }
-                if (chatMode != MODE_SCHEDULED && NekoConfig.showTranslate && (NekoConfig.transType != NekoConfig.TRANS_TYPE_EXTERNAL || !noforwards)) {
+                if (chatMode != MODE_SCHEDULED && KuroConfig.showTranslate && (KuroConfig.transType != KuroConfig.TRANS_TYPE_EXTERNAL || !noforwards)) {
                     MessageObject messageObject = getMessageHelper().getMessageForTranslate(selectedObject, selectedObjectGroup);
                     if (messageObject != null) {
                         items.add(messageObject.translated ? LocaleController.getString(R.string.UndoTranslate) : LocaleController.getString(R.string.TranslateMessage));
@@ -47322,7 +47322,7 @@ public class ChatActivity extends BaseFragment implements
                         items.add(LocaleController.getString(R.string.BlockContact));
                         options.add(OPTION_REPORT_CHAT);
                         icons.add(R.drawable.msg_block2);
-                    } else if (NekoConfig.showReport) {
+                    } else if (KuroConfig.showReport) {
                         items.add(LocaleController.getString(R.string.ReportChat));
                         options.add(OPTION_REPORT_CHAT);
                         icons.add(R.drawable.msg_report);
@@ -47333,7 +47333,7 @@ public class ChatActivity extends BaseFragment implements
                     options.add(OPTION_DELETE);
                     icons.add(deleteIconRes);
                 }
-                if (!selectedObject.isSponsored() && chatMode != MODE_QUICK_REPLIES && chatMode != MODE_SCHEDULED && NekoConfig.showMessageDetails) {
+                if (!selectedObject.isSponsored() && chatMode != MODE_QUICK_REPLIES && chatMode != MODE_SCHEDULED && KuroConfig.showMessageDetails) {
                     items.add(LocaleController.getString(R.string.MessageDetails));
                     options.add(OPTION_DETAILS);
                     icons.add(R.drawable.msg_info);
@@ -48224,7 +48224,7 @@ public class ChatActivity extends BaseFragment implements
     }
 
     private boolean hideBottomButton() {
-        return NekoConfig.hideChannelBottomButtons &&
+        return KuroConfig.hideChannelBottomButtons &&
                 chatMode == MODE_DEFAULT && !isReport() && currentChat != null &&
                 ChatObject.isChannel(currentChat) && currentChat.broadcast && !ChatObject.canWriteToChat(currentChat);
     }

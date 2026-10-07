@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Impostazioni Neko</string>
+    <string name="KuroSettings">Impostazioni Kuro</string>
     <string name="PreferIPv6">Prova a connetterti via IPv6</string>
     <string name="MessageMenu">Menu messaggio</string>
     <string name="HidePhone">Nascondi il mio numero</string>
@@ -24,7 +24,7 @@
     <string name="Prpr">Peropero</string>
     <string name="EnableResidentNotification">Mostra notifica persistente</string>
     <string name="DisableResidentNotification">Disabilita notifica persistente</string>
-    <string name="NekogramRunning">Dgram è in esecuzione</string>
+    <string name="KurogramRunning">Kurogram è in esecuzione</string>
     <string name="EventType">Set d\'icone barra laterale</string>
     <string name="DependsOnDate">A seconda della data</string>
     <string name="Christmas">Natale</string>
@@ -66,8 +66,8 @@
     <string name="IgnoreBlockedAbout">NON SONO DAVVERO NASCOSTI! I messaggi sono ancora visibili, ma il testo sarà convertito in Spoiler e i media non saranno scaricati automaticamente.</string>
     <string name="Donate">Dona</string>
     <string name="DonateAbout">Supporta lo sviluppo.</string>
-    <string name="TranslationAbout">Aiutaci a tradurre Dgram nella tua lingua.</string>
-    <string name="Translation">Traduci Dgram</string>
+    <string name="TranslationAbout">Aiutaci a tradurre Kurogram nella tua lingua.</string>
+    <string name="Translation">Traduci Kurogram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Resetta dimensione sticker</string>
     <string name="RestartAppToTakeEffect">Riavvia l\'app per applicare le modifiche.</string>
@@ -116,7 +116,7 @@
     <string name="RegistrationDateNewer">Più recente di %s</string>
     <string name="RegistrationDateOlder">Più vecchio di %s</string>
     <string name="RegistrationDateApproximately">Circa %s</string>
-    <string name="UpdateNekogram">Aggiorna Dgram</string>
+    <string name="UpdateKurogram">Aggiorna Kurogram</string>
     <string name="TranslationTarget">Lingua di destinazione</string>
     <string name="TranslationTargetApp">Segui l\'app</string>
     <string name="Translator">Traduttore</string>
@@ -142,9 +142,9 @@
     <string name="OfficialSite">Sito ufficiale</string>
     <string name="MutualContact">Contatto reciproco</string>
     <string name="MutualContactDescription">Questo contatto è un contatto reciproco.</string>
-    <string name="InviteTextNeko">Hey, sto usando Dgram per chattare. Unisciti a me! Scaricalo qui: %1$s</string>
-    <string name="ShareNekogram">Condividi Dgram...</string>
-    <string name="NekogramVersion">Dgram %1$s\nBasato su Telegram %2$s\nProgettato da %3$s</string>
+    <string name="InviteTextKuro">Hey, sto usando Kurogram per chattare. Unisciti a me! Scaricalo qui: %1$s</string>
+    <string name="ShareKurogram">Condividi Kurogram...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nBasato su Telegram %2$s\nProgettato da %3$s</string>
     <string name="UpdateInstalling">Installazione aggiornamento...</string>
     <string name="UpdateInstallingNotification">Al termine dell\'aggiornamento verrà visualizzata una notifica.</string>
     <string name="UpdateInstallingRelaunch">L\'app sarà riavviata al termine dell\'aggiornamento.</string>
@@ -156,7 +156,7 @@
     <string name="DisableVoiceMessagesAutoPlay">Disattiva la riproduzione automatica dei messaggi vocali</string>
     <string name="UnmuteVideosWithVolumeButtons">Attiva l\'audio premendo il bilanciere del volume</string>
     <string name="TranslatorType">Tipo</string>
-    <string name="TranslatorTypeNeko">Nel messaggio</string>
+    <string name="TranslatorTypeKuro">Nel messaggio</string>
     <string name="TranslatorTypeTG">Popup a comparsa</string>
     <string name="TranslatorTypeExternal">App esterna</string>
     <string name="CopyPhoto">Copia Foto</string>
@@ -167,7 +167,7 @@
     <string name="SaveToDownloadCount_few">Salvataggio di %1$d file nei download</string>
     <string name="SaveToDownloadCount_many">Salvataggio di %1$d file nei download</string>
     <string name="SaveToDownloadCount_other">Salvataggio di %1$d file nei download</string>
-    <string name="AppLinkNotVerifiedMessage">Per Android 12 e versioni successive, è necessario aggiungere manualmente un collegamento ai link verificati per aprire i link t.me in Dgram.</string>
+    <string name="AppLinkNotVerifiedMessage">Per Android 12 e versioni successive, è necessario aggiungere manualmente un collegamento ai link verificati per aprire i link t.me in Kurogram.</string>
     <string name="AppLinkNotVerifiedTitle">Collegamenti all\'app non verificati</string>
     <string name="AutoTranslate">Traduzione automatica</string>
     <string name="AutoTranslateAbout">Traduci automaticamente i messaggi che sono in un\'altra lingua.</string>
@@ -185,14 +185,14 @@
     <string name="TabletMode">Modalità tablet</string>
     <string name="TabletModeAuto">Auto</string>
     <string name="DeleteAllFromSelfDone">Tutti i tuoi messaggi sono stati cancellati</string>
-    <string name="UnknownNekoSettingsOption">Non esiste questa opzione nelle impostazioni Neko.</string>
+    <string name="UnknownKuroSettingsOption">Non esiste questa opzione nelle impostazioni Kuro.</string>
     <string name="ProviderYouDaoTranslate">Traduttore YouDao</string>
     <string name="ProviderBaiduTranslate">Traduttore Baidu</string>
     <string name="ProviderSogouTranslate">Traduttore Sogou</string>
     <string name="Translated">tradotto</string>
     <string name="PasscodeNeeded">Devi prima abilitare il codice di blocco dell\'accesso</string>
-    <string name="PasscodeNeko">Codice d\'accesso</string>
-    <string name="PasscodeShowInSettings">Mostra in Impostazioni Neko</string>
+    <string name="PasscodeKuro">Codice d\'accesso</string>
+    <string name="PasscodeShowInSettings">Mostra in Impostazioni Kuro</string>
     <string name="PasscodeShowInSettingsAbout">Dopo aver nascosto, puoi **SOLO** aprire questa pagina tramite il link:</string>
     <string name="PasscodeSet">Imposta il codice di accesso</string>
     <string name="PasscodeEdit">Cambia codice di accesso</string>
@@ -274,7 +274,7 @@
     <string name="NavigationAnimationBezier">Classico</string>
     <string name="NavigationAnimationSpring">Naturale</string>
     <string name="CloudConfig">Impostazioni Cloud</string>
-    <string name="CloudConfigDesc">Salva le tue impostazioni di Neko su cloud di Telegram.</string>
+    <string name="CloudConfigDesc">Salva le tue impostazioni di Kuro su cloud di Telegram.</string>
     <string name="CloudConfigSyncDate">Ultima sincronizzazione: %s, cloud: %s</string>
     <string name="CloudConfigSyncDateNever">mai</string>
     <string name="CloudConfigSync">Sincronizza con il cloud</string>
@@ -283,7 +283,7 @@
     <string name="CloudConfigRestoreShort">Ripristina</string>
     <string name="CloudConfigSyncing">Sincronizzazione in corso...</string>
     <string name="CloudConfigAutoSync">Sincronizzazione automatica</string>
-    <string name="CloudConfigAutoSyncDesc">Sincronizza automaticamente con il cloud dopo aver apportato modifiche alle impostazioni di Neko.</string>
+    <string name="CloudConfigAutoSyncDesc">Sincronizza automaticamente con il cloud dopo aver apportato modifiche alle impostazioni di Kuro.</string>
     <string name="CloudConfigSyncFailed">Impossibile sincronizzare le impostazioni con il cloud.</string>
     <string name="CloudConfigRestoreFailed">Impossibile ripristinare le impostazioni dal cloud.</string>
     <string name="ReducedColors">Riduci i colori</string>

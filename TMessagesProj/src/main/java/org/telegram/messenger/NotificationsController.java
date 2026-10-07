@@ -99,7 +99,7 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.MessageFilterHelper;
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 
@@ -4360,7 +4360,7 @@ public class NotificationsController extends BaseController implements Notificat
                 notifyDisabled = true;
             }
 
-            if (NekoConfig.silenceNonContacts && chat == null && getContactsController().contactsDict.get(userId) == null) {
+            if (KuroConfig.silenceNonContacts && chat == null && getContactsController().contactsDict.get(userId) == null) {
                 notifyDisabled = true;
             }
 
@@ -4601,7 +4601,7 @@ public class NotificationsController extends BaseController implements Notificat
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(NekoConfig.getNotificationColor());
+                    .setColor(KuroConfig.getNotificationColor());
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -5599,7 +5599,7 @@ public class NotificationsController extends BaseController implements Notificat
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(dialogKey.story ? storyPushMessages.size() : messageObjects.size())
-                    .setColor(NekoConfig.getNotificationColor())
+                    .setColor(KuroConfig.getNotificationColor())
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)

@@ -45,10 +45,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.EmojiHelper;
 
-public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implements ChatAttachAlertDocumentLayout.DocumentSelectActivityDelegate {
+public class KuroEmojiSettingsActivity extends BaseKuroSettingsActivity implements ChatAttachAlertDocumentLayout.DocumentSelectActivityDelegate {
 
     private static final int menu_delete = 0;
     private static final int menu_share = 1;
@@ -107,15 +107,15 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
         updatePacks();
 
         items.add(UItem.asHeader(LocaleController.getString(R.string.General)));
-        items.add(UItem.asCheck(useSystemEmojiRow, LocaleController.getString(R.string.EmojiUseDefault)).setChecked(NekoConfig.useSystemEmoji).slug("useSystemEmoji"));
+        items.add(UItem.asCheck(useSystemEmojiRow, LocaleController.getString(R.string.EmojiUseDefault)).setChecked(KuroConfig.useSystemEmoji).slug("useSystemEmoji"));
         items.add(UItem.asShadow(null));
 
         items.add(UItem.asHeader(LocaleController.getString(R.string.EmojiSets)));
         var selectedPackId = EmojiHelper.getInstance().getSelectedEmojiPackId();
-        items.add(EmojiSetCellFactory.of(appleRow, EmojiHelper.DEFAULT_PACK, EmojiHelper.DEFAULT_PACK.getPackId().equals(selectedPackId) && !NekoConfig.useSystemEmoji, false));
+        items.add(EmojiSetCellFactory.of(appleRow, EmojiHelper.DEFAULT_PACK, EmojiHelper.DEFAULT_PACK.getPackId().equals(selectedPackId) && !KuroConfig.useSystemEmoji, false));
         for (int i = 0, size = emojiPacks.size(); i < size; i++) {
             EmojiHelper.EmojiPack pack = emojiPacks.get(i);
-            items.add(EmojiSetCellFactory.of(emojiStartRow + i, pack, pack.getPackId().equals(selectedPackId) && !NekoConfig.useSystemEmoji, false));
+            items.add(EmojiSetCellFactory.of(emojiStartRow + i, pack, pack.getPackId().equals(selectedPackId) && !KuroConfig.useSystemEmoji, false));
         }
         var drawable1 = getParentActivity().getDrawable(R.drawable.poll_add_circle);
         var drawable2 = getParentActivity().getDrawable(R.drawable.poll_add_plus);
@@ -130,9 +130,9 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
     protected void onItemClick(UItem item, View view, int position, float x, float y) {
         var id = item.id;
         if (id == useSystemEmojiRow) {
-            NekoConfig.toggleUseSystemEmoji();
+            KuroConfig.toggleUseSystemEmoji();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.useSystemEmoji);
+                ((TextCheckCell) view).setChecked(KuroConfig.useSystemEmoji);
             }
             EmojiHelper.reloadEmoji();
             updateEmojiSets();
@@ -169,11 +169,11 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
     private void updateEmojiSets() {
         var selectedPackId = EmojiHelper.getInstance().getSelectedEmojiPackId();
         var appleItem = listView.findItemByItemId(appleRow);
-        appleItem.checked = !hasSelected() && EmojiHelper.DEFAULT_PACK.getPackId().equals(selectedPackId) && !NekoConfig.useSystemEmoji;
+        appleItem.checked = !hasSelected() && EmojiHelper.DEFAULT_PACK.getPackId().equals(selectedPackId) && !KuroConfig.useSystemEmoji;
         for (int i = 0, size = emojiPacks.size(); i < size; i++) {
             EmojiHelper.EmojiPack pack = emojiPacks.get(i);
             var item = listView.findItemByItemId(emojiStartRow + i);
-            item.checked = !hasSelected() && pack.getPackId().equals(selectedPackId) && !NekoConfig.useSystemEmoji;
+            item.checked = !hasSelected() && pack.getPackId().equals(selectedPackId) && !KuroConfig.useSystemEmoji;
             item.object2 = selectedItems.get(item.id, false);
         }
         listView.adapter.notifyItemRangeChanged(listView.findPositionByItemId(appleRow), emojiPacks.size() + 1, PARTIAL);

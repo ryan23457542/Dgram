@@ -11,7 +11,7 @@ import org.telegram.ui.web.BotWebViewContainer;
 
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class WebAppHelper {
 
@@ -36,16 +36,16 @@ public class WebAppHelper {
         var event = eventObject.get("event").getAsString();
         if (event.equals("get_config")) {
             var data = new JsonObject();
-            data.addProperty("trust", !NekoConfig.shouldNOTTrustMe);
+            data.addProperty("trust", !KuroConfig.shouldNOTTrustMe);
             eventCallback.accept(warpInEvent("config", data).toString());
         } else if (event.equals("set_config")) {
             var data = eventObject.get("data").getAsJsonObject();
-            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kuroconfig", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             switch (data.get("key").getAsString()) {
                 case "trust":
-                    NekoConfig.shouldNOTTrustMe = !data.get("value").getAsBoolean();
-                    editor.putBoolean("shouldNOTTrustMe", NekoConfig.shouldNOTTrustMe);
+                    KuroConfig.shouldNOTTrustMe = !data.get("value").getAsBoolean();
+                    editor.putBoolean("shouldNOTTrustMe", KuroConfig.shouldNOTTrustMe);
                     break;
             }
             editor.apply();

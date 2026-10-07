@@ -27,7 +27,7 @@ import java.util.function.BiConsumer;
 
 public class PasskeyQr {
 
-    private final static SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekopassqr", Context.MODE_PRIVATE);
+    private final static SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kuropassqr", Context.MODE_PRIVATE);
 
     public static boolean isKnownPassQR(String id) {
         return preferences.getBoolean("passqr_" + id, false);

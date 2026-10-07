@@ -77,7 +77,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class EditTextBoldCursor extends EditTextEffects {
 
@@ -170,7 +170,7 @@ public class EditTextBoldCursor extends EditTextEffects {
 
     private static Method canUndoMethod;
     private static Method canRedoMethod;
-    public static boolean disableMarkdown = NekoConfig.disableMarkdownByDefault;
+    public static boolean disableMarkdown = KuroConfig.disableMarkdownByDefault;
     private boolean showDisableMarkdown = false;
 
     static {

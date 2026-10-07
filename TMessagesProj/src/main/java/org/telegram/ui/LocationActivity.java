@@ -126,8 +126,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.location.NekoLocationSource;
+import tw.nekomimi.nekogram.KuroConfig;
+import tw.nekomimi.nekogram.location.KuroLocationSource;
 
 public class LocationActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -2490,8 +2490,8 @@ public class LocationActivity extends BaseFragment implements NotificationCenter
         for (int i = providers.size() - 1; i >= 0; i--) {
             l = lm.getLastKnownLocation(providers.get(i));
             if (l != null) {
-                if (NekoConfig.mapDriftingFix) {
-                    NekoLocationSource.transform(l);
+                if (KuroConfig.mapDriftingFix) {
+                    KuroLocationSource.transform(l);
                 }
                 break;
             }

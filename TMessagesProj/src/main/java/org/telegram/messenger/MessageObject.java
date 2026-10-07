@@ -125,7 +125,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.MessageFilterHelper;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.helpers.WebpageHelper;
@@ -3742,7 +3742,7 @@ public class MessageObject {
                 generateLayout(null);
             } else if (translatedText != null) {
                 mergedEntities = null;
-                applyNewText(!NekoConfig.showOriginal ? translatedText.text : (
+                applyNewText(!KuroConfig.showOriginal ? translatedText.text : (
                         (messageOwner.voiceTranscriptionOpen ? messageOwner.voiceTranscription : messageOwner.message) +
                         Translator.TRANSLATION_SEPARATOR + translatedText.text));
                 generateCaption();
@@ -7645,7 +7645,7 @@ public class MessageObject {
             captionSummarized = false;
             captionTranslated = true;
             mergedEntities = null;
-            text = !NekoConfig.showOriginal ? messageOwner.translatedText.text : (messageOwner.message +
+            text = !KuroConfig.showOriginal ? messageOwner.translatedText.text : (messageOwner.message +
                     Translator.TRANSLATION_SEPARATOR + messageOwner.translatedText.text);
             entities =  getEntities(false);
         } else {
@@ -8002,13 +8002,13 @@ public class MessageObject {
         }
         if (translated) {
             if (voice && messageOwner.voiceTranscriptionOpen) {
-                if (NekoConfig.showOriginal) {
+                if (KuroConfig.showOriginal) {
                     return null;
                 } else {
                     return messageOwner.translatedVoiceTranscription != null ? messageOwner.translatedVoiceTranscription.entities : null;
                 }
             } else {
-                if (NekoConfig.showOriginal) {
+                if (KuroConfig.showOriginal) {
                     if (mergedEntities != null) {
                         return mergedEntities;
                     }
@@ -10021,7 +10021,7 @@ public class MessageObject {
         if (message instanceof TLRPC.TL_message_secret) {
             return (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || isVideoMessage(message)) && message.ttl > 0 && message.ttl <= 60;
         } else {
-            return !NekoConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
+            return !KuroConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
         }
     }
 
@@ -10033,7 +10033,7 @@ public class MessageObject {
         if (message instanceof TLRPC.TL_message_secret) {
             return (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || isRoundVideoMessage(message) || isVideoMessage(message)) && message.ttl > 0 && message.ttl <= 60;
         } else if (message instanceof TLRPC.TL_message) {
-            return !NekoConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
+            return !KuroConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
         }
         return false;
     }
@@ -10042,7 +10042,7 @@ public class MessageObject {
         if (message instanceof TLRPC.TL_message_secret) {
             return (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || isRoundVideoMessage(message) || isVideoMessage(message)) && getMedia(message).ttl_seconds != 0;
         } else if (message instanceof TLRPC.TL_message) {
-            return !NekoConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
+            return !KuroConfig.shouldNOTTrustMe && (getMedia(message) instanceof TLRPC.TL_messageMediaPhoto || getMedia(message) instanceof TLRPC.TL_messageMediaDocument) && getMedia(message).ttl_seconds != 0;
         }
         return false;
     }
@@ -10057,7 +10057,7 @@ public class MessageObject {
             int ttl = Math.max(messageOwner.ttl, getMedia(messageOwner).ttl_seconds);
             return ttl > 0 && ((getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto || isVideo() || isGif()) && ttl <= 60 || isRoundVideo());
         } else if (messageOwner instanceof TLRPC.TL_message) {
-            return !NekoConfig.shouldNOTTrustMe && (getMedia(messageOwner) != null && getMedia(messageOwner).ttl_seconds != 0) && (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto || getMedia(messageOwner) instanceof TLRPC.TL_messageMediaDocument);
+            return !KuroConfig.shouldNOTTrustMe && (getMedia(messageOwner) != null && getMedia(messageOwner).ttl_seconds != 0) && (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto || getMedia(messageOwner) instanceof TLRPC.TL_messageMediaDocument);
         }
         return false;
     }
@@ -10070,7 +10070,7 @@ public class MessageObject {
         if (messageOwner instanceof TLRPC.TL_message_secret) {
             return (((getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto) || isGif()) && messageOwner.ttl > 0 && messageOwner.ttl <= 60 || isVoice() || isRoundVideo() || isVideo());
         } else if (messageOwner instanceof TLRPC.TL_message) {
-            return !NekoConfig.shouldNOTTrustMe && (getMedia(messageOwner) != null && getMedia(messageOwner).ttl_seconds != 0) && (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto || getMedia(messageOwner) instanceof TLRPC.TL_messageMediaDocument);
+            return !KuroConfig.shouldNOTTrustMe && (getMedia(messageOwner) != null && getMedia(messageOwner).ttl_seconds != 0) && (getMedia(messageOwner) instanceof TLRPC.TL_messageMediaPhoto || getMedia(messageOwner) instanceof TLRPC.TL_messageMediaDocument);
         }
         return false;
     }

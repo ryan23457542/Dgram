@@ -35,8 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.location.NekoLocationSource;
+import tw.nekomimi.nekogram.KuroConfig;
+import tw.nekomimi.nekogram.location.KuroLocationSource;
 
 public class GoogleMapsProvider implements IMapsProvider {
 
@@ -591,7 +591,7 @@ public class GoogleMapsProvider implements IMapsProvider {
         @Override
         public void getMapAsync(Consumer<IMap> callback) {
             mapView.getMapAsync(googleMap -> {
-                if (NekoConfig.mapDriftingFix) googleMap.setLocationSource(new NekoLocationSource(mapView.getContext()));
+                if (KuroConfig.mapDriftingFix) googleMap.setLocationSource(new KuroLocationSource(mapView.getContext()));
                 callback.accept(new GoogleMapImpl(googleMap));
                 findGlSurfaceView(mapView);
             });

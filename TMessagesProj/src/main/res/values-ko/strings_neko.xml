@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">네코그램 설정</string>
+    <string name="KuroSettings">네코그램 설정</string>
     <string name="MessageMenu">메세지 메뉴</string>
     <string name="HidePhone">내 번호 숨기기</string>
     <string name="DeleteAllFromSelf">본인 메시지 삭제하기</string>
@@ -18,7 +18,7 @@
     <string name="AddToSavedMessages">메세지 저장</string>
     <string name="CreateMention">멘션 만들기</string>
     <string name="Prpr">페로페로</string>
-    <string name="NekogramRunning">네코그램이 실행 중 입니다</string>
+    <string name="KurogramRunning">네코그램이 실행 중 입니다</string>
     <string name="EventType">사이드바 아이콘 세트</string>
     <string name="DependsOnDate">날짜에 따라</string>
     <string name="Christmas">크리스마스</string>
@@ -111,7 +111,7 @@
     <string name="RegistrationDateNewer">%s 이후</string>
     <string name="RegistrationDateOlder">%s 이전</string>
     <string name="RegistrationDateApproximately">대략 %s</string>
-    <string name="UpdateNekogram">네코그램 업데이트</string>
+    <string name="UpdateKurogram">네코그램 업데이트</string>
     <string name="TranslationTarget">번역 언어</string>
     <string name="TranslationTargetApp">기기 언어 따라가기</string>
     <string name="Translator">번역기</string>
@@ -136,9 +136,9 @@
     <string name="OfficialSite">공식 사이트</string>
     <string name="MutualContact">공통 연락처</string>
     <string name="MutualContactDescription">이 연락처는 공통 연락처 입니다.</string>
-    <string name="InviteTextNeko">안녕, 나는 네코그램을 사용하고 있어요. 한번 사용해 보실래요? 여기에서 다운로드 하세요: %1$s</string>
-    <string name="ShareNekogram">네코그램 공유하기</string>
-    <string name="NekogramVersion">네코그램 %1$s 은 텔레그램 %2$s 기반으로 %3$s 이 제작 하였습니다</string>
+    <string name="InviteTextKuro">안녕, 나는 네코그램을 사용하고 있어요. 한번 사용해 보실래요? 여기에서 다운로드 하세요: %1$s</string>
+    <string name="ShareKurogram">네코그램 공유하기</string>
+    <string name="KurogramVersion">네코그램 %1$s 은 텔레그램 %2$s 기반으로 %3$s 이 제작 하였습니다</string>
     <string name="UpdateInstalling">업데이트 설치 중...</string>
     <string name="UpdateInstallingNotification">업데이트가 완료되면 알림이 표시됩니다.</string>
     <string name="UpdateInstallingRelaunch">업데이트가 완료되면 네코그램이 다시 시작됩니다.</string>
@@ -149,7 +149,7 @@
     <string name="NoTranslatorAppInstalled">번역을 할 수 있는 프로그램이 없습니다. 번역 프로그램을 설치해 주십시오.</string>
     <string name="DisableVoiceMessagesAutoPlay">음성 메시지 자동 재생 비활성화</string>
     <string name="TranslatorType">종류</string>
-    <string name="TranslatorTypeNeko">메시지에서</string>
+    <string name="TranslatorTypeKuro">메시지에서</string>
     <string name="TranslatorTypeTG">팝업 대화 상자</string>
     <string name="TranslatorTypeExternal">외부 앱</string>
     <string name="CopyPhoto">사진 복사</string>
@@ -160,7 +160,7 @@
     <string name="SaveToDownloadCount_few">%1$d 파일을 다운로드에 저장</string>
     <string name="SaveToDownloadCount_many">%1$d 파일을 다운로드에 저장</string>
     <string name="SaveToDownloadCount_other">%1$d 파일을 다운로드에 저장</string>
-    <string name="AppLinkNotVerifiedMessage">Android 12 및 최신의 경우 Dgram에서 t.me 링크를 열기 위해 검증된 링크에 수동으로 링크를 추가해야 합니다.</string>
+    <string name="AppLinkNotVerifiedMessage">Android 12 및 최신의 경우 Kurogram에서 t.me 링크를 열기 위해 검증된 링크에 수동으로 링크를 추가해야 합니다.</string>
     <string name="AppLinkNotVerifiedTitle">앱 링크가 확인되지 않음</string>
     <string name="AutoTranslate">자동 번역</string>
     <string name="AutoTranslateAbout">다른 언어로 된 메시지를 자동으로 번역합니다.</string>
@@ -178,13 +178,13 @@
     <string name="TabletMode">태블릿 모드</string>
     <string name="TabletModeAuto">자동</string>
     <string name="DeleteAllFromSelfDone">모든 메세지가 삭제 되었습니다</string>
-    <string name="UnknownNekoSettingsOption">그러한 Neko 설정 옵션이 없습니다.</string>
+    <string name="UnknownKuroSettingsOption">그러한 Kuro 설정 옵션이 없습니다.</string>
     <string name="ProviderYouDaoTranslate">유다오 번역</string>
     <string name="ProviderBaiduTranslate">바이두 번역</string>
     <string name="ProviderSogouTranslate">소고우 번역</string>
     <string name="Translated">번역</string>
     <string name="PasscodeNeeded">먼저 암호 잠금을 활성화해야 합니다.</string>
-    <string name="PasscodeNeko">암호</string>
+    <string name="PasscodeKuro">암호</string>
     <string name="PasscodeShowInSettings">네코 세팅에서 보기</string>
     <string name="PasscodeShowInSettingsAbout">숨긴 후에는 **이 링크로만** 이 페이지를 열 수 있습니다.</string>
     <string name="PasscodeSet">암호설정</string>

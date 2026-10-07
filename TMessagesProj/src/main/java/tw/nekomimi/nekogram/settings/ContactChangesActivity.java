@@ -106,7 +106,7 @@ public class ContactChangesActivity extends BaseFragment implements Notification
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         emptyView = new TextView(context);
-        emptyView.setText("No changes recorded yet.\nDgram will log name and photo changes of your contacts while the app is open.");
+        emptyView.setText("No changes recorded yet.\nKurogram will log name and photo changes of your contacts while the app is open.");
         emptyView.setTextSize(15);
         emptyView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         emptyView.setGravity(Gravity.CENTER);

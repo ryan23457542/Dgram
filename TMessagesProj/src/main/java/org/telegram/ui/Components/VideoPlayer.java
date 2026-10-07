@@ -109,7 +109,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 @SuppressLint("NewApi")
 @OptIn(markerClass = UnstableApi.class)
@@ -421,7 +421,7 @@ public class VideoPlayer implements Player.Listener, VideoListener, AnalyticsLis
     }
 
     public static Quality getSavedQuality(ArrayList<Quality> qualities, MessageObject messageObject) {
-        if (NekoConfig.preferOriginalQuality) {
+        if (KuroConfig.preferOriginalQuality) {
             for (Quality q : qualities) {
                 if (q.original) return q;
             }
@@ -943,7 +943,7 @@ public class VideoPlayer implements Player.Listener, VideoListener, AnalyticsLis
     public static VideoUri getQualityForPlayer(ArrayList<Quality> qualities) {
         for (final Quality q : qualities) {
             for (final VideoUri v : q.uris) {
-                if (v.original && (v.isCached() || NekoConfig.preferOriginalQuality))
+                if (v.original && (v.isCached() || KuroConfig.preferOriginalQuality))
                     return v;
             }
         }

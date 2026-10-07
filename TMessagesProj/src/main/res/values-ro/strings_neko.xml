@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Setări Neko</string>
+    <string name="KuroSettings">Setări Kuro</string>
     <string name="PreferIPv6">Preferați să vă conectați prin IPv6</string>
     <string name="MessageMenu">Meniu mesaj</string>
     <string name="HidePhone">Ascunde numărul de telefon</string>
@@ -24,7 +24,7 @@
     <string name="Prpr">Peropero</string>
     <string name="EnableResidentNotification">Afișează o notificare rezidentă</string>
     <string name="DisableResidentNotification">Dezactivează notificarea rezidentă</string>
-    <string name="NekogramRunning">Dgram rulează</string>
+    <string name="KurogramRunning">Kurogram rulează</string>
     <string name="EventType">Set pictograme bară laterală</string>
     <string name="DependsOnDate">În funcție de dată</string>
     <string name="Christmas">Crăciun</string>
@@ -66,8 +66,8 @@
     <string name="IgnoreBlockedAbout">NU SUNT CHIAR ASCUNSE! Mesajele sunt încă disponibile dar textul va fi transformat în Spoiler iar fișierele nu se vor descărca automat.</string>
     <string name="Donate">Donați</string>
     <string name="DonateAbout">Sprijiniți dezvoltarea noastră.</string>
-    <string name="TranslationAbout">Ajutați-ne să traducem Dgram în limba dvs.</string>
-    <string name="Translation">Traduceți Dgram</string>
+    <string name="TranslationAbout">Ajutați-ne să traducem Kurogram în limba dvs.</string>
+    <string name="Translation">Traduceți Kurogram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Resetați dimensiunea stickerului</string>
     <string name="RestartAppToTakeEffect">Reporniți aplicația pentru a avea efect.</string>
@@ -116,7 +116,7 @@
     <string name="RegistrationDateNewer">Mai nou decât %s</string>
     <string name="RegistrationDateOlder">Mai vechi decât %s</string>
     <string name="RegistrationDateApproximately">Aproximativ %s</string>
-    <string name="UpdateNekogram">Actualizați Dgram</string>
+    <string name="UpdateKurogram">Actualizați Kurogram</string>
     <string name="TranslationTarget">Limbă țintă</string>
     <string name="TranslationTargetApp">Urmăriți aplicația</string>
     <string name="Translator">Traducător</string>
@@ -142,9 +142,9 @@
     <string name="OfficialSite">Site oficial</string>
     <string name="MutualContact">Contacte în comun</string>
     <string name="MutualContactDescription">Acest contact este un contact comun.</string>
-    <string name="InviteTextNeko">Salut, folosesc Dgram pentru a vorbi. Alăturați-vă nouă! Descarcă aici: %1$s</string>
-    <string name="ShareNekogram">Distribuie Dgram...</string>
-    <string name="NekogramVersion">Dgram %1$s\nBazat pe Telegram %2$s\nProiectat de %3$s</string>
+    <string name="InviteTextKuro">Salut, folosesc Kurogram pentru a vorbi. Alăturați-vă nouă! Descarcă aici: %1$s</string>
+    <string name="ShareKurogram">Distribuie Kurogram...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nBazat pe Telegram %2$s\nProiectat de %3$s</string>
     <string name="UpdateInstalling">Se instalează actualizarea...</string>
     <string name="UpdateInstallingNotification">O notificare va fi afișată când actualizarea este finalizată.</string>
     <string name="UpdateInstallingRelaunch">Aplicația se va relansa când actualizarea este finalizată.</string>
@@ -156,7 +156,7 @@
     <string name="DisableVoiceMessagesAutoPlay">Dezactivează redarea automată a mesajelor vocale</string>
     <string name="UnmuteVideosWithVolumeButtons">Activați sunetul videoclipurilor cu butoanele de volum</string>
     <string name="TranslatorType">Tip</string>
-    <string name="TranslatorTypeNeko">În mesaj</string>
+    <string name="TranslatorTypeKuro">În mesaj</string>
     <string name="TranslatorTypeTG">Dialog pop-up</string>
     <string name="TranslatorTypeExternal">Aplicație externă</string>
     <string name="CopyPhoto">Copiază fotografia</string>
@@ -167,7 +167,7 @@
     <string name="SaveToDownloadCount_few">Se salvează %1$d fișiere in descărcări</string>
     <string name="SaveToDownloadCount_many">Se salvează %1$d fișiere in descărcări</string>
     <string name="SaveToDownloadCount_other">Se salvează %1$d fișiere in descărcări</string>
-    <string name="AppLinkNotVerifiedMessage">Pentru Android 12 și versiunile mai noi, trebuie să adăugați manual link-ul la linkurile verificate pentru a deschide linkurile de tip \"t.me\" în Dgram.</string>
+    <string name="AppLinkNotVerifiedMessage">Pentru Android 12 și versiunile mai noi, trebuie să adăugați manual link-ul la linkurile verificate pentru a deschide linkurile de tip \"t.me\" în Kurogram.</string>
     <string name="AppLinkNotVerifiedTitle">Link-urile aplicației nu sunt verificate</string>
     <string name="AutoTranslate">Traducere automată</string>
     <string name="AutoTranslateAbout">Traduceți automat mesajele în altă limbă.</string>
@@ -185,14 +185,14 @@
     <string name="TabletMode">Modul tabletă</string>
     <string name="TabletModeAuto">Implicit</string>
     <string name="DeleteAllFromSelfDone">Toate mesajele dumneavoastră sunt șterse</string>
-    <string name="UnknownNekoSettingsOption">Nu există o astfel de opţiune de Setări Neko.</string>
+    <string name="UnknownKuroSettingsOption">Nu există o astfel de opţiune de Setări Kuro.</string>
     <string name="ProviderYouDaoTranslate">Traducător YouDao</string>
     <string name="ProviderBaiduTranslate">Traducător Baidu</string>
     <string name="ProviderSogouTranslate">Traducător Sogou</string>
     <string name="Translated">tradus</string>
     <string name="PasscodeNeeded">Mai întâi trebuie să activați blocarea codului de acces</string>
-    <string name="PasscodeNeko">Cod de acces</string>
-    <string name="PasscodeShowInSettings">Afișează în setările Neko</string>
+    <string name="PasscodeKuro">Cod de acces</string>
+    <string name="PasscodeShowInSettings">Afișează în setările Kuro</string>
     <string name="PasscodeShowInSettingsAbout">După ascundere, puteți deschide această pagină **NUMAI** prin link:</string>
     <string name="PasscodeSet">Setați codul de acces</string>
     <string name="PasscodeEdit">Schimbați codul de acces</string>
@@ -272,7 +272,7 @@
     <string name="NavigationAnimationBezier">Clasic</string>
     <string name="NavigationAnimationSpring">Natural</string>
     <string name="CloudConfig">Setări Cloud</string>
-    <string name="CloudConfigDesc">Salvați setările Neko în Telegram Cloud.</string>
+    <string name="CloudConfigDesc">Salvați setările Kuro în Telegram Cloud.</string>
     <string name="CloudConfigSyncDate">Ultima sincronizare: %s, cloud: %s</string>
     <string name="CloudConfigSyncDateNever">niciodată</string>
     <string name="CloudConfigSync">Sincronizare în cloud</string>
@@ -281,7 +281,7 @@
     <string name="CloudConfigRestoreShort">Restabiliți</string>
     <string name="CloudConfigSyncing">Se sincronizează...</string>
     <string name="CloudConfigAutoSync">Auto sincronizare</string>
-    <string name="CloudConfigAutoSyncDesc">Sincronizați setările automat cu cloud după modificarea setărilor Neko.</string>
+    <string name="CloudConfigAutoSyncDesc">Sincronizați setările automat cu cloud după modificarea setărilor Kuro.</string>
     <string name="CloudConfigSyncFailed">Sincronizarea setărilor cu cloud a eșuat.</string>
     <string name="CloudConfigRestoreFailed">Restabilirea setărilor din cloud a eșuat.</string>
     <string name="ReducedColors">Reduceți culorile</string>

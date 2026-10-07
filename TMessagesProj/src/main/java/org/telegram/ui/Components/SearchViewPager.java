@@ -78,7 +78,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.forward.ForwardContext;
 import tw.nekomimi.nekogram.forward.ForwardDrawable;
 import tw.nekomimi.nekogram.forward.ForwardItem;
@@ -910,7 +910,7 @@ public class SearchViewPager extends ViewPagerFixed implements FilteredSearchVie
             gotoItem.setVisibility(View.VISIBLE);
             forwardItem.setVisibility(View.VISIBLE);
             ForwardItem.setupForwardItem(forwardItem, ForwardItem.hasCaption(selectedFiles.values()), null, this::onActionBarItemClick);
-            forwardNoQuoteItem.setVisibility(NekoConfig.showNoQuoteForward ? View.VISIBLE : View.GONE);
+            forwardNoQuoteItem.setVisibility(KuroConfig.showNoQuoteForward ? View.VISIBLE : View.GONE);
             forwardNoQuoteItem.setIcon(new ForwardDrawable(ForwardItem.ID_FORWARD_NOQUOTE, false));
             deleteItem.setVisibility(View.VISIBLE);
         } else {
@@ -1005,7 +1005,7 @@ public class SearchViewPager extends ViewPagerFixed implements FilteredSearchVie
             ArrayList<MessageObject> fmessages = new ArrayList<>(selectedFiles.values());
             ForwardContext forwardContext = () -> fmessages;
             forwardContext.setForwardParams(id == forwardNoQuoteItemId, id == forwardNoQuoteItemId);
-            if (NekoConfig.quickForward) {
+            if (KuroConfig.quickForward) {
                 forwardContext.openShareAlert(parent, null, () -> {
                     selectedFiles.clear();
                     showActionMode(false);

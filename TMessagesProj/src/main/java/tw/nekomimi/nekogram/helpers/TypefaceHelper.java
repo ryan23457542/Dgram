@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class TypefaceHelper {
 
@@ -137,7 +137,7 @@ public class TypefaceHelper {
 
     public static boolean isMediumWeightSupported() {
         if (mediumWeightSupported == null) {
-            mediumWeightSupported = !NekoConfig.forceFontWeightFallback && testTypeface(createTypeface(500, false));
+            mediumWeightSupported = !KuroConfig.forceFontWeightFallback && testTypeface(createTypeface(500, false));
             FileLog.d("mediumWeightSupported = " + mediumWeightSupported);
         }
         return mediumWeightSupported;

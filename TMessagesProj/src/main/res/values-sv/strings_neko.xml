@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Neko-inställningar</string>
+    <string name="KuroSettings">Kuro-inställningar</string>
     <string name="MessageMenu">Meddelandemeny</string>
     <string name="HidePhone">Dölj mitt telefonnummer</string>
     <string name="DeleteAllFromSelf">Radera egna meddelanden</string>
@@ -17,7 +17,7 @@
     <string name="Prpr">Peropero</string>
     <string name="EnableResidentNotification">Visa en inhemsk notifikation</string>
     <string name="DisableResidentNotification">Inaktivera inhemska notifikationer</string>
-    <string name="NekogramRunning">Dgram är igång</string>
+    <string name="KurogramRunning">Kurogram är igång</string>
     <string name="EventType">Ikonuppsättning för sidofält</string>
     <string name="DependsOnDate">Beror på datum</string>
     <string name="Christmas">Jul</string>
@@ -57,8 +57,8 @@
     <string name="IgnoreBlockedAbout">DET ÄR INTE RIKTIGT DÖLJA! Meddelanden är fortfarande tillgängliga för visning, men text konverteras till Spoiler och media laddas inte ner automatiskt.</string>
     <string name="Donate">Donera</string>
     <string name="DonateAbout">Stöd vår utveckling.</string>
-    <string name="TranslationAbout">Hjälp oss att översätta Dgram till ditt språk.</string>
-    <string name="Translation">Översätt Dgram</string>
+    <string name="TranslationAbout">Hjälp oss att översätta Kurogram till ditt språk.</string>
+    <string name="Translation">Översätt Kurogram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Återställ klistermärkesstorlek</string>
     <string name="RestartAppToTakeEffect">Starta om appen för att träda i kraft.</string>
@@ -106,7 +106,7 @@
     <string name="RegistrationDate">Registreringsdatum</string>
     <string name="WsEnableTls">Aktivera TLS</string>
     <string name="WsProvider">Leverantör</string>
-    <string name="UpdateNekogram">Uppdatera Dgram</string>
+    <string name="UpdateKurogram">Uppdatera Kurogram</string>
     <string name="TranslationTarget">Målspråk</string>
     <string name="TranslationTargetApp">Följ appen</string>
     <string name="Translator">Översättare</string>
@@ -131,9 +131,9 @@
     <string name="OfficialSite">Officiell webbplats</string>
     <string name="MutualContact">Ömsesidig kontakt</string>
     <string name="MutualContactDescription">Denna kontakt är ömsesidig.</string>
-    <string name="InviteTextNeko">Hej, jag använder Dgram för att chatta. Gå med! Ladda ner den här: %1$s</string>
-    <string name="ShareNekogram">Dela Dgram...</string>
-    <string name="NekogramVersion">Dgram %1$s\nBaserat på Telegram %2$s\nDesignad av %3$s</string>
+    <string name="InviteTextKuro">Hej, jag använder Kurogram för att chatta. Gå med! Ladda ner den här: %1$s</string>
+    <string name="ShareKurogram">Dela Kurogram...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nBaserat på Telegram %2$s\nDesignad av %3$s</string>
     <string name="UpdateInstalling">Installerar uppdatering...</string>
     <string name="UpdateInstallingNotification">En notifikation kommer att visas när uppdateringen är klar.</string>
     <string name="UpdateInstallingRelaunch">Appen startar om när uppdateringen är klar.</string>
@@ -143,7 +143,7 @@
     <string name="QRLoginTitle">QR-inloggning</string>
     <string name="DisableVoiceMessagesAutoPlay">Inaktivera automatisk uppspelning av röstmeddelanden</string>
     <string name="TranslatorType">Typ</string>
-    <string name="TranslatorTypeNeko">I meddelande</string>
+    <string name="TranslatorTypeKuro">I meddelande</string>
     <string name="TranslatorTypeTG">Popup-dialog</string>
     <string name="TranslatorTypeExternal">Extern app</string>
     <string name="CopyPhoto">Kopiera foto</string>
@@ -154,7 +154,7 @@
     <string name="SaveToDownloadCount_few">Sparar %1$d filer till nedladdningar</string>
     <string name="SaveToDownloadCount_many">Sparar %1$d filer till nedladdningar</string>
     <string name="SaveToDownloadCount_other">Spara %1$d filer till nedladdningar</string>
-    <string name="AppLinkNotVerifiedMessage">För Android 12 och senare måste du manuellt lägga till länken till verifierade länkar för att öppna t.me-länkar i Dgram.</string>
+    <string name="AppLinkNotVerifiedMessage">För Android 12 och senare måste du manuellt lägga till länken till verifierade länkar för att öppna t.me-länkar i Kurogram.</string>
     <string name="AppLinkNotVerifiedTitle">App-länkar inte verifierade</string>
     <string name="AutoTranslate">Automatisk översättning</string>
     <string name="AutoTranslateAbout">Översätt automatiskt meddelanden som är på ett annat språk.</string>
@@ -169,14 +169,14 @@
     <string name="TabletMode">Surfplatteläget</string>
     <string name="TabletModeAuto">Automatiskt</string>
     <string name="DeleteAllFromSelfDone">Alla dina meddelanden är raderade</string>
-    <string name="UnknownNekoSettingsOption">Det finns inget sådant alternativ för Neko-inställningar.</string>
+    <string name="UnknownKuroSettingsOption">Det finns inget sådant alternativ för Kuro-inställningar.</string>
     <string name="ProviderYouDaoTranslate">YouDao Översättare</string>
     <string name="ProviderBaiduTranslate">Baidu Översätt</string>
     <string name="ProviderSogouTranslate">Sogou Översätt</string>
     <string name="Translated">översatt</string>
     <string name="PasscodeNeeded">Du måste först aktivera lösenordslåset</string>
-    <string name="PasscodeNeko">Lösenord</string>
-    <string name="PasscodeShowInSettings">Visa i Neko-inställningar</string>
+    <string name="PasscodeKuro">Lösenord</string>
+    <string name="PasscodeShowInSettings">Visa i Kuro-inställningar</string>
     <string name="PasscodeShowInSettingsAbout">Efter att ha dolt kan du **ENDAST** öppna den här sidan via en länk:</string>
     <string name="PasscodeSet">Ange lösenord</string>
     <string name="PasscodeEdit">Ändra lösenord</string>

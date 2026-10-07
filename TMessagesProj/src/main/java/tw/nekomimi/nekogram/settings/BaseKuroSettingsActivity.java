@@ -57,7 +57,7 @@ import java.util.function.IntConsumer;
 
 import tw.nekomimi.nekogram.helpers.PopupHelper;
 
-public abstract class BaseNekoSettingsActivity extends BaseFragment {
+public abstract class BaseKuroSettingsActivity extends BaseFragment {
 
     protected static final Object PARTIAL = new Object();
 
@@ -71,11 +71,11 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
 
     protected int rowId = 1;
 
-    public BaseNekoSettingsActivity() {
+    public BaseKuroSettingsActivity() {
         this(null);
     }
 
-    public BaseNekoSettingsActivity(Bundle args) {
+    public BaseKuroSettingsActivity(Bundle args) {
         super(args);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -130,11 +130,11 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
                         .setScrimViewBackground(listView.getClipBackground(view))
                         .add(R.drawable.msg_copy, LocaleController.getString(R.string.CopyLink), () -> {
                             if ("copyReportId".equals(slug)) {
-                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/nekosettings/%s", getMessagesController().linkPrefix, "reportId"));
+                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/kurosettings/%s", getMessagesController().linkPrefix, "reportId"));
                             } else if ("checkUpdate".equals(slug)) {
-                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/nekosettings/%s", getMessagesController().linkPrefix, "update"));
+                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/kurosettings/%s", getMessagesController().linkPrefix, "update"));
                             } else {
-                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/nekosettings/%s?r=%s", getMessagesController().linkPrefix, key, slug));
+                                AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/kurosettings/%s?r=%s", getMessagesController().linkPrefix, key, slug));
                             }
                             BulletinFactory.of(this).createCopyLinkBulletin().show();
                         })
@@ -147,7 +147,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
 
             @Override
             public Integer getSelectorColor(int position) {
-                return BaseNekoSettingsActivity.this.getSelectorColor(position);
+                return BaseKuroSettingsActivity.this.getSelectorColor(position);
             }
         };
         listView.adapter.setApplyBackground(false);

@@ -76,7 +76,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class MessageHelper extends BaseController {
 
@@ -763,7 +763,7 @@ public class MessageHelper extends BaseController {
     }
 
     public static boolean canUseLocalCustomEmojis(int account) {
-        return NekoConfig.localCustomEmoji && !UserConfig.getInstance(account).isPremium();
+        return KuroConfig.localCustomEmoji && !UserConfig.getInstance(account).isPremium();
     }
 
     public ArrayList<TLRPC.MessageEntity> replaceCustomEmojis(long dialogId, ArrayList<TLRPC.MessageEntity> entities) {

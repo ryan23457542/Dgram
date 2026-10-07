@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.EmojiHelper;
 
 public class Emoji {
@@ -90,7 +90,7 @@ public class Emoji {
     public static boolean isSelectedEmojiPack;
 
     private static void reloadCache() {
-        isSelectedEmojiPack = EmojiHelper.getInstance().isSelectedEmojiPack() || NekoConfig.useSystemEmoji;
+        isSelectedEmojiPack = EmojiHelper.getInstance().isSelectedEmojiPack() || KuroConfig.useSystemEmoji;
     }
 
     public static void reloadEmoji() {

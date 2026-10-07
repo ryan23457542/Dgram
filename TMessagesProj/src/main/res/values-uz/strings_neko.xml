@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Neko sozlamalari</string>
+    <string name="KuroSettings">Kuro sozlamalari</string>
     <string name="PreferIPv6">IPv6 orqali ulanish afzalroq</string>
     <string name="MessageMenu">Xabarlar menyusi</string>
     <string name="HidePhone">Telefon raqamimni yashirish</string>
@@ -24,7 +24,7 @@
     <string name="Prpr">Biroq</string>
     <string name="EnableResidentNotification">Rezident bildirishnomasini ko\'rsatish</string>
     <string name="DisableResidentNotification">Rezident bildirishnomasini o\'chirib qo\'yish</string>
-    <string name="NekogramRunning">Dgram ishlamoqda</string>
+    <string name="KurogramRunning">Kurogram ishlamoqda</string>
     <string name="EventType">Yon panel piktogramma to\'plami</string>
     <string name="DependsOnDate">Sanaga bog\'liq</string>
     <string name="Christmas">Yangi yil</string>
@@ -118,7 +118,7 @@
     <string name="RegistrationDateApproximately">Taxminan %s</string>
     <string name="WsEnableTls">TLSni yoqish</string>
     <string name="WsProvider">Provayder</string>
-    <string name="UpdateNekogram">Dgramni yangilash</string>
+    <string name="UpdateKurogram">Dgramni yangilash</string>
     <string name="TranslationTarget">Maqsadli til</string>
     <string name="TranslationTargetApp">Tarjima tili</string>
     <string name="Translator">Tarjimon</string>
@@ -144,9 +144,9 @@
     <string name="OfficialSite">Rasmiy sayt</string>
     <string name="MutualContact">O\'zaro kantaktlar</string>
     <string name="MutualContactDescription">Ushbu kantakt o\'zaro kantakt.</string>
-    <string name="InviteTextNeko">Salom, Men chat uchun Dgramdan foydalanayapman. Menga qo\'shil! Bu yerdan yuklab ol: %1$s</string>
-    <string name="ShareNekogram">Dgramni yuborish...</string>
-    <string name="NekogramVersion">Dgram %1$s\nTelegram %2$s asosida\nDizayner %3$s</string>
+    <string name="InviteTextKuro">Salom, Men chat uchun Dgramdan foydalanayapman. Menga qo\'shil! Bu yerdan yuklab ol: %1$s</string>
+    <string name="ShareKurogram">Dgramni yuborish...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nTelegram %2$s asosida\nDizayner %3$s</string>
     <string name="UpdateInstalling">Yangilanish o\'rnatilmoqda...</string>
     <string name="UpdateInstallingNotification">Yangilanish o\'rnatilib bo\'lgach xabar paydo bo\'ladi.</string>
     <string name="UpdateInstallingRelaunch">Yangilanishlar amalga kirishi uchun qayta ishga tushiriladi.</string>
@@ -158,7 +158,7 @@
     <string name="DisableVoiceMessagesAutoPlay">Ovozli xabar avtomatik ijrosini o\'chirish</string>
     <string name="UnmuteVideosWithVolumeButtons">Ovoz tugmalari bilan videolarni ochish</string>
     <string name="TranslatorType">Turi</string>
-    <string name="TranslatorTypeNeko">Xabarda</string>
+    <string name="TranslatorTypeKuro">Xabarda</string>
     <string name="TranslatorTypeTG">Qalqib turuvchi</string>
     <string name="TranslatorTypeExternal">Tashqi ilova</string>
     <string name="CopyPhoto">Rasmni ko\'chirish</string>
@@ -169,7 +169,7 @@
     <string name="SaveToDownloadCount_few">%1$d fayllari saqlanmoqda</string>
     <string name="SaveToDownloadCount_many">%1$d fayllari saqlanmoqda</string>
     <string name="SaveToDownloadCount_other">%1$d fayllari saqlanmoqda</string>
-    <string name="AppLinkNotVerifiedMessage">Android 12 va undan yangiroq versiyalar uchun Dgram\'da t.me havolalarini ochish uchun tasdiqlangan havolalarga havolani qo\'lda qo\'shishingiz kerak.</string>
+    <string name="AppLinkNotVerifiedMessage">Android 12 va undan yangiroq versiyalar uchun Kurogram\'da t.me havolalarini ochish uchun tasdiqlangan havolalarga havolani qo\'lda qo\'shishingiz kerak.</string>
     <string name="AppLinkNotVerifiedTitle">Dastur havolalari tasdiqlanmagan</string>
     <string name="AutoTranslate">Avtomatik tarjima</string>
     <string name="AutoTranslateAbout">Boshqa tildagi xabarlarni avtomatik tarjima qilish.</string>
@@ -187,14 +187,14 @@
     <string name="TabletMode">Ekran rejimi</string>
     <string name="TabletModeAuto">Avto</string>
     <string name="DeleteAllFromSelfDone">Barcha xabarlaringiz o\'chirib tashlandi</string>
-    <string name="UnknownNekoSettingsOption">Boshqa Neko sozlamalari mavjud emas.</string>
+    <string name="UnknownKuroSettingsOption">Boshqa Kuro sozlamalari mavjud emas.</string>
     <string name="ProviderYouDaoTranslate">YouDao Tarjimon</string>
     <string name="ProviderBaiduTranslate">Baidu Tarjimon</string>
     <string name="ProviderSogouTranslate">Sogou Tarjimon</string>
     <string name="Translated">tarjima qilindi</string>
     <string name="PasscodeNeeded">Avval parolli qulflashni yoqishingiz kerak</string>
-    <string name="PasscodeNeko">Parol</string>
-    <string name="PasscodeShowInSettings">Neko sozlamalarida ko\'rsatish</string>
+    <string name="PasscodeKuro">Parol</string>
+    <string name="PasscodeShowInSettings">Kuro sozlamalarida ko\'rsatish</string>
     <string name="PasscodeShowInSettingsAbout">Yashirgandan keyin siz **FAQAT** ushbu sahifani havola orqali ochishingiz mumkin:</string>
     <string name="PasscodeSet">Parol o\'rnatish</string>
     <string name="PasscodeEdit">Parolni almashtirish</string>
@@ -273,7 +273,7 @@
     <string name="NavigationAnimationBezier">Klassik</string>
     <string name="NavigationAnimationSpring">Tabiiy</string>
     <string name="CloudConfig">Bulut Sozlamalari</string>
-    <string name="CloudConfigDesc">Neko sozlamalarini Telegram bulutga saqlash.</string>
+    <string name="CloudConfigDesc">Kuro sozlamalarini Telegram bulutga saqlash.</string>
     <string name="CloudConfigSyncDate">Sinxronlandi: %s, bulutga: %s</string>
     <string name="CloudConfigSyncDateNever">hech qachon</string>
     <string name="CloudConfigSync">Bulutga sinxronlash</string>
@@ -282,7 +282,7 @@
     <string name="CloudConfigRestoreShort">Tiklash</string>
     <string name="CloudConfigSyncing">Sinxronlanmoqda...</string>
     <string name="CloudConfigAutoSync">Avto sinxronlash</string>
-    <string name="CloudConfigAutoSyncDesc">Neko sozlamalarini o\'zgartirgach bulutga avtomatik sinxronlash.</string>
+    <string name="CloudConfigAutoSyncDesc">Kuro sozlamalarini o\'zgartirgach bulutga avtomatik sinxronlash.</string>
     <string name="CloudConfigSyncFailed">Sozlamalarni bulutga sinxronlashda xatolik.</string>
     <string name="CloudConfigRestoreFailed">Sozlamalarni bulutdan tiklashda xatolik.</string>
     <string name="ReducedColors">Ranglarni kamaytirish</string>

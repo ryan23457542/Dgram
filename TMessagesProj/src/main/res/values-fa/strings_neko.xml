@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">تنظیمات نکوگرام</string>
+    <string name="KuroSettings">تنظیمات نکوگرام</string>
     <string name="PreferIPv6">ترجیح اتصال با IPv6</string>
     <string name="MessageMenu">منوی پیام</string>
     <string name="HidePhone">شماره تلفن من را پنهان کن</string>
@@ -22,7 +22,7 @@
     <string name="AddToSavedMessages">ذخیره پیام</string>
     <string name="CreateMention">ایجاد منشن</string>
     <string name="Prpr">پروپرو</string>
-    <string name="NekogramRunning">نکوگرام در حال اجراعه</string>
+    <string name="KurogramRunning">نکوگرام در حال اجراعه</string>
     <string name="EventType">مجموعه آیکون نوار کناری</string>
     <string name="DependsOnDate">بستگی به تاریخ</string>
     <string name="Christmas">کریسمس</string>
@@ -114,7 +114,7 @@
     <string name="RegistrationDateNewer">جدیدتر از %s</string>
     <string name="RegistrationDateOlder">قدیمی تر از %s</string>
     <string name="RegistrationDateApproximately">تقریبا %s</string>
-    <string name="UpdateNekogram">بروز رسانی نکوگرام</string>
+    <string name="UpdateKurogram">بروز رسانی نکوگرام</string>
     <string name="TranslationTarget">زبان مقصد</string>
     <string name="TranslationTargetApp">مانند برنامه</string>
     <string name="Translator">مترجم</string>
@@ -140,9 +140,9 @@
     <string name="OfficialSite">سایت رسمی</string>
     <string name="MutualContact">مخاطب دو طرفه</string>
     <string name="MutualContactDescription">این مخاطب یک مخاطب دو طرفه است.</string>
-    <string name="InviteTextNeko">سلام، من از Dgram برای چت استفاده می کنم. به من ملحق شو! Dgram را از اینجا دانلود کن: %1$s</string>
-    <string name="ShareNekogram">اشتراکگذاری نکوگرام...</string>
-    <string name="NekogramVersion">نکوگرام %1$s\nبر اساس تلگرام %2$s\nطراحی شده %3$s</string>
+    <string name="InviteTextKuro">سلام، من از Kurogram برای چت استفاده می کنم. به من ملحق شو! Kurogram را از اینجا دانلود کن: %1$s</string>
+    <string name="ShareKurogram">اشتراکگذاری نکوگرام...</string>
+    <string name="KurogramVersion">نکوگرام %1$s\nبر اساس تلگرام %2$s\nطراحی شده %3$s</string>
     <string name="UpdateInstalling">در حال نصب بروز رسانی...</string>
     <string name="UpdateInstallingNotification">هنگامی که به روز رسانی کامل شد یک اعلان نشان داده می شود.</string>
     <string name="UpdateInstallingRelaunch">پس از تکمیل به‌روزرسانی، برنامه دوباره راه‌اندازی می‌شود.</string>
@@ -154,7 +154,7 @@
     <string name="DisableVoiceMessagesAutoPlay">غیرفعال کردن پخش خودکار پیام های صوتی</string>
     <string name="UnmuteVideosWithVolumeButtons">فعال کردن صدا در ویدیوها با دکمه‌های تنظیم صدا</string>
     <string name="TranslatorType">نوع</string>
-    <string name="TranslatorTypeNeko">در پیام</string>
+    <string name="TranslatorTypeKuro">در پیام</string>
     <string name="TranslatorTypeTG">پنجره بازشو</string>
     <string name="TranslatorTypeExternal">برنامه خارجی</string>
     <string name="CopyPhoto">کپی عکس</string>
@@ -183,13 +183,13 @@
     <string name="TabletMode">حالت تبلت</string>
     <string name="TabletModeAuto">خودکار</string>
     <string name="DeleteAllFromSelfDone">حذف تمامی پیام های شما</string>
-    <string name="UnknownNekoSettingsOption">گزینه تنظیمات نکو وجود ندارد.</string>
+    <string name="UnknownKuroSettingsOption">گزینه تنظیمات نکو وجود ندارد.</string>
     <string name="ProviderYouDaoTranslate">مترجم YouDao</string>
     <string name="ProviderBaiduTranslate">مترجم Baidu</string>
     <string name="ProviderSogouTranslate">مترجم Sogou</string>
     <string name="Translated">ترجمه شده</string>
     <string name="PasscodeNeeded">ابتدا رمز عبور را فعال کنید</string>
-    <string name="PasscodeNeko">رمز عبور</string>
+    <string name="PasscodeKuro">رمز عبور</string>
     <string name="PasscodeShowInSettings">نمایش در تنظیمات نکو</string>
     <string name="PasscodeShowInSettingsAbout">بعد از مخفی. تنها **می‌توانید** صفحه را از طریق لینک باز کنید:</string>
     <string name="PasscodeSet">تنظیم رمز عبور</string>
@@ -270,7 +270,7 @@
     <string name="NavigationAnimationBezier">کلاسیک</string>
     <string name="NavigationAnimationSpring">عادی</string>
     <string name="CloudConfig">تنظیمات ابری</string>
-    <string name="CloudConfigDesc">تنظیمات Neko خود را در ابر تلگرام ذخیره کنید.</string>
+    <string name="CloudConfigDesc">تنظیمات Kuro خود را در ابر تلگرام ذخیره کنید.</string>
     <string name="CloudConfigSyncDate">آخرین همگام سازی: %s، ابر: %s</string>
     <string name="CloudConfigSyncDateNever">هرگز</string>
     <string name="CloudConfigSync">همگام سازی با ابر</string>
@@ -279,7 +279,7 @@
     <string name="CloudConfigRestoreShort">بازیابی</string>
     <string name="CloudConfigSyncing">در حال همگام سازی...</string>
     <string name="CloudConfigAutoSync">همگام سازی خودکار</string>
-    <string name="CloudConfigAutoSyncDesc">پس از ایجاد تغییرات در تنظیمات Neko، به طور خودکار با ابر همگام سازی کنید.</string>
+    <string name="CloudConfigAutoSyncDesc">پس از ایجاد تغییرات در تنظیمات Kuro، به طور خودکار با ابر همگام سازی کنید.</string>
     <string name="CloudConfigSyncFailed">تنظیمات با ابر همگام‌سازی نشد.</string>
     <string name="CloudConfigRestoreFailed">بازیابی تنظیمات از ابر انجام نشد.</string>
     <string name="ReducedColors">رنگ ها را کاهش دهید</string>

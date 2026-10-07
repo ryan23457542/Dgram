@@ -164,7 +164,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
@@ -6962,7 +6962,7 @@ public class EmojiView extends FrameLayout implements
                         }
                     });
                     containerLayout.setOnLongClickListener(v -> {
-                        NekoConfig.toggleMinimizedStickerCreator();
+                        KuroConfig.toggleMinimizedStickerCreator();
                         checkDocuments(false);
                         return true;
                     });
@@ -7060,13 +7060,13 @@ public class EmojiView extends FrameLayout implements
                             }
                         } else if (object == recentStickers) {
                             cell.setText(getString(R.string.RecentStickers), R.drawable.msg_close, getString(R.string.ClearRecentStickersAlertTitle));
-                            if (NekoConfig.minimizedStickerCreator) {
+                            if (KuroConfig.minimizedStickerCreator) {
                                 cell.setCreate(v -> {
                                     if (fragment instanceof ChatActivity) {
                                         ((ChatActivity) fragment).openAttachMenuForCreatingSticker();
                                     }
                                 }, v -> {
-                                    NekoConfig.toggleMinimizedStickerCreator();
+                                    KuroConfig.toggleMinimizedStickerCreator();
                                     checkDocuments(false);
                                     return true;
                                 });

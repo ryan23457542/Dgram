@@ -125,7 +125,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 @SuppressLint("ViewConstructor")
 public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayout implements NotificationCenter.NotificationCenterDelegate {
@@ -828,7 +828,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         gridView.getFastScroll().setAlpha(0f);
         gridView.getFastScroll().usePadding = false;
         gridView.getFastScroll().topOffset = ActionBar.getCurrentActionBarHeight(); // + AndroidUtilities.statusBarHeight;
-        gridView.setAdapter(adapter = new PhotoAttachAdapter(context, !NekoConfig.disableInstantCamera && needCamera));
+        gridView.setAdapter(adapter = new PhotoAttachAdapter(context, !KuroConfig.disableInstantCamera && needCamera));
         gridView.addItemDecoration(cameraViewItemDecoration = new CameraViewItemDecoration(gridView));
         adapter.createCache();
         gridView.setClipToPadding(false);
@@ -1142,7 +1142,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             progressView.showTextView();
         }
 
-        if (needCamera && NekoConfig.disableInstantCamera) {
+        if (needCamera && KuroConfig.disableInstantCamera) {
             cameraFloatingButton = new FragmentFloatingButton(getContext(), resourcesProvider);
             cameraFloatingButton.setContentDescription(LocaleController.getString(R.string.AccDescrInstantCamera));
             cameraFloatingButton.setImageResource(R.drawable.camera);
@@ -2523,14 +2523,14 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         AndroidUtilities.setLightNavigationBar(parentAlert, false);
         parentAlert.getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
         if (animated) {
-            setCameraOpenProgress(NekoConfig.disableInstantCamera ? 1f : 0);
+            setCameraOpenProgress(KuroConfig.disableInstantCamera ? 1f : 0);
             cameraAnimationInProgress = true;
             if (gridView != null) {
                 gridView.invalidate();
             }
             notificationsLocker.lock();
             ArrayList<Animator> animators = new ArrayList<>();
-            if (!NekoConfig.disableInstantCamera) {
+            if (!KuroConfig.disableInstantCamera) {
                 animators.add(ObjectAnimator.ofFloat(this, "cameraOpenProgress", 0.0f, 1.0f));
             } else if (cameraView.isInited()) {
                 animators.add(ObjectAnimator.ofFloat(cameraView, View.ALPHA, 0.0f, 1.0f));
@@ -2592,7 +2592,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
         gridView.invalidate();
 
-        if ((NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null && cameraView.isInited()) {
+        if ((KuroConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null && cameraView.isInited()) {
             cameraView.showTexture(true, animated);
         }
     }
@@ -2622,7 +2622,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             return;
         }
         if (cameraView == null) {
-            final boolean lazy = NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT);
+            final boolean lazy = KuroConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT);
             cameraView = new CameraViewInternal(getContext(), isCameraFrontfaceBeforeEnteringEditMode != null ? isCameraFrontfaceBeforeEnteringEditMode : parentAlert.openWithFrontFaceCamera, lazy);
             //if (lazy) {
             //    cameraView.setThumbDrawable(cameraViewItemDecoration.placeholderDrawable);
@@ -2893,7 +2893,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                 gridView.invalidate();
             }
             ArrayList<Animator> animators = new ArrayList<>();
-            if (!NekoConfig.disableInstantCamera) {
+            if (!KuroConfig.disableInstantCamera) {
                 animators.add(ObjectAnimator.ofFloat(this, "cameraOpenProgress", 0.0f));
             } else {
                 animators.add(ObjectAnimator.ofFloat(cameraView, View.ALPHA, 0.0f));
@@ -2982,7 +2982,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         }
         gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_AUTO);
 
-        if ((NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null) {
+        if ((KuroConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null) {
             cameraView.showTexture(false, animated);
         }
     }

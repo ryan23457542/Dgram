@@ -38,12 +38,12 @@ import java.util.function.BiConsumer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class CloudSettingsHelper {
     private static final int CONFIG_VERSION = 0;
 
-    private final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekocloud", Context.MODE_PRIVATE);
+    private final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kurocloud", Context.MODE_PRIVATE);
     private final long[] cloudSyncedDate = new long[UserConfig.MAX_ACCOUNT_COUNT];
     private final Runnable cloudSyncRunnable = () -> CloudSettingsHelper.getInstance().syncToCloud((success, error) -> {
         if (!success) {
@@ -164,7 +164,7 @@ public class CloudSettingsHelper {
     }
 
     private void syncToCloud(BiConsumer<Boolean, String> callback) {
-        String rawConfig = NekoConfig.exportConfigs();
+        String rawConfig = KuroConfig.exportConfigs();
         String compressed = encodeConfig(rawConfig);
         getCloudStorageHelper().setItem("neko_settings", rawConfig.length() >= compressed.length() ? compressed : rawConfig, (res, error) -> {
             if (error == null) {
@@ -190,7 +190,7 @@ public class CloudSettingsHelper {
                         callback.accept(false, "DECODE_FAILED");
                     } else {
                         try {
-                            NekoConfig.importConfigs(config);
+                            KuroConfig.importConfigs(config);
                             localSyncedDate = System.currentTimeMillis();
                             preferences.edit().putLong("updated_at", localSyncedDate).apply();
                             callback.accept(true, null);

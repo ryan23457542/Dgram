@@ -39,9 +39,9 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import app.nekogram.translator.exception.Http429Exception;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.PopupHelper;
-import tw.nekomimi.nekogram.settings.NekoLanguagesSelectActivity;
+import tw.nekomimi.nekogram.settings.KuroLanguagesSelectActivity;
 
 public class Translator {
 
@@ -77,10 +77,10 @@ public class Translator {
     }
 
     public static void showTranslateDialog(Context context, String query, ArrayList<TLRPC.MessageEntity> entities, boolean noforwards, BaseFragment fragment, Utilities.CallbackReturn<URLSpan, Boolean> onLinkPress, String sourceLanguage, View anchorView, Theme.ResourcesProvider resourcesProvider) {
-        if (NekoConfig.transType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+        if (KuroConfig.transType == KuroConfig.TRANS_TYPE_EXTERNAL) {
             TranslatorApps.showExternalTranslateDialog(context, query, sourceLanguage, anchorView, resourcesProvider);
         } else {
-            TranslateAlert2.showAlert(context, fragment, UserConfig.selectedAccount, sourceLanguage, NekoConfig.translationTarget, query, entities, noforwards, onLinkPress, null, resourcesProvider);
+            TranslateAlert2.showAlert(context, fragment, UserConfig.selectedAccount, sourceLanguage, KuroConfig.translationTarget, query, entities, noforwards, onLinkPress, null, resourcesProvider);
         }
     }
 
@@ -149,7 +149,7 @@ public class Translator {
         if (lang == null || "und".equals(lang)) {
             return false;
         }
-        var restricted = NekoConfig.restrictedLanguages;
+        var restricted = KuroConfig.restrictedLanguages;
         if (restricted == null) {
             return lang.equals(stripLanguageCode(getCurrentTargetLanguage()));
         } else {
@@ -159,10 +159,10 @@ public class Translator {
 
     public static ArrayList<String> getRestrictedLanguages() {
         var languages = new ArrayList<String>();
-        if (NekoConfig.restrictedLanguages == null) {
+        if (KuroConfig.restrictedLanguages == null) {
             languages.add(stripLanguageCode(getCurrentTargetLanguage()));
         } else {
-            languages.addAll(NekoConfig.restrictedLanguages);
+            languages.addAll(KuroConfig.restrictedLanguages);
         }
         return languages;
     }
@@ -171,10 +171,10 @@ public class Translator {
         var currentTargetLanguage = stripLanguageCode(getCurrentTargetLanguage());
         var languages = restrictedLanguages.stream().filter(s -> !s.equals(currentTargetLanguage)).collect(Collectors.toSet());
         if (!restrictedLanguages.isEmpty() && languages.isEmpty()) {
-            NekoConfig.setRestrictedLanguages(null);
+            KuroConfig.setRestrictedLanguages(null);
             return;
         }
-        NekoConfig.setRestrictedLanguages(new HashSet<>(restrictedLanguages));
+        KuroConfig.setRestrictedLanguages(new HashSet<>(restrictedLanguages));
     }
 
     public static Pair<ArrayList<String>, ArrayList<String>> getProviders() {
@@ -218,32 +218,32 @@ public class Translator {
             targetLanguages.add(0, "app");
             names.add(0, LocaleController.getString(R.string.TranslationTargetApp));
 
-            PopupHelper.show(names, LocaleController.getString(R.string.TranslationTarget), targetLanguages.indexOf(NekoConfig.translationTarget), fragment, view, i -> {
-                NekoConfig.setTranslationTarget(targetLanguages.get(i));
+            PopupHelper.show(names, LocaleController.getString(R.string.TranslationTarget), targetLanguages.indexOf(KuroConfig.translationTarget), fragment, view, i -> {
+                KuroConfig.setTranslationTarget(targetLanguages.get(i));
                 if (callback != null) callback.run();
             });
         } else {
-            fragment.presentFragment(new NekoLanguagesSelectActivity(NekoLanguagesSelectActivity.TYPE_TARGET));
+            fragment.presentFragment(new KuroLanguagesSelectActivity(KuroLanguagesSelectActivity.TYPE_TARGET));
         }
     }
 
     public static void showTranslatorTypeSelector(BaseFragment fragment, View view, Runnable callback) {
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayList<Integer> types = new ArrayList<>();
-        arrayList.add(LocaleController.getString(R.string.TranslatorTypeNeko));
-        types.add(NekoConfig.TRANS_TYPE_NEKO);
+        arrayList.add(LocaleController.getString(R.string.TranslatorTypeKuro));
+        types.add(KuroConfig.TRANS_TYPE_KURO);
         arrayList.add(LocaleController.getString(R.string.TranslatorTypeTG));
-        types.add(NekoConfig.TRANS_TYPE_TG);
+        types.add(KuroConfig.TRANS_TYPE_TG);
         arrayList.add(LocaleController.getString(R.string.TranslatorTypeExternal));
-        types.add(NekoConfig.TRANS_TYPE_EXTERNAL);
-        PopupHelper.show(arrayList, LocaleController.getString(R.string.TranslatorType), types.indexOf(NekoConfig.transType), fragment, view, i -> {
-            NekoConfig.setTransType(types.get(i));
+        types.add(KuroConfig.TRANS_TYPE_EXTERNAL);
+        PopupHelper.show(arrayList, LocaleController.getString(R.string.TranslatorType), types.indexOf(KuroConfig.transType), fragment, view, i -> {
+            KuroConfig.setTransType(types.get(i));
             if (callback != null) callback.run();
         });
     }
 
     public static void showTranslationProviderSelector(BaseFragment fragment, View view, BooleanConsumer callback) {
-        if (NekoConfig.transType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+        if (KuroConfig.transType == KuroConfig.TRANS_TYPE_EXTERNAL) {
             var app = TranslatorApps.getTranslatorApp();
             var apps = TranslatorApps.getTranslatorApps();
             if (apps.isEmpty()) {
@@ -262,28 +262,28 @@ public class Translator {
         if (names == null || types == null) {
             return;
         }
-        PopupHelper.show(names, LocaleController.getString(R.string.TranslationProvider), types.indexOf(NekoConfig.translationProvider), fragment, view, i -> {
+        PopupHelper.show(names, LocaleController.getString(R.string.TranslationProvider), types.indexOf(KuroConfig.translationProvider), fragment, view, i -> {
             var translator = getTranslator(types.get(i));
-            String targetLanguage = getTargetLanguage(translator, NekoConfig.translationTarget);
+            String targetLanguage = getTargetLanguage(translator, KuroConfig.translationTarget);
 
             if (translator.supportLanguage(targetLanguage)) {
-                NekoConfig.setTranslationProvider(types.get(i));
+                KuroConfig.setTranslationProvider(types.get(i));
                 if (callback != null) callback.accept(true);
             } else {
                 var context = fragment.getParentActivity();
                 var resourcesProvider = fragment.getResourceProvider();
                 var builder = new AlertDialog.Builder(context, resourcesProvider)
                         .setMessage(LocaleController.getString(R.string.TranslateApiUnsupported));
-                if ("app".equals(NekoConfig.translationTarget)) {
+                if ("app".equals(KuroConfig.translationTarget)) {
                     builder.setPositiveButton(LocaleController.getString(R.string.UseGoogleTranslate), (dialog, which) -> {
-                        NekoConfig.setTranslationProvider(PROVIDER_GOOGLE);
+                        KuroConfig.setTranslationProvider(PROVIDER_GOOGLE);
                         if (callback != null) callback.accept(true);
                     });
                     builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                 } else if (translator.supportLanguage(getCurrentAppLanguage(translator))) {
                     builder.setPositiveButton(LocaleController.getString(R.string.ResetLanguage), (dialog, which) -> {
-                        NekoConfig.setTranslationProvider(types.get(i));
-                        NekoConfig.setTranslationTarget("app");
+                        KuroConfig.setTranslationProvider(types.get(i));
+                        KuroConfig.setTranslationTarget("app");
                         if (callback != null) callback.accept(false);
                     });
                     builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
@@ -300,7 +300,7 @@ public class Translator {
     }
 
     private static ITranslator getCurrentTranslator() {
-        return getTranslator(NekoConfig.translationProvider);
+        return getTranslator(KuroConfig.translationProvider);
     }
 
     private static ITranslator getTranslator(String type) {
@@ -417,7 +417,7 @@ public class Translator {
     }
 
     public static String getCurrentTargetLanguage() {
-        return getTargetLanguage(getCurrentTranslator(), NekoConfig.translationTarget);
+        return getTargetLanguage(getCurrentTranslator(), KuroConfig.translationTarget);
     }
 
     private record PollTranslateTask(ITranslator translator, TranslateController.PollText query,
@@ -473,7 +473,7 @@ public class Translator {
 
         @Override
         public TranslationResult call() throws Exception {
-            var key = CacheKey.of(query, tl, NekoConfig.translationProvider, NekoConfig.keepFormatting);
+            var key = CacheKey.of(query, tl, KuroConfig.translationProvider, KuroConfig.keepFormatting);
             var cached = cache.get(key);
             if (cached != null) {
                 return cached;

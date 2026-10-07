@@ -4,6 +4,6 @@
     android:installLocation="auto">
 
     <application
-        android:label="@string/NekogramBeta"
+        android:label="@string/KurogramBeta"
         tools:replace="label" />
 </manifest>

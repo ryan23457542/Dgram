@@ -229,7 +229,7 @@ import java.util.Locale;
 
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.ImeHelper;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
 
@@ -890,7 +890,7 @@ public class ChatActivityEnterView extends FrameLayout implements
         @Override
         public void run() {
             if (delegate != null) {
-                if (NekoConfig.cameraInVideoMessages == NekoConfig.CAMERA_ASK) {
+                if (KuroConfig.cameraInVideoMessages == KuroConfig.CAMERA_ASK) {
                     ItemOptions.makeOptions(parentFragment, audioVideoButtonContainer)
                             .add(R.drawable.msg_openprofile, LocaleController.getString(R.string.FrontCamera), () -> openCamera(true))
                             .add(R.drawable.msg_background, LocaleController.getString(R.string.RearCamera), () -> openCamera(false))
@@ -904,7 +904,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                     }
                     return;
                 }
-                delegate.setFrontface(NekoConfig.cameraInVideoMessages == NekoConfig.CAMERA_FRONT);
+                delegate.setFrontface(KuroConfig.cameraInVideoMessages == KuroConfig.CAMERA_FRONT);
                 delegate.needStartRecordVideo(0, true, 0, 0, 0, 0, 0);
             }
         }
@@ -966,7 +966,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                 } else {
                     onFinishInitCameraRunnable.run();
                 }
-                if (!recordingAudioVideo && NekoConfig.cameraInVideoMessages != NekoConfig.CAMERA_ASK) {
+                if (!recordingAudioVideo && KuroConfig.cameraInVideoMessages != KuroConfig.CAMERA_ASK) {
                     recordingAudioVideo = true;
                     updateRecordInterface(RECORD_STATE_ENTER, true);
                     if (recordCircle != null) {
@@ -3079,9 +3079,9 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     });
                                     return true;
                                 }
-                                delegate.needStartRecordVideo(NekoConfig.confirmAVMessage ? 3 : 1, true, 0, 0, voiceOnce ? 0x7FFFFFFF : 0, effectId, 0);
+                                delegate.needStartRecordVideo(KuroConfig.confirmAVMessage ? 3 : 1, true, 0, 0, voiceOnce ? 0x7FFFFFFF : 0, effectId, 0);
                                 sendButton.setEffect(effectId = 0);
-                            } else if (NekoConfig.confirmAVMessage) {
+                            } else if (KuroConfig.confirmAVMessage) {
                                 MediaController.getInstance().stopRecording(2, true, 0, voiceOnce, 0);
                             } else {
                                 if (recordingAudioVideo && isInScheduleMode()) {
@@ -3111,7 +3111,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                                 MediaController.getInstance().stopRecording(isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
                                 delegate.needStartRecordAudio(0);
                             }
-                            if (!NekoConfig.confirmAVMessage) {
+                            if (!KuroConfig.confirmAVMessage) {
                                 recordingAudioVideo = false;
                                 messageTransitionIsRunning = false;
                                 AndroidUtilities.runOnUIThread(moveToSendStateRunnable = () -> {
@@ -3206,7 +3206,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     return true;
                                 }
                                 CameraController.getInstance().cancelOnInitRunnable(onFinishInitCameraRunnable);
-                                delegate.needStartRecordVideo(NekoConfig.confirmAVMessage ? 3 : 1, true, 0, 0, voiceOnce ? 0x7FFFFFFF : 0, effectId, 0);
+                                delegate.needStartRecordVideo(KuroConfig.confirmAVMessage ? 3 : 1, true, 0, 0, voiceOnce ? 0x7FFFFFFF : 0, effectId, 0);
                                 sendButton.setEffect(effectId = 0);
                             } else if (!sendVoiceEnabled) {
                                 delegate.needShowMediaBanHint();
@@ -3225,13 +3225,13 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     });
                                     return true;
                                 }
-                                if (!NekoConfig.confirmAVMessage && recordingAudioVideo && isInScheduleMode()) {
+                                if (!KuroConfig.confirmAVMessage && recordingAudioVideo && isInScheduleMode()) {
                                     AlertsCreator.createScheduleDatePickerDialog(parentActivity, parentFragment.getDialogId(), (notify, scheduleDate, scheduleRepeatPeriod) -> MediaController.getInstance().stopRecording(1, notify, scheduleDate, false, 0), () -> MediaController.getInstance().stopRecording(0, false, 0, false, 0), resourcesProvider);
                                 }
                                 delegate.needStartRecordAudio(0);
-                                MediaController.getInstance().stopRecording(NekoConfig.confirmAVMessage ? 2 : isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
+                                MediaController.getInstance().stopRecording(KuroConfig.confirmAVMessage ? 2 : isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
                             }
-                            if (!NekoConfig.confirmAVMessage) {
+                            if (!KuroConfig.confirmAVMessage) {
                                 recordingAudioVideo = false;
                                 messageTransitionIsRunning = false;
                                 AndroidUtilities.runOnUIThread(moveToSendStateRunnable = () -> {

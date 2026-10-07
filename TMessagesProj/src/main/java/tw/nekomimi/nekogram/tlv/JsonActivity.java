@@ -49,9 +49,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.nekomimi.nekogram.helpers.EntitiesHelper;
-import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.BaseKuroSettingsActivity;
 
-public class JsonActivity extends BaseNekoSettingsActivity {
+public class JsonActivity extends BaseKuroSettingsActivity {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.function.BiConsumer;
 
 import tw.nekomimi.nekogram.Extra;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.remote.BaseRemoteHelper;
 
 public class InlineBotHelper extends BaseController {
@@ -103,7 +103,7 @@ public class InlineBotHelper extends BaseController {
     }
 
     public static String findBotForText(String s) {
-        if (!NekoConfig.autoInlineBot) return null;
+        if (!KuroConfig.autoInlineBot) return null;
         var text = s.trim();
         if (text.contains(" ")) return null;
         if (text.startsWith("https://x.com/") || text.startsWith("https://twitter.com/")) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Neko iestatījumi</string>
+    <string name="KuroSettings">Kuro iestatījumi</string>
     <string name="MessageMenu">Ziņu izvēlne</string>
     <string name="HidePhone">Paslēpt manu tālruņa numuru</string>
     <string name="DeleteAllFromSelf">Dzēst savus ziņojumus</string>
@@ -17,7 +17,7 @@
     <string name="Prpr">Peropero</string>
     <string name="EnableResidentNotification">Rādīt rezidenta paziņojumu</string>
     <string name="DisableResidentNotification">Rādīt rezidenta paziņojumu</string>
-    <string name="NekogramRunning">Dgram darbojas</string>
+    <string name="KurogramRunning">Kurogram darbojas</string>
     <string name="EventType">Sānu joslas ikonu komplekts</string>
     <string name="DependsOnDate">Atkarībā no datuma</string>
     <string name="Christmas">Ziemassvētki</string>
@@ -59,8 +59,8 @@
     <string name="IgnoreBlockedAbout">TAS NAV ĪSTI PASLĒPT! Ziņojumi joprojām ir pieejami apskatei, bet teksts tiks pārveidots uz spoileru un multivides līdzekļi netiks automātiski lejupielādēti.</string>
     <string name="Donate">Ziedot</string>
     <string name="DonateAbout">Atbalstiet mūsu attīstību.</string>
-    <string name="TranslationAbout">Palīdziet mums tulkot Dgram jūsu valodā.</string>
-    <string name="Translation">Tulkot Dgram</string>
+    <string name="TranslationAbout">Palīdziet mums tulkot Kurogram jūsu valodā.</string>
+    <string name="Translation">Tulkot Kurogram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Atiestatīt uzlīmes lielumu</string>
     <string name="RestartAppToTakeEffect">Restartējiet lietotni, lai tas stātos spēkā.</string>
@@ -111,7 +111,7 @@
     <string name="RegistrationDateApproximately">Aptuveni %s</string>
     <string name="WsEnableTls">TLS iespējošana</string>
     <string name="WsProvider">Nodrošinātājs</string>
-    <string name="UpdateNekogram">Dgrammas atjaunināšana</string>
+    <string name="UpdateKurogram">Dgrammas atjaunināšana</string>
     <string name="TranslationTarget">Mērķa valoda</string>
     <string name="TranslationTargetApp">Sekojiet lietotnei</string>
     <string name="Translator">Tulkotājs</string>
@@ -136,9 +136,9 @@
     <string name="OfficialSite">Oficiālā vietne</string>
     <string name="MutualContact">Savstarpējs kontakts</string>
     <string name="MutualContactDescription">Šis kontakts ir savstarpējs kontakts.</string>
-    <string name="InviteTextNeko">Hei, es izmantoju Dgram, lai tērzētu. Pievienojies man! Lejupielādējiet to šeit: %1$s</string>
-    <string name="ShareNekogram">Kopīgojiet Dgram...</string>
-    <string name="NekogramVersion">Dgram %1$s\nPamatojoties uz Telegram %2$s\n\n Izstrādāts %3$s</string>
+    <string name="InviteTextKuro">Hei, es izmantoju Kurogram, lai tērzētu. Pievienojies man! Lejupielādējiet to šeit: %1$s</string>
+    <string name="ShareKurogram">Kopīgojiet Kurogram...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nPamatojoties uz Telegram %2$s\n\n Izstrādāts %3$s</string>
     <string name="UpdateInstalling">Atjauninājumu instalēšana...</string>
     <string name="UpdateInstallingNotification">Pēc atjaunināšanas pabeigšanas tiks parādīts paziņojums.</string>
     <string name="UpdateInstallingRelaunch">Pēc atjaunināšanas pabeigšanas lietotne tiks palaista no jauna.</string>
@@ -149,7 +149,7 @@
     <string name="NoTranslatorAppInstalled">Jums nav lietojumprogrammu, kas var apstrādāt tulkot nodomu, lūdzu, instalējiet vienu, lai turpinātu</string>
     <string name="DisableVoiceMessagesAutoPlay">Atslēgt balss ziņojumu automātisko atskaņošanu</string>
     <string name="TranslatorType">Tips</string>
-    <string name="TranslatorTypeNeko">Ziņojumā</string>
+    <string name="TranslatorTypeKuro">Ziņojumā</string>
     <string name="TranslatorTypeTG">Iznirstošais dialoglodziņš</string>
     <string name="TranslatorTypeExternal">Ārējā lietotne</string>
     <string name="CopyPhoto">Kopēt fotoattēlu</string>
@@ -160,7 +160,7 @@
     <string name="SaveToDownloadCount_few">%1$d failu saglabāšana lejupielādēs</string>
     <string name="SaveToDownloadCount_many">%1$d failu saglabāšana lejupielādēs</string>
     <string name="SaveToDownloadCount_other">%1$d failu saglabāšana lejupielādēs</string>
-    <string name="AppLinkNotVerifiedMessage">Lai atvērtu t.me saites programmā Dgram, operētājsistēmā Android 12 un jaunākās versijās ir manuāli jāpievieno saite pārbaudītajām saitēm.</string>
+    <string name="AppLinkNotVerifiedMessage">Lai atvērtu t.me saites programmā Kurogram, operētājsistēmā Android 12 un jaunākās versijās ir manuāli jāpievieno saite pārbaudītajām saitēm.</string>
     <string name="AppLinkNotVerifiedTitle">Programmu saites nav pārbaudītas</string>
     <string name="AutoTranslate">Automātiskais tulkojums</string>
     <string name="AutoTranslateAbout">Automātiski tulkot ziņojumus citā valodā.</string>
@@ -178,14 +178,14 @@
     <string name="TabletMode">Planšetdatora režīms</string>
     <string name="TabletModeAuto">Auto</string>
     <string name="DeleteAllFromSelfDone">Visi jūsu ziņojumi tiek dzēsti</string>
-    <string name="UnknownNekoSettingsOption">Šādas opcijas Neko iestatījumi nav.</string>
+    <string name="UnknownKuroSettingsOption">Šādas opcijas Kuro iestatījumi nav.</string>
     <string name="ProviderYouDaoTranslate">YouDao tulkotājs</string>
     <string name="ProviderBaiduTranslate">Baidu tulkotājs</string>
     <string name="ProviderSogouTranslate">Sogou tulkot</string>
     <string name="Translated">tulkojums</string>
     <string name="PasscodeNeeded">Vispirms jāaktivizē piekļuves koda bloķēšana</string>
-    <string name="PasscodeNeko">Pieejas kods</string>
-    <string name="PasscodeShowInSettings">Rādīt Neko iestatījumos</string>
+    <string name="PasscodeKuro">Pieejas kods</string>
+    <string name="PasscodeShowInSettings">Rādīt Kuro iestatījumos</string>
     <string name="PasscodeShowInSettingsAbout">Pēc paslēpšanas varat **TIKAI** atvērt šo lapu, izmantojot saiti:</string>
     <string name="PasscodeSet">Iestatīt piekļuves kodu</string>
     <string name="PasscodeEdit">Mainīt piekļuves kodu</string>

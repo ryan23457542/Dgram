@@ -346,11 +346,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import tw.nekomimi.nekogram.BackButtonMenuRecent;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.SimpleTextViewSwitcher;
 import tw.nekomimi.nekogram.helpers.PopupHelper;
 import tw.nekomimi.nekogram.helpers.remote.ConfigHelper;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroSettingsActivity;
 import tw.nekomimi.nekogram.translator.Translator;
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.core.reference.ReferenceList;
@@ -5683,7 +5683,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return false;
             }
         };
-        idTextView.setVisibility(NekoConfig.idType == NekoConfig.ID_TYPE_HIDDEN ? View.GONE : View.VISIBLE);
+        idTextView.setVisibility(KuroConfig.idType == KuroConfig.ID_TYPE_HIDDEN ? View.GONE : View.VISIBLE);
         idTextView.setFactory(() -> {
             SimpleTextView view = new SimpleTextView(context);
             view.setTextColor(applyPeerColor(getThemedColor(Theme.key_actionBarDefaultSubtitle), true, false));
@@ -6083,7 +6083,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             avatarGooey.setAlpha(1f - v);
             avatarGooey.setBlurIntensity(0f);
             avatarGooey.setGooeyEnabled(false);
-        } else if (!NekoConfig.gooeyAvatarAnimation) {
+        } else if (!KuroConfig.gooeyAvatarAnimation) {
             avatarGooey.setAlpha(MathUtils.clamp(1f - (pullUpProgress - 0.5f) / 0.5f, 0f, 1f));
             avatarGooey.setBlurIntensity(0f);
             avatarGooey.setGooeyEnabled(false);
@@ -8929,7 +8929,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 mediaCounterTextView.setTranslationY(onlineY);
                 updateCollectibleHint();
 
-                if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN && !searchMode) {
+                if (KuroConfig.idType != KuroConfig.ID_TYPE_HIDDEN && !searchMode) {
                     idTextView.setAlpha(diff);
                     idTextView.setTag(diff);
                     if (diff == 0) {
@@ -12817,7 +12817,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         nameTextView[1].setVisibility(View.VISIBLE);
         onlineTextView[1].setVisibility(View.VISIBLE);
         onlineTextView[3].setVisibility(View.VISIBLE);
-        if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(View.VISIBLE);
+        if (KuroConfig.idType != KuroConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(View.VISIBLE);
 
         actionBar.onSearchFieldVisibilityChanged(searchTransitionProgress > 0.5f);
         int itemVisibility = searchTransitionProgress > 0.5f ? View.VISIBLE : View.GONE;
@@ -12943,7 +12943,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         nameTextView[1].setVisibility(hide);
         onlineTextView[1].setVisibility(hide);
         onlineTextView[3].setVisibility(hide);
-        if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(hide);
+        if (KuroConfig.idType != KuroConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(hide);
 
         if (otherItem != null) {
             otherItem.setAlpha(1f);
@@ -16011,7 +16011,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void updateIdText(boolean showDate, boolean animated, boolean chatFull) {
-        if (idTextView == null || NekoConfig.idType == NekoConfig.ID_TYPE_HIDDEN) {
+        if (idTextView == null || KuroConfig.idType == KuroConfig.ID_TYPE_HIDDEN) {
             return;
         }
         if (!showDate && isPulledDown && (!animated || chatFull)) {
@@ -16035,7 +16035,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             } else if (chatId != 0) {
                 var chat = getMessagesController().getChat(chatId);
                 if (chat == null) return;
-                if (NekoConfig.idType == NekoConfig.ID_TYPE_BOTAPI) {
+                if (KuroConfig.idType == KuroConfig.ID_TYPE_BOTAPI) {
                     if (ChatObject.isChannel(chat)) {
                         id = -1000000000000L - chat.id;
                     } else {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Neko Indstillinger</string>
+    <string name="KuroSettings">Kuro Indstillinger</string>
     <string name="PreferIPv6">Prefer connecting through IPv6</string>
     <string name="MessageMenu">Meddelelse menu</string>
     <string name="HidePhone">Skjul mit telefonnummer</string>
@@ -18,7 +18,7 @@
     <string name="Prpr">Peropero</string>
     <string name="EnableResidentNotification">Vis en resident underretning</string>
     <string name="DisableResidentNotification">Deaktiver residente notifikationer</string>
-    <string name="NekogramRunning">Dgram kører</string>
+    <string name="KurogramRunning">Kurogram kører</string>
     <string name="EventType">Sidebar ikon sæt</string>
     <string name="DependsOnDate">Afhænger af dato</string>
     <string name="Christmas">Jul</string>
@@ -58,8 +58,8 @@
     <string name="IgnoreBlockedAbout">Det er IKKE RIGTIG HIDE! Beskeder er stadig tilgængelige til at se, men tekst vil blive konverteret til Spoiler og medier vil ikke automatisk downloade.</string>
     <string name="Donate">Donér</string>
     <string name="DonateAbout">Støt vores udvikling.</string>
-    <string name="TranslationAbout">Hjælp os med at oversætte Dgram til dit sprog.</string>
-    <string name="Translation">Oversæt Dgram</string>
+    <string name="TranslationAbout">Hjælp os med at oversætte Kurogram til dit sprog.</string>
+    <string name="Translation">Oversæt Kurogram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Nulstil klistermærkets størrelse</string>
     <string name="RestartAppToTakeEffect">Genstart app\'en for at træde i kraft.</string>
@@ -107,7 +107,7 @@
     <string name="RegistrationDate">Registreringsdato</string>
     <string name="WsEnableTls">Aktiver TLS</string>
     <string name="WsProvider">Udbyder</string>
-    <string name="UpdateNekogram">Opdater Dgram</string>
+    <string name="UpdateKurogram">Opdater Kurogram</string>
     <string name="TranslationTarget">Målsprog</string>
     <string name="TranslationTargetApp">Følg app</string>
     <string name="Translator">Oversætter</string>
@@ -132,12 +132,12 @@
     <string name="OfficialSite">Officiel hjemmeside</string>
     <string name="MutualContact">Gensidig kontakt</string>
     <string name="MutualContactDescription">Denne kontakt er en gensidig kontakt.</string>
-    <string name="InviteTextNeko">Hej, jeg bruger Dgram til at chatte med. Tilmeld dig mig! Download det her: %1$s</string>
-    <string name="ShareNekogram">Del Dgram...</string>
-    <string name="NekogramVersion">Dgram %1$s\nBaseret på Telegram %2$s\nDesignet af %3$s</string>
+    <string name="InviteTextKuro">Hej, jeg bruger Kurogram til at chatte med. Tilmeld dig mig! Download det her: %1$s</string>
+    <string name="ShareKurogram">Del Kurogram...</string>
+    <string name="KurogramVersion">Kurogram %1$s\nBaseret på Telegram %2$s\nDesignet af %3$s</string>
     <string name="UpdateInstalling">Installerer opdatering...</string>
     <string name="UpdateInstallingNotification">En meddelelse vil blive vist, når opdateringen er færdig.</string>
-    <string name="UpdateInstallingRelaunch">Dgram vil genstarte, når opdateringen er færdig.</string>
+    <string name="UpdateInstallingRelaunch">Kurogram vil genstarte, når opdateringen er færdig.</string>
     <string name="UpdateInstalledNotification">Installationen af opdateringer er færdig, tryk for at starte appen.</string>
     <string name="UpdateFailedToInstall">Opdateringen kunne ikke installeres: %d</string>
     <string name="QRLoginMessage">Scan QRCode med en anden enhed for at logge ind.</string>
@@ -145,7 +145,7 @@
     <string name="NoTranslatorAppInstalled">Du har ikke applikationer, der kan håndtere oversættelseshensigter. Installer venligst en for at fortsætte</string>
     <string name="DisableVoiceMessagesAutoPlay">Deaktiver automatisk afspilning af talebeskeder</string>
     <string name="TranslatorType">Type</string>
-    <string name="TranslatorTypeNeko">I meddelelse</string>
+    <string name="TranslatorTypeKuro">I meddelelse</string>
     <string name="TranslatorTypeTG">Popup dialog</string>
     <string name="TranslatorTypeExternal">Ekstern app</string>
     <string name="CopyPhoto">Kopier Foto</string>
@@ -156,7 +156,7 @@
     <string name="SaveToDownloadCount_few">Gemmer %1$d filer til downloads</string>
     <string name="SaveToDownloadCount_many">Gemmer %1$d filer til downloads</string>
     <string name="SaveToDownloadCount_other">Gemmer %1$d filer til downloads</string>
-    <string name="AppLinkNotVerifiedMessage">For Android 12 og nyere, skal du manuelt tilføje link til bekræftede links for at åbne t.me links i Dgram.</string>
+    <string name="AppLinkNotVerifiedMessage">For Android 12 og nyere, skal du manuelt tilføje link til bekræftede links for at åbne t.me links i Kurogram.</string>
     <string name="AppLinkNotVerifiedTitle">App-links ikke verificeret</string>
     <string name="AutoTranslate">Automatisk oversættelse</string>
     <string name="AutoTranslateAbout">Oversæt automatisk meddelelser, der er på et andet sprog.</string>
@@ -174,14 +174,14 @@
     <string name="TabletMode">Tablet-tilstand</string>
     <string name="TabletModeAuto">Auto</string>
     <string name="DeleteAllFromSelfDone">Alle dine beskeder er slettet</string>
-    <string name="UnknownNekoSettingsOption">Der er ikke en sådan indstillingsmulighed for Neko.</string>
+    <string name="UnknownKuroSettingsOption">Der er ikke en sådan indstillingsmulighed for Kuro.</string>
     <string name="ProviderYouDaoTranslate">YouDao oversætter</string>
     <string name="ProviderBaiduTranslate">Baidu Oversætter</string>
     <string name="ProviderSogouTranslate">Sogou Oversætter</string>
     <string name="Translated">oversat</string>
     <string name="PasscodeNeeded">Du er nødt til at aktivere adgangskode lås først</string>
-    <string name="PasscodeNeko">Adgangskode</string>
-    <string name="PasscodeShowInSettings">Vis i Neko-indstillinger</string>
+    <string name="PasscodeKuro">Adgangskode</string>
+    <string name="PasscodeShowInSettings">Vis i Kuro-indstillinger</string>
     <string name="PasscodeShowInSettingsAbout">Når du har skjult siden, kan du **KUN** åbne denne side via et link:</string>
     <string name="PasscodeSet">Indstil adgangskode</string>
     <string name="PasscodeEdit">Skift adgangskode</string>

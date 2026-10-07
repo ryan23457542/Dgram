@@ -56,8 +56,8 @@ import org.telegram.ui.Stories.recorder.HintView2;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.settings.NekoLanguagesSelectActivity;
+import tw.nekomimi.nekogram.KuroConfig;
+import tw.nekomimi.nekogram.settings.KuroLanguagesSelectActivity;
 import tw.nekomimi.nekogram.translator.Translator;
 
 public class TranslateButton extends FrameLayout implements Theme.Colorable {
@@ -315,7 +315,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
             dontTranslateButton.setMultiline(false);
             dontTranslateButton.setTextAndIcon(HintView2.cutInFancyHalfText(text, dontTranslateButton.getTextView().getPaint()), R.drawable.msg_block2);
             dontTranslateButton.setOnClickListener(e -> {
-                NekoLanguagesSelectActivity.toggleLanguage(detectedLanguage, true);
+                KuroLanguagesSelectActivity.toggleLanguage(detectedLanguage, true);
                 translateController.checkRestrictedLanguagesUpdate();
                 translateController.setHideTranslateDialog(dialogId, true);
                 String bulletinTextString;
@@ -330,7 +330,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
                     R.raw.msg_translate,
                     bulletinText,
                     getString(R.string.Settings),
-                    () -> fragment.presentFragment(new NekoLanguagesSelectActivity(NekoLanguagesSelectActivity.TYPE_RESTRICTED))
+                    () -> fragment.presentFragment(new KuroLanguagesSelectActivity(KuroLanguagesSelectActivity.TYPE_RESTRICTED))
                 ).show();
                 popupWindow.dismiss();
             });
@@ -357,7 +357,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
         });
         popupLayout.addView(hideButton);
 
-        var isCocoon = Translator.PROVIDER_TELEGRAM.equals(NekoConfig.translationProvider);
+        var isCocoon = Translator.PROVIDER_TELEGRAM.equals(KuroConfig.translationProvider);
         if (isCocoon) popupLayout.addView(new ActionBarPopupWindow.GapView(getContext(), resourcesProvider), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
         final LinkSpanDrawable.LinksTextView cocoonButton = new LinkSpanDrawable.LinksTextView(getContext());

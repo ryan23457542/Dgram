@@ -47,7 +47,7 @@ import tw.nekomimi.nekogram.helpers.CloudSettingsHelper;
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 import tw.nekomimi.nekogram.helpers.remote.ConfigHelper;
 
-public class NekoSettingsActivity extends BaseNekoSettingsActivity implements FactorAnimator.Target {
+public class KuroSettingsActivity extends BaseKuroSettingsActivity implements FactorAnimator.Target {
 
     private static final int ANIMATOR_ID_SEARCH_PAGE_VISIBLE = 0;
 
@@ -101,7 +101,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
         titleView.setGravity(Gravity.CENTER);
         titleView.setSingleLine();
         titleView.setEllipsize(TextUtils.TruncateAt.END);
-        titleView.setText(LocaleController.getString(R.string.Nekogram));
+        titleView.setText(LocaleController.getString(R.string.Kurogram));
         titleView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
         topView.addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 138.333f - 12, 0, 0));
 
@@ -165,7 +165,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
         items.add(UItem.asButton(appearanceRow, R.drawable.msg_theme, LocaleController.getString(R.string.ChangeChannelNameColor2)).slug("appearance"));
         items.add(UItem.asButton(chatRow, R.drawable.msg_discussion, LocaleController.getString(R.string.Chat)).slug("chat"));
         if (!PasscodeHelper.isSettingsHidden()) {
-            items.add(UItem.asButton(passcodeRow, R.drawable.msg_secret, LocaleController.getString(R.string.PasscodeNeko)).slug("passcode"));
+            items.add(UItem.asButton(passcodeRow, R.drawable.msg_secret, LocaleController.getString(R.string.PasscodeKuro)).slug("passcode"));
         }
         items.add(UItem.asButton(experimentRow, R.drawable.msg_fave, LocaleController.getString(R.string.NotificationsOther)).slug("experiment"));
         AccessibilityManager am = (AccessibilityManager) ApplicationLoader.applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE);
@@ -202,27 +202,27 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
         }
         var id = item.id;
         if (id == chatRow) {
-            presentFragment(new NekoChatSettingsActivity());
+            presentFragment(new KuroChatSettingsActivity());
         } else if (id == generalRow) {
-            presentFragment(new NekoGeneralSettingsActivity());
+            presentFragment(new KuroGeneralSettingsActivity());
         } else if (id == appearanceRow) {
-            presentFragment(new NekoAppearanceSettingsActivity());
+            presentFragment(new KuroAppearanceSettingsActivity());
         } else if (id == passcodeRow) {
-            presentFragment(new NekoPasscodeSettingsActivity());
+            presentFragment(new KuroPasscodeSettingsActivity());
         } else if (id == experimentRow) {
-            presentFragment(new NekoExperimentalSettingsActivity());
+            presentFragment(new KuroExperimentalSettingsActivity());
         } else if (id == accessibilityRow) {
             presentFragment(new AccessibilitySettingsActivity());
         } else if (id == channelRow) {
             getMessagesController().openByUserName(LocaleController.getString(R.string.OfficialChannelUsername), this, 1);
         } else if (id == donateRow) {
-            presentFragment(new NekoDonateActivity());
+            presentFragment(new KuroDonateActivity());
         } else if (id == translationRow) {
             Browser.openUrl(getParentActivity(), "https://neko.crowdin.com/nekogram");
         } else if (id == websiteRow) {
             Browser.openUrl(getParentActivity(), "https://nekogram.app");
         } else if (id == sourceCodeRow) {
-            Browser.openUrl(getParentActivity(), "https://github.com/Nekogram/Nekogram");
+            Browser.openUrl(getParentActivity(), "https://github.com/Kurogram/Kurogram");
         } else if (id >= sponsorRow) {
             var news = newsList.get(id - sponsorRow);
             Browser.openUrl(getParentActivity(), news.url);
@@ -251,7 +251,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
 
     @Override
     protected String getActionBarTitle() {
-        return LocaleController.getString(R.string.NekoSettings);
+        return LocaleController.getString(R.string.KuroSettings);
     }
 
     @Override
@@ -271,17 +271,17 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
         return !animatorSearchPageVisible.getValue();
     }
 
-    private static BaseNekoSettingsActivity createFragment(int icon) {
+    private static BaseKuroSettingsActivity createFragment(int icon) {
         if (icon == R.drawable.msg_media) {
-            return new NekoGeneralSettingsActivity();
+            return new KuroGeneralSettingsActivity();
         } else if (icon == R.drawable.msg_theme) {
-            return new NekoAppearanceSettingsActivity();
+            return new KuroAppearanceSettingsActivity();
         } else if (icon == R.drawable.msg_discussion) {
-            return new NekoChatSettingsActivity();
+            return new KuroChatSettingsActivity();
         } else if (icon == R.drawable.msg_fave) {
-            return new NekoExperimentalSettingsActivity();
+            return new KuroExperimentalSettingsActivity();
         }
-        return new NekoSettingsActivity();
+        return new KuroSettingsActivity();
     }
 
     private ArrayList<SearchResult> createSearchArray() {
@@ -317,16 +317,16 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
             searchResultList.add(new SearchResult(10000 + i, fragmentTitle, icon, () -> presentFragment(fragment)));
         }
         searchResultList.add(new SearchResult(8000, LocaleController.getString(R.string.EmojiUseDefault), null, LocaleController.getString(R.string.Chat), LocaleController.getString(R.string.EmojiSets), R.drawable.msg_theme, () -> {
-            var fragment = new NekoEmojiSettingsActivity();
+            var fragment = new KuroEmojiSettingsActivity();
             presentFragment(fragment);
             fragment.scrollToRow("useSystemEmoji", null);
         }));
 
         searchResultList.add(new SearchResult(20000, LocaleController.getString(R.string.OfficialChannel), "@" + LocaleController.getString(R.string.OfficialChannelUsername), R.drawable.msg2_help, () -> getMessagesController().openByUserName(LocaleController.getString(R.string.OfficialChannelUsername), this, 1)));
         searchResultList.add(new SearchResult(20001, LocaleController.getString(R.string.OfficialSite), "nekogram.app", R.drawable.msg2_help, () -> Browser.openUrl(getParentActivity(), "https://nekogram.app")));
-        searchResultList.add(new SearchResult(20002, LocaleController.getString(R.string.ViewSourceCode), "GitHub", R.drawable.msg2_help, () -> Browser.openUrl(getParentActivity(), "https://github.com/Nekogram/Nekogram")));
+        searchResultList.add(new SearchResult(20002, LocaleController.getString(R.string.ViewSourceCode), "GitHub", R.drawable.msg2_help, () -> Browser.openUrl(getParentActivity(), "https://github.com/Kurogram/Kurogram")));
         searchResultList.add(new SearchResult(20003, LocaleController.getString(R.string.Translation), LocaleController.getString(R.string.TranslationAbout), R.drawable.msg2_help, () -> Browser.openUrl(getParentActivity(), "https://neko.crowdin.com/nekogram")));
-        searchResultList.add(new SearchResult(20004, LocaleController.getString(R.string.Donate), LocaleController.getString(R.string.DonateAbout), R.drawable.msg2_help, () -> presentFragment(new NekoDonateActivity())));
+        searchResultList.add(new SearchResult(20004, LocaleController.getString(R.string.Donate), LocaleController.getString(R.string.DonateAbout), R.drawable.msg2_help, () -> presentFragment(new KuroDonateActivity())));
 
         return searchResultList;
     }

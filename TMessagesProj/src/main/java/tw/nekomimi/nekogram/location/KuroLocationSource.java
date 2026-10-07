@@ -27,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Set;
 
-public class NekoLocationSource implements LocationSource {
+public class KuroLocationSource implements LocationSource {
     public final static Set<Integer> recent = Collections.synchronizedSet(Collections.newSetFromMap(new Cache<>()));
     private boolean checkPermission = true;
     private final Context context;
@@ -47,7 +47,7 @@ public class NekoLocationSource implements LocationSource {
         }
     };
 
-    public NekoLocationSource(Context context) {
+    public KuroLocationSource(Context context) {
         this.context = context;
     }
 

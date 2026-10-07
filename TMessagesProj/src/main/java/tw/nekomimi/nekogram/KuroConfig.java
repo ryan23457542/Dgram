@@ -22,7 +22,7 @@ import tw.nekomimi.nekogram.helpers.LensHelper;
 import tw.nekomimi.nekogram.translator.Translator;
 import tw.nekomimi.nekogram.translator.TranslatorApps;
 
-public class NekoConfig {
+public class KuroConfig {
     //TODO: refactor
 
     public static final int TITLE_TYPE_TEXT = 0;
@@ -33,7 +33,7 @@ public class NekoConfig {
     public static final int ID_TYPE_API = 1;
     public static final int ID_TYPE_BOTAPI = 2;
 
-    public static final int TRANS_TYPE_NEKO = 0;
+    public static final int TRANS_TYPE_KURO = 0;
     public static final int TRANS_TYPE_TG = 1;
     public static final int TRANS_TYPE_EXTERNAL = 2;
 
@@ -73,7 +73,7 @@ public class NekoConfig {
     public static int tabletMode = TABLET_AUTO;
     public static int tabsTitleType = TITLE_TYPE_MIX;
     public static int transcribeProvider = TRANSCRIBE_PREMIUM;
-    public static int transType = TRANS_TYPE_NEKO;
+    public static int transType = TRANS_TYPE_KURO;
 
     public static float stickerSize = 14.0f;
 
@@ -151,7 +151,7 @@ public class NekoConfig {
 
     public static int userMcc = 0;
 
-    private static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+    private static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kuroconfig", Activity.MODE_PRIVATE);
     private static final SharedPreferences.OnSharedPreferenceChangeListener listener = (preferences, key) -> {
         var map = new HashMap<String, String>(1);
         map.put("key", key);
@@ -182,7 +182,7 @@ public class NekoConfig {
             tabletMode = preferences.getInt("tabletMode", TABLET_AUTO);
             tabsTitleType = preferences.getInt("tabsTitleType2", TITLE_TYPE_MIX);
             transcribeProvider = preferences.getInt("transcribeProvider", TRANSCRIBE_PREMIUM);
-            transType = preferences.getInt("transType", TRANS_TYPE_NEKO);
+            transType = preferences.getInt("transType", TRANS_TYPE_KURO);
             stickerSize = preferences.getFloat("stickerSize", 14.0f);
             accentAsNotificationColor = preferences.getBoolean("accentAsNotificationColor", false);
             askBeforeCall = preferences.getBoolean("askBeforeCall", true);
@@ -295,7 +295,7 @@ public class NekoConfig {
             object.addProperty("transcribeProvider", preferences.getInt("transcribeProvider", TRANSCRIBE_PREMIUM));
         }
         if (preferences.contains("transType")) {
-            object.addProperty("transType", preferences.getInt("transType", TRANS_TYPE_NEKO));
+            object.addProperty("transType", preferences.getInt("transType", TRANS_TYPE_KURO));
         }
         if (preferences.contains("stickerSize")) {
             object.addProperty("stickerSize", preferences.getFloat("stickerSize", 14.0f));

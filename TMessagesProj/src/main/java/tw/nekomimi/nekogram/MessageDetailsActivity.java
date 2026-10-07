@@ -41,10 +41,10 @@ import java.util.Locale;
 
 import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.helpers.UserHelper;
-import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.BaseKuroSettingsActivity;
 import tw.nekomimi.nekogram.tlv.TlViewer;
 
-public class MessageDetailsActivity extends BaseNekoSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
+public class MessageDetailsActivity extends BaseKuroSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
 
     private final MessageObject messageObject;
     private final boolean noforwards;

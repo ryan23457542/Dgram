@@ -26,11 +26,11 @@ import java.util.Collections;
 import java.util.List;
 
 import tw.nekomimi.nekogram.Extra;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.InlineBotHelper;
 
 public abstract class BaseRemoteHelper {
-    protected static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoremoteconfig", Activity.MODE_PRIVATE);
+    protected static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kuroremoteconfig", Activity.MODE_PRIVATE);
     public static final Gson GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
     protected MessagesController getMessagesController() {
@@ -67,7 +67,7 @@ public abstract class BaseRemoteHelper {
                 " " +
                 LocaleController.getSystemLocaleStringIso639() +
                 " " +
-                NekoConfig.userMcc +
+                KuroConfig.userMcc +
                 " " +
                 SharedConfig.pushString;
     }

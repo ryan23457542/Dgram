@@ -2420,7 +2420,7 @@ public class ImageLoader {
                     try {
                         if (ApplicationLoader.applicationContext.getExternalMediaDirs().length > 0) {
                             publicMediaDir = getPublicStorageDir();
-                            publicMediaDir = new File(publicMediaDir, "Dgram");
+                            publicMediaDir = new File(publicMediaDir, "Kurogram");
                             publicMediaDir.mkdirs();
                         }
                     } catch (Exception e) {

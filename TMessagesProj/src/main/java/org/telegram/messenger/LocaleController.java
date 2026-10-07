@@ -63,7 +63,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 
 public class LocaleController {
 
@@ -80,7 +80,7 @@ public class LocaleController {
 
     private volatile FastDateFormat formatterDay;
     public FastDateFormat getFormatterDay() {
-        if (NekoConfig.formatTimeWithSeconds) {
+        if (KuroConfig.formatTimeWithSeconds) {
             return getFormatterDayWithSeconds();
         }
         if (formatterDay == null) {
@@ -2881,7 +2881,7 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
-        if (NekoConfig.disableNumberRounding) {
+        if (KuroConfig.disableNumberRounding) {
             if (rounded != null) {
                 rounded[0] = number;
             }
@@ -4479,9 +4479,9 @@ public class LocaleController {
     @Nullable
     private String getStringV2(String key, @StringRes int stringRes, String fallback) {
         if (R.string.AppName == stringRes) {
-            return getStringV2("Nekogram", R.string.Nekogram, null);
+            return getStringV2("Kurogram", R.string.Kurogram, null);
         } else if (R.string.AppNameBeta == stringRes) {
-            return getStringV2("NekogramBeta", R.string.NekogramBeta, null);
+            return getStringV2("KurogramBeta", R.string.KurogramBeta, null);
         }
         final Context context = ApplicationLoader.applicationContext;
         String value;

@@ -42,7 +42,7 @@ public class DeepLOAuth {
     private static final String EXT_ID = "\u0063\u006f\u0066\u0064\u0062\u0070\u006f\u0065\u0067\u0065\u006d\u0070\u006a\u006c\u006f\u006f\u0067\u0062\u0061\u0067\u006b\u006e\u0063\u0065\u006b\u0069\u006e\u0066\u006c\u0063\u006e\u006a";
     private static final String REDIRECT_URL = "https://" + EXT_ID + ".chromiumapp.org/";
 
-    private static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekodeepl", Context.MODE_PRIVATE);
+    private static final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("kurodeepl", Context.MODE_PRIVATE);
     private static final OkHttpClient okHttpClient;
     private static final Gson gson = new Gson();
 

@@ -14,15 +14,15 @@ import org.telegram.ui.LaunchActivity;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoAppearanceSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoChatSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoDonateActivity;
-import tw.nekomimi.nekogram.settings.NekoEmojiSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoExperimentalSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoGeneralSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoPasscodeSettingsActivity;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.BaseKuroSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroAppearanceSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroChatSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroDonateActivity;
+import tw.nekomimi.nekogram.settings.KuroEmojiSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroExperimentalSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroGeneralSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroPasscodeSettingsActivity;
+import tw.nekomimi.nekogram.settings.KuroSettingsActivity;
 
 public class SettingsHelper {
 
@@ -36,38 +36,38 @@ public class SettingsHelper {
             unknown.run();
             return;
         }
-        BaseNekoSettingsActivity fragment;
+        BaseKuroSettingsActivity fragment;
         if (segments.size() == 1) {
-            fragment = new NekoSettingsActivity();
+            fragment = new KuroSettingsActivity();
         } else {
             var segment = segments.get(1);
             if (PasscodeHelper.getSettingsKey().equals(segment)) {
-                fragment = new NekoPasscodeSettingsActivity();
+                fragment = new KuroPasscodeSettingsActivity();
             } else {
                 switch (segment.toLowerCase(Locale.US)) {
                     case "appearance":
                     case "a":
-                        fragment = new NekoAppearanceSettingsActivity();
+                        fragment = new KuroAppearanceSettingsActivity();
                         break;
                     case "chat":
                     case "chats":
                     case "c":
-                        fragment = new NekoChatSettingsActivity();
+                        fragment = new KuroChatSettingsActivity();
                         break;
                     case "donate":
                     case "d":
-                        fragment = new NekoDonateActivity();
+                        fragment = new KuroDonateActivity();
                         break;
                     case "experimental":
                     case "e":
-                        fragment = new NekoExperimentalSettingsActivity();
+                        fragment = new KuroExperimentalSettingsActivity();
                         break;
                     case "emoji":
-                        fragment = new NekoEmojiSettingsActivity();
+                        fragment = new KuroEmojiSettingsActivity();
                         break;
                     case "general":
                     case "g":
-                        fragment = new NekoGeneralSettingsActivity();
+                        fragment = new KuroGeneralSettingsActivity();
                         break;
                     case "reportid":
                         SettingsHelper.copyReportId();

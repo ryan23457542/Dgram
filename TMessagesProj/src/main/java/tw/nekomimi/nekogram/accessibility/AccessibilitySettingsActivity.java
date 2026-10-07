@@ -10,9 +10,9 @@ import org.telegram.ui.Components.UniversalAdapter;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.BaseKuroSettingsActivity;
 
-public class AccessibilitySettingsActivity extends BaseNekoSettingsActivity {
+public class AccessibilitySettingsActivity extends BaseKuroSettingsActivity {
     private static final ArrayList<String> SEEKBAR_TIME_VALUES = new ArrayList<>();
 
     private final int showNumbersOfItemsRow = rowId++;

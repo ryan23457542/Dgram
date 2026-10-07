@@ -72,7 +72,7 @@ import org.telegram.ui.Stories.recorder.HintView2;
 import java.util.ArrayList;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.folder.FolderIconHelper;
 
 @SuppressLint("ViewConstructor")
@@ -1117,7 +1117,7 @@ public class FilterTabsView extends FrameLayout {
             }
             TabView tabView = (TabView) view;
             if (isEditing) {
-                if (position != 0 || NekoConfig.hideAllTab) {
+                if (position != 0 || KuroConfig.hideAllTab) {
                     int side = dp(6);
                     if (tabView.rect.left - side < x && tabView.rect.right + side > x) {
                         delegate.onDeletePressed(tabView.currentTab.id);
@@ -1261,14 +1261,14 @@ public class FilterTabsView extends FrameLayout {
         CharSequence title = new SpannableStringBuilder(t);
         title = Emoji.replaceEmoji(title, textPaint.getFontMetricsInt(), false);
         title = MessageObject.replaceAnimatedEmoji(title, e, textPaint.getFontMetricsInt());
-        if (NekoConfig.tabsTitleType == NekoConfig.TITLE_TYPE_TEXT || emoticon == null) {
+        if (KuroConfig.tabsTitleType == KuroConfig.TITLE_TYPE_TEXT || emoticon == null) {
             return title;
         }
         var builder = new SpannableStringBuilder(emoticon);
         var span = new ColoredImageSpan(FolderIconHelper.getTabIcon(emoticon), ColoredImageSpan.ALIGN_CENTER);
         span.setSize(FolderIconHelper.getIconWidth());
         builder.setSpan(span, 0, emoticon.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
-        if (NekoConfig.tabsTitleType == NekoConfig.TITLE_TYPE_MIX) {
+        if (KuroConfig.tabsTitleType == KuroConfig.TITLE_TYPE_MIX) {
             span.setWidth(FolderIconHelper.getIconWidth() + dp(5));
             builder.append(title);
         }
@@ -1560,9 +1560,9 @@ public class FilterTabsView extends FrameLayout {
         if (!tabs.isEmpty()) {
             final int width = MeasureSpec.getSize(widthMeasureSpec) - listViewPaddingH * 2;
             Tab firstTab = findDefaultTab();
-            if (firstTab != null || NekoConfig.hideAllTab) {
+            if (firstTab != null || KuroConfig.hideAllTab) {
                 int trueTabsWidth;
-                if (!NekoConfig.hideAllTab) {
+                if (!KuroConfig.hideAllTab) {
                     firstTab.setTitle(LocaleController.getString(R.string.FilterAllChats), null, false);
                     int tabWidth = firstTab.getWidth(false);
                     firstTab.setTitle(allTabsWidth > width ? LocaleController.getString(R.string.FilterAllChatsShort) : LocaleController.getString(R.string.FilterAllChats), null, false);
@@ -1835,7 +1835,7 @@ public class FilterTabsView extends FrameLayout {
                 return;
             }
             ArrayList<MessagesController.DialogFilter> filters = MessagesController.getInstance(UserConfig.selectedAccount).getDialogFilters();
-            if (NekoConfig.hideAllTab) {
+            if (KuroConfig.hideAllTab) {
                 int defaultPosition = 0;
                 for (int i = 0; i < filters.size(); i++) {
                     if (filters.get(i).isDefault()) {
@@ -1948,7 +1948,7 @@ public class FilterTabsView extends FrameLayout {
 
         @Override
         public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-            if (!NekoConfig.hideAllTab && MessagesController.getInstance(UserConfig.selectedAccount).premiumFeaturesBlocked() && (!isEditing || (viewHolder.getAdapterPosition() == 0 && tabs.get(0).isDefault && !UserConfig.getInstance(UserConfig.selectedAccount).isPremium()))) {
+            if (!KuroConfig.hideAllTab && MessagesController.getInstance(UserConfig.selectedAccount).premiumFeaturesBlocked() && (!isEditing || (viewHolder.getAdapterPosition() == 0 && tabs.get(0).isDefault && !UserConfig.getInstance(UserConfig.selectedAccount).isPremium()))) {
                 return makeMovementFlags(0, 0);
             }
             return makeMovementFlags(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, 0);
@@ -1956,7 +1956,7 @@ public class FilterTabsView extends FrameLayout {
 
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder source, @NonNull RecyclerView.ViewHolder target) {
-            if (!NekoConfig.hideAllTab && MessagesController.getInstance(UserConfig.selectedAccount).premiumFeaturesBlocked() && ((source.getAdapterPosition() == 0 || target.getAdapterPosition() == 0) && !UserConfig.getInstance(UserConfig.selectedAccount).isPremium())) {
+            if (!KuroConfig.hideAllTab && MessagesController.getInstance(UserConfig.selectedAccount).premiumFeaturesBlocked() && ((source.getAdapterPosition() == 0 || target.getAdapterPosition() == 0) && !UserConfig.getInstance(UserConfig.selectedAccount).isPremium())) {
                 return false;
             }
             adapter.swapElements(source.getAdapterPosition(), target.getAdapterPosition());

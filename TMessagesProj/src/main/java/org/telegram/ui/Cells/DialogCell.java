@@ -148,7 +148,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Stack;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.accessibility.AccConfig;
 import tw.nekomimi.nekogram.helpers.MessageFilterHelper;
 import me.vkryl.android.animator.BoolAnimator;
@@ -2954,7 +2954,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     }
 
     private CharSequence addSenderAvatar(CharSequence messageNameString, MessageObject message) {
-        if (NekoConfig.miniSenderAvatar && !TextUtils.isEmpty(messageNameString)) {
+        if (KuroConfig.miniSenderAvatar && !TextUtils.isEmpty(messageNameString)) {
             var fromChatId = message.getFromChatId();
             if (fromChatId != UserConfig.getInstance(currentAccount).getClientUserId()) {
                 var builder = new SpannableStringBuilder("\u200B ");
@@ -5695,7 +5695,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     }
 
     public void updateMessageThumbs() {
-        if (message == null || !NekoConfig.mediaPreview) {
+        if (message == null || !KuroConfig.mediaPreview) {
             return;
         }
         String restrictionReason = MessagesController.getInstance(message.currentAccount).getRestrictionReason(message.messageOwner.restriction_reason);

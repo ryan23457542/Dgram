@@ -21,7 +21,7 @@ import org.telegram.utils.proxy.ProxySettings;
 import java.util.ArrayList;
 
 import tw.nekomimi.nekogram.helpers.UserHelper;
-import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.BaseKuroSettingsActivity;
 
 public class DatacenterPopupWrapper {
 
@@ -66,7 +66,7 @@ public class DatacenterPopupWrapper {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText));
-        textView.setText(BaseNekoSettingsActivity.getSpannedString(R.string.DatacenterStatusAbout, "https://core.telegram.org/api/datacenter"));
+        textView.setText(BaseKuroSettingsActivity.getSpannedString(R.string.DatacenterStatusAbout, "https://core.telegram.org/api/datacenter"));
         windowLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 8, 0, 0));
     }
 

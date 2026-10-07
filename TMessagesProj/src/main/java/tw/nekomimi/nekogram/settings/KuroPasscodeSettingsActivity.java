@@ -38,7 +38,7 @@ import java.util.Locale;
 
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 
-public class NekoPasscodeSettingsActivity extends BaseNekoSettingsActivity {
+public class KuroPasscodeSettingsActivity extends BaseKuroSettingsActivity {
     private boolean passcodeSet;
 
     private final int showInSettingsRow = rowId++;
@@ -66,7 +66,7 @@ public class NekoPasscodeSettingsActivity extends BaseNekoSettingsActivity {
     @Override
     protected void fillItems(ArrayList<UItem> items, UniversalAdapter adapter) {
         items.add(UItem.asCheck(showInSettingsRow, LocaleController.getString(R.string.PasscodeShowInSettings)).setEnabled(passcodeSet).setChecked(!PasscodeHelper.isSettingsHidden()));
-        var link = String.format(Locale.ENGLISH, "https://t.me/nekosettings/%s", PasscodeHelper.getSettingsKey());
+        var link = String.format(Locale.ENGLISH, "https://t.me/kurosettings/%s", PasscodeHelper.getSettingsKey());
         var stringBuilder = new SpannableStringBuilder(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PasscodeShowInSettingsAbout)));
         stringBuilder.append("\n").append(link);
         stringBuilder.setSpan(new URLSpanNoUnderline(null) {
@@ -75,7 +75,7 @@ public class NekoPasscodeSettingsActivity extends BaseNekoSettingsActivity {
                 ClipboardManager clipboard = (ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("label", link);
                 clipboard.setPrimaryClip(clip);
-                BulletinFactory.of(NekoPasscodeSettingsActivity.this).createCopyLinkBulletin().show();
+                BulletinFactory.of(KuroPasscodeSettingsActivity.this).createCopyLinkBulletin().show();
             }
         }, stringBuilder.length() - link.length(), stringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         items.add(UItem.asShadow(stringBuilder).setEnabled(passcodeSet));
@@ -199,7 +199,7 @@ public class NekoPasscodeSettingsActivity extends BaseNekoSettingsActivity {
 
     @Override
     protected String getActionBarTitle() {
-        return LocaleController.getString(R.string.PasscodeNeko);
+        return LocaleController.getString(R.string.PasscodeKuro);
     }
 
     @Override

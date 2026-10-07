@@ -241,7 +241,7 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPOutputStream;
 
 import me.vkryl.core.BitwiseUtils;
-import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.KuroConfig;
 import tw.nekomimi.nekogram.helpers.TypefaceHelper;
 
 public class AndroidUtilities {
@@ -2980,8 +2980,8 @@ public class AndroidUtilities {
     }
 
     public static boolean isTabletForce() {
-        if (NekoConfig.tabletMode != NekoConfig.TABLET_AUTO) {
-            return NekoConfig.tabletMode == NekoConfig.TABLET_ENABLE;
+        if (KuroConfig.tabletMode != KuroConfig.TABLET_AUTO) {
+            return KuroConfig.tabletMode == KuroConfig.TABLET_ENABLE;
         }
         return ApplicationLoader.applicationContext != null && ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
     }
@@ -3708,7 +3708,7 @@ public class AndroidUtilities {
         }
         File storageDir = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Dgram");
+            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Kurogram");
             if (!storageDir.mkdirs()) {
                 if (!storageDir.exists()) {
                     if (BuildVars.LOGS_ENABLED) {
@@ -6678,7 +6678,7 @@ public class AndroidUtilities {
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
             int code = pInfo.versionCode / 10;
             String abi = BuildConfig.BUILD_TYPE + " " + Build.SUPPORTED_ABIS[0];
-            return formatString(R.string.NekogramVersion, String.format(Locale.US, "v%s (%d) %s", pInfo.versionName, code, abi), String.format(Locale.US, "v%s (%d)", BuildVars.BUILD_VERSION_STRING, BuildConfig.BUILD_VERSION), "@Duang");
+            return formatString(R.string.KurogramVersion, String.format(Locale.US, "v%s (%d) %s", pInfo.versionName, code, abi), String.format(Locale.US, "v%s (%d)", BuildVars.BUILD_VERSION_STRING, BuildConfig.BUILD_VERSION), "@Duang");
         } catch (Exception e) {
             FileLog.e(e);
         }
