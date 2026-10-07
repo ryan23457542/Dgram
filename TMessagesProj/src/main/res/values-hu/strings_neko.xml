@@ -144,7 +144,7 @@
     <string name="OfficialSite">Hivatalos oldal</string>
     <string name="MutualContact">Közös kapcsolat</string>
     <string name="MutualContactDescription">Ez a kapcsolat egy közös ismerős.</string>
-    <string name="InviteTextKuro">Szia! A Dgramot használom a csevegéshez. Csatlakozz hozzám! Letölthető itt: %1$s</string>
+    <string name="InviteTextKuro">Szia! A Kurogramot használom a csevegéshez. Csatlakozz hozzám! Letölthető itt: %1$s</string>
     <string name="ShareKurogram">Kurogram megosztása...</string>
     <string name="KurogramVersion">Kurogram %1$s\na Telegram-on alapul %2$s\nTervezte %3$s</string>
     <string name="UpdateInstalling">Frissítés telepítése...</string>
@@ -169,7 +169,7 @@
     <string name="SaveToDownloadCount_few">%1$d fájl mentése a letöltésekhez</string>
     <string name="SaveToDownloadCount_many">%1$d fájl mentése a letöltésekhez</string>
     <string name="SaveToDownloadCount_other">%1$d fájl mentése a letöltésekhez</string>
-    <string name="AppLinkNotVerifiedMessage">Android 12 és újabb verziók esetén manuálisan kell hozzáadnia a hivatkozás hozzárendeléseket, hogy a t.me linkeket meg tudja nyitni a Dgramban.</string>
+    <string name="AppLinkNotVerifiedMessage">Android 12 és újabb verziók esetén manuálisan kell hozzáadnia a hivatkozás hozzárendeléseket, hogy a t.me linkeket meg tudja nyitni a Kurogramban.</string>
     <string name="AppLinkNotVerifiedTitle">Az alkalmazás orientált hivatkozás nincs hozzárendelve</string>
     <string name="AutoTranslate">Automatikus fordítás</string>
     <string name="AutoTranslateAbout">Más nyelvű üzenetek automatikus fordítása.</string>

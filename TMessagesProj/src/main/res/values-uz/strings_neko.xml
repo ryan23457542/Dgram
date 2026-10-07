@@ -66,8 +66,8 @@
     <string name="IgnoreBlockedAbout">Xabar haqiqatdan ham YASHIRILMAYDI! Xabarlar hali ham koʻrish mumkin, lekin matn spoylerga oʻzgartiriladi va media avtomatik yuklab olinmaydi.</string>
     <string name="Donate">Dasturchini qo\'llab-quvvatlash</string>
     <string name="DonateAbout">Loyihamizni qo\'llab-quvvatlang.</string>
-    <string name="TranslationAbout">Dgramni o\'z tilingizga tarjima qilishga yordam bering.</string>
-    <string name="Translation">Dgramni tarjima qilish</string>
+    <string name="TranslationAbout">Kurogramni o\'z tilingizga tarjima qilishga yordam bering.</string>
+    <string name="Translation">Kurogramni tarjima qilish</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Stiker hajmini qayta o\'rnatish</string>
     <string name="RestartAppToTakeEffect">Ilovani qayta ishga tushiring.</string>
@@ -118,7 +118,7 @@
     <string name="RegistrationDateApproximately">Taxminan %s</string>
     <string name="WsEnableTls">TLSni yoqish</string>
     <string name="WsProvider">Provayder</string>
-    <string name="UpdateKurogram">Dgramni yangilash</string>
+    <string name="UpdateKurogram">Kurogramni yangilash</string>
     <string name="TranslationTarget">Maqsadli til</string>
     <string name="TranslationTargetApp">Tarjima tili</string>
     <string name="Translator">Tarjimon</string>
@@ -144,8 +144,8 @@
     <string name="OfficialSite">Rasmiy sayt</string>
     <string name="MutualContact">O\'zaro kantaktlar</string>
     <string name="MutualContactDescription">Ushbu kantakt o\'zaro kantakt.</string>
-    <string name="InviteTextKuro">Salom, Men chat uchun Dgramdan foydalanayapman. Menga qo\'shil! Bu yerdan yuklab ol: %1$s</string>
-    <string name="ShareKurogram">Dgramni yuborish...</string>
+    <string name="InviteTextKuro">Salom, Men chat uchun Kurogramdan foydalanayapman. Menga qo\'shil! Bu yerdan yuklab ol: %1$s</string>
+    <string name="ShareKurogram">Kurogramni yuborish...</string>
     <string name="KurogramVersion">Kurogram %1$s\nTelegram %2$s asosida\nDizayner %3$s</string>
     <string name="UpdateInstalling">Yangilanish o\'rnatilmoqda...</string>
     <string name="UpdateInstallingNotification">Yangilanish o\'rnatilib bo\'lgach xabar paydo bo\'ladi.</string>

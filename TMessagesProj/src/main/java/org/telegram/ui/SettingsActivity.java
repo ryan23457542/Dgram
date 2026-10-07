@@ -694,12 +694,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        items.add(SettingCell.Factory.of(60, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.dgram_theme, "Kuro Theme", null));
+        items.add(SettingCell.Factory.of(60, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.kuro_theme, "Kuro Theme", null));
         items.add(SettingCell.Factory.of(61, IconBackgroundColors.PURPLE.top, IconBackgroundColors.PURPLE.bottom, R.drawable.filled_profile_settings, "Kuro Settings", null));
-        items.add(SettingCell.Factory.of(62, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.dgram_user_finder, "Number Finder", null));
-        items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.dgram_special_contacts, "Special Contacts", null));
-        items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.dgram_online_contacts, "Online Contacts", null));
-        items.add(SettingCell.Factory.of(65, IconBackgroundColors.BLUE_DEEP.top, IconBackgroundColors.BLUE_DEEP.bottom, R.drawable.dgram_contact_changes, "Contact Changes", null));
+        items.add(SettingCell.Factory.of(62, IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom, R.drawable.kuro_user_finder, "Number Finder", null));
+        items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.kuro_special_contacts, "Special Contacts", null));
+        items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.kuro_online_contacts, "Online Contacts", null));
+        items.add(SettingCell.Factory.of(65, IconBackgroundColors.BLUE_DEEP.top, IconBackgroundColors.BLUE_DEEP.bottom, R.drawable.kuro_contact_changes, "Contact Changes", null));
         items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.outline_groups_24, "Support Group", null));
         items.add(UItem.asShadow(null));
 
@@ -908,7 +908,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 break;
             }
             case 60: {
-            	presentFragment(new tw.nekomimi.nekogram.settings.DgramThemeActivity());
+            	presentFragment(new tw.nekomimi.nekogram.settings.KuroThemeActivity());
             	break;
             }
             case 61: {

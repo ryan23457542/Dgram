@@ -64,7 +64,7 @@
     <string name="IgnoreBlockedAbout">GERÇEKTEN GİZLEYEMEZ! Mesajlar görüntülenmeye devam ederler, ama ancak metin spoilera dönüştürülürler ve medya otomatik olarak indirilmiyecek.</string>
     <string name="Donate">Bağış yapın</string>
     <string name="DonateAbout">Geliştiriciler destekleyiniz.</string>
-    <string name="TranslationAbout">Dgrammızı sizin dilinize çevirmemize yardımcı olunuz.</string>
+    <string name="TranslationAbout">Kurogrammızı sizin dilinize çevirmemize yardımcı olunuz.</string>
     <string name="Translation">Kurogram\'ı diline çevir</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Çıkartma boyutunu sıfırla</string>
@@ -142,7 +142,7 @@
     <string name="MutualContactDescription">Bu kişi de sizi kişilerine kaydetti.</string>
     <string name="InviteTextKuro">Hey, sohbet etmek için Kurogram kullanıyorum. Bana katıl! Buradan indirilebilirsin: %1$s</string>
     <string name="ShareKurogram">Kurogram\'ı paylaş...</string>
-    <string name="KurogramVersion">Telegram %2$s tabanlı\nDgram %1$s\n%3$s tarafından tasarlandı</string>
+    <string name="KurogramVersion">Telegram %2$s tabanlı\nKurogram %1$s\n%3$s tarafından tasarlandı</string>
     <string name="UpdateInstalling">Güncelleme yükleniyor...</string>
     <string name="UpdateInstallingNotification">Güncelleme tamamlandığında bir bildirim gösterilecek.</string>
     <string name="UpdateInstallingRelaunch">Güncelleme tamamlandığında uygulama kendini yeniden başlatacak.</string>

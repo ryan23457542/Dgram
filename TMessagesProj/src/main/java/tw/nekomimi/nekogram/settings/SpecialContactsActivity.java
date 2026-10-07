@@ -48,7 +48,7 @@ public class SpecialContactsActivity extends BaseFragment implements ManageChatU
     private final ArrayList<Long> contactIds = new ArrayList<>();
 
     private SharedPreferences prefs() {
-        return ApplicationLoader.applicationContext.getSharedPreferences("dgram_special_contacts", Context.MODE_PRIVATE);
+        return ApplicationLoader.applicationContext.getSharedPreferences("kuro_special_contacts", Context.MODE_PRIVATE);
     }
 
     private boolean isFeatureEnabled() {

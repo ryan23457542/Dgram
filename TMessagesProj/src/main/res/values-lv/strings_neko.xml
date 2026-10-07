@@ -111,7 +111,7 @@
     <string name="RegistrationDateApproximately">Aptuveni %s</string>
     <string name="WsEnableTls">TLS iespējošana</string>
     <string name="WsProvider">Nodrošinātājs</string>
-    <string name="UpdateKurogram">Dgrammas atjaunināšana</string>
+    <string name="UpdateKurogram">Kurogrammas atjaunināšana</string>
     <string name="TranslationTarget">Mērķa valoda</string>
     <string name="TranslationTargetApp">Sekojiet lietotnei</string>
     <string name="Translator">Tulkotājs</string>

@@ -165,7 +165,7 @@
     <string name="SaveToDownloadCount_few">Zapisywanie %1$d plików do Pobranych</string>
     <string name="SaveToDownloadCount_many">Zapisywanie %1$d plików do Pobranych</string>
     <string name="SaveToDownloadCount_other">Zapisywanie %1$d pliku do Pobranych</string>
-    <string name="AppLinkNotVerifiedMessage">W przypadku Androida 12 i nowszych musisz ręcznie dodać link do zweryfikowanych linków, aby otworzyć linki t.me w Dgramie.</string>
+    <string name="AppLinkNotVerifiedMessage">W przypadku Androida 12 i nowszych musisz ręcznie dodać link do zweryfikowanych linków, aby otworzyć linki t.me w Kurogramie.</string>
     <string name="AppLinkNotVerifiedTitle">Linki aplikacji nie zostały zweryfikowane</string>
     <string name="AutoTranslate">Automatyczne tłumaczenie</string>
     <string name="AutoTranslateAbout">Automatycznie tłumacz wiadomości w innym języku.</string>

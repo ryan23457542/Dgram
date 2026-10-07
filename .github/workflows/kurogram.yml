@@ -1,4 +1,4 @@
-name: Dgram Debug Build
+name: Kurogram Debug Build
 on:
   workflow_dispatch:
 jobs:

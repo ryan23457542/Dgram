@@ -34,8 +34,8 @@ import java.util.Objects;
 
 public class SpecialContactsMonitor implements NotificationCenter.NotificationCenterDelegate {
 
-    private static final String PREFS = "dgram_special_contacts";
-    private static final String CHANNEL_ID = "dgram_special_contacts";
+    private static final String PREFS = "kuro_special_contacts";
+    private static final String CHANNEL_ID = "kuro_special_contacts";
     private static final int MAX_ACTIONS = 100;
 
     private static SpecialContactsMonitor instance;

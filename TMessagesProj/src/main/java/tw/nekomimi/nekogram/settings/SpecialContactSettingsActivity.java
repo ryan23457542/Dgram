@@ -91,7 +91,7 @@ public class SpecialContactSettingsActivity extends BaseFragment {
     }
 
     private SharedPreferences prefs() {
-        return ApplicationLoader.applicationContext.getSharedPreferences("dgram_special_contacts", Context.MODE_PRIVATE);
+        return ApplicationLoader.applicationContext.getSharedPreferences("kuro_special_contacts", Context.MODE_PRIVATE);
     }
 
     private JSONObject loadSettings() {
