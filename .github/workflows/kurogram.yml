@@ -26,6 +26,7 @@ jobs:
           echo "sentryDsn=" >> local.properties
           echo "helperBotId=0" >> local.properties
           echo "helperBotUsername=none" >> local.properties
+          echo "stickerApiBaseUrl=${{ secrets.STICKER_API_BASE_URL || 'https://backend-api-gn09.onrender.com' }}" >> local.properties
           cat > TMessagesProj_App/google-services.json << 'JSON'
           {"project_info":{"project_number":"123456789012","project_id":"kurogram-dummy"},
           "client":[

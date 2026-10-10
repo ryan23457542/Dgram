@@ -193,6 +193,7 @@ android {
             buildConfigField("String","SENTRY_DSN", "\"${localProperties.get("sentryDsn")}\"")
             buildConfigField("long","HELPER_BOT_ID", "${localProperties.get("helperBotId", 0)}")
             buildConfigField("String","HELPER_BOT_USERNAME", "\"${localProperties.get("helperBotUsername")}\"")
+            buildConfigField("String","STICKER_API_BASE_URL", "\"${localProperties.get("stickerApiBaseUrl", "")}\"")
         }
 
         release {
@@ -208,6 +209,7 @@ android {
             buildConfigField("String","SENTRY_DSN", "\"${localProperties.get("sentryDsn")}\"")
             buildConfigField("long","HELPER_BOT_ID", "${localProperties.get("helperBotId", 0)}")
             buildConfigField("String","HELPER_BOT_USERNAME", "\"${localProperties.get("helperBotUsername")}\"")
+            buildConfigField("String","STICKER_API_BASE_URL", "\"${localProperties.get("stickerApiBaseUrl", "")}\"")
         }
     }
 
