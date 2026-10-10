@@ -700,7 +700,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         items.add(SettingCell.Factory.of(63, IconBackgroundColors.RED.top, IconBackgroundColors.RED.bottom, R.drawable.kuro_special_contacts, "Special Contacts", null));
         items.add(SettingCell.Factory.of(64, IconBackgroundColors.CYAN.top, IconBackgroundColors.CYAN.bottom, R.drawable.kuro_online_contacts, "Online Contacts", null));
         items.add(SettingCell.Factory.of(65, IconBackgroundColors.BLUE_DEEP.top, IconBackgroundColors.BLUE_DEEP.bottom, R.drawable.kuro_contact_changes, "Contact Changes", null));
-        items.add(SettingCell.Factory.of(66, IconBackgroundColors.BLUE_ALT.top, IconBackgroundColors.BLUE_ALT.bottom, R.drawable.outline_groups_24, "Support Group", null));
         items.add(UItem.asShadow(null));
 
         items.add(SettingCell.Factory.of(1, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
@@ -929,10 +928,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             }
             case 65: {
             	presentFragment(new tw.nekomimi.nekogram.settings.ContactChangesActivity());
-            	break;
-            }
-            case 66: {
-            	org.telegram.messenger.browser.Browser.openUrl(getParentActivity(), "https://t.me/tessssssssssh");
             	break;
             }
         }
