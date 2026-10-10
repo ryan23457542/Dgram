@@ -88,7 +88,7 @@ public class StickerPackGridCell extends FrameLayout {
         iconLetter.setText(title != null && !title.isEmpty() ? title.substring(0, 1).toUpperCase() : "?");
         categoryView.setText(pack.category != null ? pack.category : "");
         categoryView.setVisibility(pack.category != null && !pack.category.isEmpty() ? View.VISIBLE : View.GONE);
-        ratingView.setText(pack.rating > 0 ? String.format(LocaleController.getInstance().currentLocale, "★ %.1f", pack.rating) : "");
+        ratingView.setText(pack.rating > 0 ? String.format(LocaleController.getInstance().getCurrentLocale(), "★ %.1f", pack.rating) : "");
         ratingView.setVisibility(pack.rating > 0 ? View.VISIBLE : View.GONE);
         downloadsView.setText(pack.downloads > 0 ? formatDownloads(pack.downloads) : "");
         downloadsView.setVisibility(pack.downloads > 0 ? View.VISIBLE : View.GONE);
@@ -96,7 +96,7 @@ public class StickerPackGridCell extends FrameLayout {
 
     private static String formatDownloads(int downloads) {
         if (downloads >= 1000) {
-            return String.format(LocaleController.getInstance().currentLocale, "%.1fK ↓", downloads / 1000f);
+            return String.format(LocaleController.getInstance().getCurrentLocale(), "%.1fK ↓", downloads / 1000f);
         }
         return downloads + " ↓";
     }

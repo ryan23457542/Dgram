@@ -49,7 +49,7 @@ public class KuroThemeActivity extends BaseFragment {
             addView(label, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
         }
 
-        void setSelected(boolean selected) {
+        void applySelected(boolean selected) {
             int accent = Theme.getColor(Theme.key_featuredStickers_addButton);
             int tint = selected ? accent : Theme.getColor(Theme.key_windowBackgroundWhiteGrayText);
             icon.setColorFilter(new PorterDuffColorFilter(tint, PorterDuff.Mode.SRC_IN));
@@ -112,7 +112,7 @@ public class KuroThemeActivity extends BaseFragment {
         }
         for (int i = 0; i < tabButtons.length; i++) {
             if (tabButtons[i] != null) {
-                tabButtons[i].setSelected(i == index);
+                tabButtons[i].applySelected(i == index);
             }
         }
     }
